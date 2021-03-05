@@ -1,0 +1,7 @@
+C:\Users\ALEXA\Documents\Alexandre\Drive\Alexandre\ESILV\P1\Info\Projet2\Projet\Projet\bin\Debug\Projet.exe.config
+C:\Users\ALEXA\Documents\Alexandre\Drive\Alexandre\ESILV\P1\Info\Projet2\Projet\Projet\bin\Debug\Projet.exe
+C:\Users\ALEXA\Documents\Alexandre\Drive\Alexandre\ESILV\P1\Info\Projet2\Projet\Projet\bin\Debug\Projet.pdb
+C:\Users\ALEXA\Documents\Alexandre\Drive\Alexandre\ESILV\P1\Info\Projet2\Projet\Projet\obj\Debug\Projet.csprojAssemblyReference.cache
+C:\Users\ALEXA\Documents\Alexandre\Drive\Alexandre\ESILV\P1\Info\Projet2\Projet\Projet\obj\Debug\Projet.csproj.CoreCompileInputs.cache
+C:\Users\ALEXA\Documents\Alexandre\Drive\Alexandre\ESILV\P1\Info\Projet2\Projet\Projet\obj\Debug\Projet.exe
+C:\Users\ALEXA\Documents\Alexandre\Drive\Alexandre\ESILV\P1\Info\Projet2\Projet\Projet\obj\Debug\Projet.pdb
