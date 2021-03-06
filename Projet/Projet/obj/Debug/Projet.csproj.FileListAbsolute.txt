@@ -12,3 +12,10 @@ C:\Users\ALEXA\Documents\Alexandre\Drive\Alexandre\GitHub\Projet2\Projet\Projet\
 C:\Users\ALEXA\Documents\Alexandre\Drive\Alexandre\GitHub\Projet2\Projet\Projet\obj\Debug\Projet.csproj.CoreCompileInputs.cache
 C:\Users\ALEXA\Documents\Alexandre\Drive\Alexandre\GitHub\Projet2\Projet\Projet\obj\Debug\Projet.exe
 C:\Users\ALEXA\Documents\Alexandre\Drive\Alexandre\GitHub\Projet2\Projet\Projet\obj\Debug\Projet.pdb
+H:\TheWoods\Projet\Projet\bin\Debug\Projet.exe.config
+H:\TheWoods\Projet\Projet\bin\Debug\Projet.exe
+H:\TheWoods\Projet\Projet\bin\Debug\Projet.pdb
+H:\TheWoods\Projet\Projet\obj\Debug\Projet.csprojAssemblyReference.cache
+H:\TheWoods\Projet\Projet\obj\Debug\Projet.csproj.CoreCompileInputs.cache
+H:\TheWoods\Projet\Projet\obj\Debug\Projet.exe
+H:\TheWoods\Projet\Projet\obj\Debug\Projet.pdb
