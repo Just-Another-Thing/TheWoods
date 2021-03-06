@@ -13,17 +13,16 @@ namespace Projet
     {
         #region ProgrammStart
 
-        public class WeatherForecastWithPOCOs
-        {
-            public string Clash { get; set; }
-            public string[] Test { get; set; }
-        }
+        //public class WeatherForecastWithPOCOs
+        //{
+        //    public string Clash { get; set; }
+        //    public string[] Test { get; set; }
+        //}
 
 
         public static void ProgrammStart()
         {
-            string texte; 
-            ConsoleColor[] colors = (ConsoleColor[])ConsoleColor.GetValues(typeof(ConsoleColor));
+            string texte;
             Config.SetFullScreen();
             Config.SetTitle("Menu de démarage");
             for (int i = 0; i< Console.WindowWidth;i += 2)
@@ -67,9 +66,9 @@ namespace Projet
             Console.CursorVisible = false;
 
 
-            string jsonString = File.ReadAllText("language.json");
-            var weatherForecast = JsonSerializer.Deserialize<WeatherForecastWithPOCOs>(jsonString);
-            Console.WriteLine(weatherForecast.Test[1]);
+            //string jsonString = File.ReadAllText("language.json");
+            //var weatherForecast = JsonSerializer.Deserialize<WeatherForecastWithPOCOs>(jsonString);
+            //Console.WriteLine(weatherForecast.Test[1]);
 
 
 
@@ -84,6 +83,9 @@ namespace Projet
                 Console.SetCursorPosition(0, 0);
                 Console.Write("*");
             } while(!result);
+
+            Config.NavigationManager();
+
             if (result) return;
             //Console.WriteLine("╭━━━━╮╭╮╱╭╮╭━━━╮ ╭╮╭╮╭╮╭━━━╮╭━━━╮╭━━━╮╭━━━╮");
             //Console.WriteLine("┃╭╮╭╮┃┃┃╱┃┃┃╭━━╯ ┃┃┃┃┃┃┃╭━╮┃┃╭━╮┃╰╮╭╮┃┃╭━╮┃");

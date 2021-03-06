@@ -15,43 +15,43 @@ namespace Projet
         
 
         #region accessers & getters 
-        public int getType()
+        public int GetType()
         {
             return this.type;
         }
 
-        public void setType(int type) 
+        public void SetType(int type) 
         { 
             this.type = type; 
         }
 
-        public int getIsInFire()
+        public int GetIsInFire()
         {
             return this.isInFire;
         }
 
-        public void setIsInFire(int isInFire)
+        public void SetIsInFire(int isInFire)
         {
             this.isInFire = isInFire;
         }
 
-        public int getLife()
+        public int GetLife()
         {
             return this.life;
         }
 
-        public void setLife(int life)
+        public void SetLife(int life)
         {
             this.life = life;
         }
 
 
-        public bool getIsFireable()
+        public bool GetIsFireable()
         {
             return this.isFireable;
         }
 
-        public void setIsFireable(bool isFireable)
+        public void SetIsFireable(bool isFireable)
         {
             this.isFireable = isFireable;
         }

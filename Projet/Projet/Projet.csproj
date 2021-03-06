@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Cell.cs" />
+    <Compile Include="SliderNav.cs" />
     <Compile Include="Config.cs" />
     <Compile Include="Menu.cs" />
     <Compile Include="WoodGenerator.cs" />

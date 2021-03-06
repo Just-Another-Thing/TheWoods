@@ -8,7 +8,7 @@ namespace Projet
 {
     class WoodGenerator
     {
-        public static Cell[,] generateWoods(int l, int c)
+        public static Cell[,] GenerateWoods(int l, int c)
         {
             Random rdm = new Random();
             Cell[,] map = new Cell[c, l];
@@ -17,8 +17,8 @@ namespace Projet
             {
                 for (int j = 0; j < map.GetLength(1); j++)
                 {
-                    map[i, j].setType(3);
-                    map[i, j].setLife(0);
+                    map[i, j].SetType(3);
+                    map[i, j].SetLife(0);
                 }
             }
 
@@ -27,13 +27,13 @@ namespace Projet
             {
                 for (int j = 0; j < map.GetLength(1); j++)
                 {
-                    int pourc = getSurrounding(map, i, j, 2);
+                    int pourc = GetSurrounding(map, i, j, 2);
                     int rand = rdm.Next(0, 100);
                     if (rand <= pourc * 8 + 10)
                     {
-                        map[i, j].setType(2);
-                        map[i, j].setLife(10);
-                        map[i, j].setIsFireable(true);
+                        map[i, j].SetType(2);
+                        map[i, j].SetLife(10);
+                        map[i, j].SetIsFireable(true);
                     }
                 }
             }
@@ -43,12 +43,12 @@ namespace Projet
             {
                 for (int j = 0; j < map.GetLength(1); j++)
                 {
-                    int pourc = getSurrounding(map, i, j, 5);
+                    int pourc = GetSurrounding(map, i, j, 5);
                     int rand = rdm.Next(0, 100);
-                    if (rand <= pourc * 12 + 4 && map[i,j].getType() == 3)
+                    if (rand <= pourc * 12 + 4 && map[i,j].GetType() == 3)
                     {
-                        map[i, j].setType(5);
-                        map[i, j].setLife(0);
+                        map[i, j].SetType(5);
+                        map[i, j].SetLife(0);
                     }
                 }
             }
@@ -58,13 +58,13 @@ namespace Projet
             {
                 for (int j = 0; j < map.GetLength(1); j++)
                 {
-                    int pourc = getSurrounding(map, i, j, 2);
+                    int pourc = GetSurrounding(map, i, j, 2);
                     int rand = rdm.Next(0, 100);
-                    if (rand <= pourc * 10 && map[i, j].getType() == 3)
+                    if (rand <= pourc * 10 && map[i, j].GetType() == 3)
                     {
-                        map[i, j].setType(4);
-                        map[i, j].setLife(4);
-                        map[i, j].setIsFireable(true);
+                        map[i, j].SetType(4);
+                        map[i, j].SetLife(4);
+                        map[i, j].SetIsFireable(true);
                     }
                 }
             }
@@ -74,12 +74,12 @@ namespace Projet
             {
                 for (int j = 0; j < map.GetLength(1); j++)
                 {
-                    int pourc = getSurrounding(map, i, j, 5);
+                    int pourc = GetSurrounding(map, i, j, 5);
                     int rand = rdm.Next(0, 100);
-                    if (rand <= pourc * 6 + 10 && map[i, j].getType() == 3)
+                    if (rand <= pourc * 6 + 10 && map[i, j].GetType() == 3)
                     {
-                        map[i, j].setType(6);
-                        map[i, j].setLife(0);
+                        map[i, j].SetType(6);
+                        map[i, j].SetLife(0);
                     }
                 }
             }
@@ -88,14 +88,14 @@ namespace Projet
             {
                 for (int j = 0; j < map.GetLength(1); j++)
                 {
-                    int pourc = getSurrounding(map, i, j, 5)/2;
-                    pourc += getSurrounding(map, i, j, 2) / 2;
+                    int pourc = GetSurrounding(map, i, j, 5)/2;
+                    pourc += GetSurrounding(map, i, j, 2) / 2;
                     int rand = rdm.Next(0, 100);
-                    if (rand <= pourc * 12 && map[i, j].getType() == 3)
+                    if (rand <= pourc * 12 && map[i, j].GetType() == 3)
                     {
-                        map[i, j].setType(1);
-                        map[i, j].setLife(8);
-                        map[i, j].setIsFireable(true);
+                        map[i, j].SetType(1);
+                        map[i, j].SetLife(8);
+                        map[i, j].SetIsFireable(true);
                     }
                 }
             }
@@ -104,26 +104,26 @@ namespace Projet
             return map;
         }
 
-        private static int getSurrounding(Cell[,] map, int x, int y, int type)
+        private static int GetSurrounding(Cell[,] map, int x, int y, int type)
         {
             int somme = 0;
             if (x > 0)
             {
-                if (map[x - 1,y].getType() == type)
+                if (map[x - 1,y].GetType() == type)
                 {
                     somme++;
                 }
             }
             if (y > 0)
             {
-                if (map[x, y - 1].getType() == type)
+                if (map[x, y - 1].GetType() == type)
                 {
                     somme++;
                 }
             }
             if (y > 0 && x > 0)
             {
-                if (map[x - 1, y - 1].getType() == type)
+                if (map[x - 1, y - 1].GetType() == type)
                 {
                     somme++;
                 }
@@ -131,35 +131,35 @@ namespace Projet
 
             if (x < map.GetLength(0) - 1)
             {
-                if (map[x + 1, y].getType() == type)
+                if (map[x + 1, y].GetType() == type)
                 {
                     somme++;
                 }
             }
             if(y < map.GetLength(1) - 1)
             {
-                if (map[x, y + 1].getType() == type)
+                if (map[x, y + 1].GetType() == type)
                 {
                     somme++;
                 }
             }
             if (y < map.GetLength(1) - 1 && x < map.GetLength(0) - 1)
             {
-                if (map[x + 1, y + 1].getType() == type)
+                if (map[x + 1, y + 1].GetType() == type)
                 {
                     somme++;
                 }
             }
             if (y>0 && x < map.GetLength(0) - 1)
             {
-                if (map[x + 1, y - 1].getType() == type)
+                if (map[x + 1, y - 1].GetType() == type)
                 {
                     somme++;
                 }
             }
             if (y < map.GetLength(1) - 1 && x > 0)
             {
-                if (map[x - 1, y + 1].getType() == type)
+                if (map[x - 1, y + 1].GetType() == type)
                 {
                     somme++;
                 }

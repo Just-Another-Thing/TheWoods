@@ -29,6 +29,32 @@ namespace Projet
 
 
 
+        public static void NavigationManager()
+        {
+            bool result = false;
+            int x = 0;
+            int y = 0;
+            do
+            {
+                ConsoleKey key = Console.ReadKey().Key;
+                if (key == ConsoleKey.LeftArrow)
+                {
+                }
+                else if (key == ConsoleKey.RightArrow)
+                {
+                }
+                else if (key == ConsoleKey.UpArrow)
+                {
+                }
+                else if (key == ConsoleKey.DownArrow)
+                {
+                }
+            } while (!result);
+        }
+
+
+
+
 
     }
 }
