@@ -33,6 +33,7 @@ namespace Projet
                     {
                         map[i, j].setType(2);
                         map[i, j].setLife(10);
+                        map[i, j].setIsFireable(true);
                     }
                 }
             }
@@ -63,6 +64,7 @@ namespace Projet
                     {
                         map[i, j].setType(4);
                         map[i, j].setLife(4);
+                        map[i, j].setIsFireable(true);
                     }
                 }
             }
@@ -93,6 +95,7 @@ namespace Projet
                     {
                         map[i, j].setType(1);
                         map[i, j].setLife(8);
+                        map[i, j].setIsFireable(true);
                     }
                 }
             }

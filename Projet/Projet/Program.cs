@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 
@@ -11,9 +12,17 @@ namespace Projet
     {
         static void Main(string[] args)
         {
-            Cell[,] map = WoodGenerator.generateWoods(55, 30);
+            Cell[,] map = WoodGenerator.generateWoods(55, 29);
             draw(map);
             Console.ReadKey();
+            initiateFire(map);
+            Console.SetCursorPosition(0, 0);
+            draw(map);
+            while (Console.ReadKey().Key != ConsoleKey.Escape)
+            {
+                passTour(map);
+                Thread.Sleep(200);
+            }
         }
 
         
@@ -39,14 +48,15 @@ namespace Projet
                     {
                         Console.ForegroundColor = ConsoleColor.Green;
                     }
-                    else if (map[i, j].getIsInFire() == true)
-                    {
-                        Console.ForegroundColor = ConsoleColor.Red;
-                    }
                     else
                     {
                         Console.ForegroundColor = ConsoleColor.White;
                     }
+                    if (map[i, j].getIsInFire() == 1 || map[i, j].getIsInFire() == 2)
+                    {
+                        Console.ForegroundColor = ConsoleColor.Red;
+                    }
+                    
                     Console.Write(map[i, j].getDisplaySymbol() + " ");
                 }
                 Console.Write("\n");
@@ -59,12 +69,178 @@ namespace Projet
             {
                 for (int j = 0; j < map.GetLength(1); j++)
                 {
-                    if (map[i,j].getIsInFire() == true && map[i,j].getLife() > 1)
+                    if (map[i,j].getIsInFire() == 2)
+                    {
+                        map[i, j].setIsInFire(1);
+                    }
+                    if (map[i,j].getIsInFire() == 1 && map[i,j].getLife() > 1)
                     {
                         map[i, j].setLife(map[i, j].getLife() - 1);
                     }
+                    else if (map[i, j].getIsInFire() == 1 && map[i, j].getLife() == 1)
+                    {
+                        map[i, j].setType(7);
+                        map[i, j].setLife(0);
+                    }
+                    else if (map[i, j].getIsInFire() == 1 && map[i, j].getLife() == 0)
+                    {
+                        map[i, j].setType(8);
+                        map[i, j].setIsInFire(0);
+                        map[i, j].setIsFireable(false);
+                    }
+                    else if (map[i,j].getIsInFire() == 0 && (map[i,j].getIsFireable() == true))
+                    {
+                        if (areSurroundingInFire(map, i, j)== true)
+                        {
+                            map[i, j].setIsInFire(2);
+                        }
+                    }
+                    
                 }
             }
+            Console.SetCursorPosition(0,0);
+            draw(map);
+        }
+
+        static bool areSurroundingInFire(Cell[,] map, int x, int y)
+        {
+            int somme = 0;
+            if (x > 0)
+            {
+                if (map[x - 1, y].getIsInFire() == 1)
+                {
+                    somme++;
+                }
+            }
+            else
+            {
+                if (map[map.GetLength(0)-1, y].getIsInFire() == 1)
+                {
+                    somme++;
+                }
+            }
+            if (y > 0)
+            {
+                if (map[x, y - 1].getIsInFire() == 1)
+                {
+                    somme++;
+                }
+            }
+            else
+            {
+                if (map[x, map.GetLength(1)-1].getIsInFire() == 1)
+                {
+                    somme++;
+                }
+            }
+            if (y > 0 && x > 0)
+            {
+                if (map[x - 1, y - 1].getIsInFire() == 1)
+                {
+                    somme++;
+                }
+            }
+            else
+            {
+                if (map[map.GetLength(0)-1, map.GetLength(1)-1].getIsInFire() == 1)
+                {
+                    somme++;
+                }
+            }
+
+            if (x < map.GetLength(0) - 1)
+            {
+                if (map[x + 1, y].getIsInFire() == 1)
+                {
+                    somme++;
+                }
+            }
+            else
+            {
+                if (map[0, y].getIsInFire() == 1)
+                {
+                    somme++;
+                }
+            }
+            if (y < map.GetLength(1) - 1)
+            {
+                if (map[x, y + 1].getIsInFire() == 1)
+                {
+                    somme++;
+                }
+            }
+            else
+            {
+                if (map[x, 0].getIsInFire() == 1)
+                {
+                    somme++;
+                }
+            }
+            if (y < map.GetLength(1) - 1 && x < map.GetLength(0) - 1)
+            {
+                if (map[x + 1, y + 1].getIsInFire() == 1)
+                {
+                    somme++;
+                }
+            }
+            else
+            {
+                if (map[0,0].getIsInFire() == 1)
+                {
+                    somme++;
+                }
+            }
+            if (y > 0 && x < map.GetLength(0) - 1)
+            {
+                if (map[x + 1, y - 1].getIsInFire() == 1)
+                {
+                    somme++;
+                }
+            }
+            else
+            {
+                if (map[0, map.GetLength(1) - 1].getIsInFire() == 1)
+                {
+                    somme++;
+                }
+            }
+            if (y < map.GetLength(1) - 1 && x > 0)
+            {
+                if (map[x - 1, y + 1].getIsInFire() == 1)
+                {
+                    somme++;
+                }
+            }
+            else
+            {
+                if (map[map.GetLength(0) - 1, 0].getIsInFire() == 1)
+                {
+                    somme++;
+                }
+            }
+
+            if (somme > 0)
+            {
+                return true;
+            }
+            else 
+            {
+                return false;
+            }
+        }
+
+        static void initiateFire(Cell[,] map)
+        {
+            Random rdm = new Random();
+            int x;
+            int y;
+            do
+            {
+                x = rdm.Next(0, map.GetLength(0) - 1);
+                y = rdm.Next(0, map.GetLength(1) - 1);
+            } while (map[x, y].getIsFireable() == false);
+
+            map[x, y].setIsInFire(2);
         }
     }
 }

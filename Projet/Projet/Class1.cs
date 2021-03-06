@@ -9,8 +9,9 @@ namespace Projet
     public struct Cell
     {
         private int type;
-        private bool isInFire;
+        private int isInFire;
         private int life;
+        private bool isFireable;
         
 
         #region accessers & getters 
@@ -24,12 +25,12 @@ namespace Projet
             this.type = type; 
         }
 
-        public bool getIsInFire()
+        public int getIsInFire()
         {
             return this.isInFire;
         }
 
-        public void setIsInFire(bool isInFire)
+        public void setIsInFire(int isInFire)
         {
             this.isInFire = isInFire;
         }
@@ -42,6 +43,17 @@ namespace Projet
         public void setLife(int life)
         {
             this.life = life;
+        }
+
+
+        public bool getIsFireable()
+        {
+            return this.isFireable;
+        }
+
+        public void setIsFireable(bool isFireable)
+        {
+            this.isFireable = isFireable;
         }
         #endregion
 
