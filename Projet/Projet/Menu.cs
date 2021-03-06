@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Input;
+using System.Windows;
 
 namespace Projet
 {
@@ -12,8 +12,7 @@ namespace Projet
         #region ProgrammStart
         public static void ProgrammStart()
         {
-            Console.WriteLine(System.Windows.Input);
-            Console.CursorVisible = false;
+            Config.SetFullScreen();
             Config.SetTitle("Menu de démarage");
             Console.WriteLine("Bienvenue sur The Woods");
         }
