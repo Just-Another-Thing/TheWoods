@@ -12,21 +12,30 @@ namespace Projet
     {
         static void Main(string[] args)
         {
-            Cell[,] map = WoodGenerator.generateWoods(55, 29);
-            draw(map);
+
+            StartMenu.ProgrammStart();
             Console.ReadKey();
-            initiateFire(map);
-            Console.SetCursorPosition(0, 0);
-            draw(map);
-            while (true)
-            {
-                passTour(map);
-                ConsoleKey k =Console.ReadKey().Key;
-                if (k == ConsoleKey.F)
+
+
+
+
+            /**
+                Cell[,] map = WoodGenerator.generateWoods(55, 29);
+                draw(map);
+                Console.ReadKey();
+                initiateFire(map);
+                Console.SetCursorPosition(0, 0);
+                draw(map);
+                while (true)
                 {
-                    initiateFire(map);
+                    passTour(map);
+                    ConsoleKey k =Console.ReadKey().Key;
+                    if (k == ConsoleKey.F)
+                    {
+                        initiateFire(map);
+                    }
                 }
-            }
+            */
         }
 
         
