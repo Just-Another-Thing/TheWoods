@@ -18,10 +18,14 @@ namespace Projet
             initiateFire(map);
             Console.SetCursorPosition(0, 0);
             draw(map);
-            while (Console.ReadKey().Key != ConsoleKey.Escape)
+            while (true)
             {
                 passTour(map);
-                Thread.Sleep(200);
+                ConsoleKey k =Console.ReadKey().Key;
+                if (k == ConsoleKey.F)
+                {
+                    initiateFire(map);
+                }
             }
         }
 
@@ -238,7 +242,7 @@ namespace Projet
             {
                 x = rdm.Next(0, map.GetLength(0) - 1);
                 y = rdm.Next(0, map.GetLength(1) - 1);
-            } while (map[x, y].getIsFireable() == false);
+            } while (map[x, y].getIsFireable() == false || map[x,y].getIsInFire() != 0);
 
             map[x, y].setIsInFire(2);
         }
