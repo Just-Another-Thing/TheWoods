@@ -11,6 +11,7 @@ namespace Projet
         private int type;
         private bool isInFire;
         private int life;
+        
 
         #region accessers & getters 
         public int getType()
@@ -82,10 +83,7 @@ namespace Projet
             return rtrn;
         }
 
-        public void setRandomValue()
-        {
-            Random rdm = new Random();
-            this.type = rdm.Next(1, 8);
-        }
+        
+        
     }
 }
