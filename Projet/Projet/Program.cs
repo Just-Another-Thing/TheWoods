@@ -13,7 +13,7 @@ namespace Projet
         static void Main(string[] args)
         {
 
-            StartMenu.ProgrammStart();
+            Menu.ProgrammStart();
             Console.ReadKey();
 
 
