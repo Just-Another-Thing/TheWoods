@@ -12,11 +12,8 @@ namespace Projet
     {
         static void Main(string[] args)
         {
-
             Menu.ProgrammStart();
             Console.ReadKey();
-
-
 
 
             /**

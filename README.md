@@ -7,7 +7,12 @@
 ```
 Lorems Ipsum [Nom de réalisateur]
 ```
-
+> 06/03/2021
+```
+Création de la fonction FullScreen [Romain]
+Création de la fonction SetTitle [Romain]
+Début création de la fonction ProgrammStart [Romain]
+```
 
 
 
