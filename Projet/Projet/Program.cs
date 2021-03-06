@@ -17,22 +17,23 @@ namespace Projet
 
 
             /**
-                Cell[,] map = WoodGenerator.generateWoods(55, 29);
-                draw(map);
+                Cell[,] map = WoodGenerator.GenerateWoods(55, 29);
+                Draw(map);
                 Console.ReadKey();
-                initiateFire(map);
+                InitiateFire(map);
                 Console.SetCursorPosition(0, 0);
-                draw(map);
+                Draw(map);
                 while (true)
                 {
-                    passTour(map);
+                    PassTour(map);
                     ConsoleKey k =Console.ReadKey().Key;
                     if (k == ConsoleKey.F)
                     {
-                        initiateFire(map);
+                        InitiateFire(map);
                     }
                 }
             */
+            
         }
 
         

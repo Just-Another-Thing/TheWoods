@@ -15,7 +15,7 @@ namespace Projet
 
         [DllImport("kernel32.dll", ExactSpelling = true)]
         private static extern IntPtr GetConsoleWindow();
-        private static IntPtr ThisConsole = GetConsoleWindow();
+        private static readonly IntPtr ThisConsole = GetConsoleWindow();
         [DllImport("user32.dll", CharSet = CharSet.Auto, SetLastError = true)]
         private static extern bool ShowWindow(IntPtr hWnd, int nCmdShow);
         public static void SetFullScreen()
@@ -32,8 +32,6 @@ namespace Projet
         public static void NavigationManager()
         {
             bool result = false;
-            int x = 0;
-            int y = 0;
             do
             {
                 ConsoleKey key = Console.ReadKey().Key;

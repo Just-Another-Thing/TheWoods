@@ -57,7 +57,7 @@ namespace Projet
         }
         #endregion
 
-        public string getDisplaySymbol()
+        public string GetDisplaySymbol()
         {
             string rtrn = "";
             if (this.type == 1)
