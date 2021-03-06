@@ -4,12 +4,22 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Text.Json;
+using System.IO;
 
 namespace Projet
 {
     class Menu
     {
         #region ProgrammStart
+
+        public class WeatherForecastWithPOCOs
+        {
+            public string Clash { get; set; }
+            public string[] Test { get; set; }
+        }
+
+
         public static void ProgrammStart()
         {
             string texte; 
@@ -31,7 +41,6 @@ namespace Projet
                 Console.Write("*");
             };
             Console.ForegroundColor = ConsoleColor.Red;
-            //Console.ForegroundColor = Convert.ToString(color[0]);
             texte = "Avertissement : Enlever le mode pleine écran déformera l'enssemble du design !";
             Console.SetCursorPosition(Console.WindowWidth / 2 - (texte.Length / 2), 1);
             Console.WriteLine(texte);
@@ -50,15 +59,39 @@ namespace Projet
             texte = "Créé et présenté par Romain Pathé et Alexandre Michaud";
             Console.SetCursorPosition(Console.WindowWidth / 2 - (texte.Length / 2), Console.WindowHeight-2);
             Console.WriteLine(texte);
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
+            texte = "Continuer: Espace";
+            Console.SetCursorPosition(Console.WindowWidth - texte.Length - 2, Console.WindowHeight - 2);
+            Console.WriteLine(texte);
+            Console.ResetColor();
+            Console.CursorVisible = false;
 
 
-            Console.SetCursorPosition(0,0);
-            //Console.WriteLine("╭━━━━╮╭╮╱╭╮╭━━━╮╭╮╭╮╭╮╭━━━╮╭━━━╮╭━━━╮╭━━━╮");
-            //Console.WriteLine("┃╭╮╭╮┃┃┃╱┃┃┃╭━━╯┃┃┃┃┃┃┃╭━╮┃┃╭━╮┃╰╮╭╮┃┃╭━╮┃");
-            //Console.WriteLine("╰╯┃┃╰╯┃╰━╯┃┃╰━━╮┃┃┃┃┃┃┃┃╱┃┃┃┃╱┃┃╱┃┃┃┃┃╰━━╮");
-            //Console.WriteLine("╱╱┃┃╱╱┃╭━╮┃┃╭━━╯┃╰╯╰╯┃┃┃╱┃┃┃┃╱┃┃╱┃┃┃┃╰━━╮┃");
-            //Console.WriteLine("╱╱┃┃╱╱┃┃╱┃┃┃╰━━╮╰╮╭╮╭╯┃╰━╯┃┃╰━╯┃╭╯╰╯┃┃╰━╯┃");
-            //Console.WriteLine("╱╱╰╯╱╱╰╯╱╰╯╰━━━╯╱╰╯╰╯╱╰━━━╯╰━━━╯╰━━━╯╰━━━╯");
+            string jsonString = File.ReadAllText("language.json");
+            var weatherForecast = JsonSerializer.Deserialize<WeatherForecastWithPOCOs>(jsonString);
+            Console.WriteLine(weatherForecast.Test[1]);
+
+
+
+            bool result = false;
+            do
+            {
+                Console.SetCursorPosition(0, 0);
+                if (Console.ReadKey().Key == ConsoleKey.Spacebar)
+                {
+                    result = true;
+                }
+                Console.SetCursorPosition(0, 0);
+                Console.Write("*");
+            } while(!result);
+            if (result) return;
+            //Console.WriteLine("╭━━━━╮╭╮╱╭╮╭━━━╮ ╭╮╭╮╭╮╭━━━╮╭━━━╮╭━━━╮╭━━━╮");
+            //Console.WriteLine("┃╭╮╭╮┃┃┃╱┃┃┃╭━━╯ ┃┃┃┃┃┃┃╭━╮┃┃╭━╮┃╰╮╭╮┃┃╭━╮┃");
+            //Console.WriteLine("╰╯┃┃╰╯┃╰━╯┃┃╰━━╮ ┃┃┃┃┃┃┃┃╱┃┃┃┃╱┃┃╱┃┃┃┃┃╰━━╮");
+            //Console.WriteLine("╱╱┃┃╱╱┃╭━╮┃┃╭━━╯ ┃╰╯╰╯┃┃┃╱┃┃┃┃╱┃┃╱┃┃┃┃╰━━╮┃");
+            //Console.WriteLine("╱╱┃┃╱╱┃┃╱┃┃┃╰━━╮ ╰╮╭╮╭╯┃╰━╯┃┃╰━╯┃╭╯╰╯┃┃╰━╯┃");
+            //Console.WriteLine("╱╱╰╯╱╱╰╯╱╰╯╰━━━╯ ╱╰╯╰╯╱╰━━━╯╰━━━╯╰━━━╯╰━━━╯");
+
 
         }
 

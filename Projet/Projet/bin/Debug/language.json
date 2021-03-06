@@ -1,0 +1,12 @@
+{
+    "exclude": [
+        "**/bin",
+        "**/bower_components",
+        "**/jspm_packages",
+        "**/node_modules",
+        "**/obj",
+        "**/platforms"
+    ],
+    "Test": ["Ceci est un test", "Is a Test"],
+    "Clash": "TESTTESTTEST"
+}

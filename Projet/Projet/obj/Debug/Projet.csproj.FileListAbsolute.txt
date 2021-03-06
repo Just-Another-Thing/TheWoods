@@ -19,3 +19,13 @@ H:\TheWoods\Projet\Projet\obj\Debug\Projet.csprojAssemblyReference.cache
 H:\TheWoods\Projet\Projet\obj\Debug\Projet.csproj.CoreCompileInputs.cache
 H:\TheWoods\Projet\Projet\obj\Debug\Projet.exe
 H:\TheWoods\Projet\Projet\obj\Debug\Projet.pdb
+H:\TheWoods\Projet\Projet\bin\Debug\System.Memory.dll
+H:\TheWoods\Projet\Projet\bin\Debug\System.Text.Json.dll
+H:\TheWoods\Projet\Projet\bin\Debug\System.Numerics.Vectors.dll
+H:\TheWoods\Projet\Projet\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+H:\TheWoods\Projet\Projet\bin\Debug\System.Buffers.dll
+H:\TheWoods\Projet\Projet\bin\Debug\System.Text.Encodings.Web.dll
+H:\TheWoods\Projet\Projet\bin\Debug\System.Threading.Tasks.Extensions.dll
+H:\TheWoods\Projet\Projet\bin\Debug\Microsoft.Bcl.AsyncInterfaces.dll
+H:\TheWoods\Projet\Projet\obj\Debug\Projet.exe.config
+H:\TheWoods\Projet\Projet\obj\Debug\Projet.csproj.CopyComplete
