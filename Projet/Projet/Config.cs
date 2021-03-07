@@ -26,31 +26,30 @@ namespace Projet
         }
 
 
-
-
-
-        public static void NavigationManager()
+        public static void ClearConsole(string title)
         {
-            bool result = false;
-            do
+            SetFullScreen();
+            Console.Clear();
+            if (title != null)
             {
-                ConsoleKey key = Console.ReadKey().Key;
-                if (key == ConsoleKey.LeftArrow)
-                {
-                }
-                else if (key == ConsoleKey.RightArrow)
-                {
-                }
-                else if (key == ConsoleKey.UpArrow)
-                {
-                }
-                else if (key == ConsoleKey.DownArrow)
-                {
-                }
-            } while (!result);
+                SetTitle(title);
+            }
+            for (int i = 0; i < Console.WindowWidth; i += 2)
+            {
+                Console.SetCursorPosition(i, 0);
+                Console.Write("*");
+                Console.SetCursorPosition(i, Console.WindowHeight - 1);
+                Console.Write("*");
+            };
+            for (int i = 0; i < Console.WindowHeight; i++)
+            {
+                Console.SetCursorPosition(0, i);
+                Console.Write("*");
+                Console.SetCursorPosition(Console.WindowWidth - 2, i);
+                Console.Write("*");
+            };
+            Console.SetCursorPosition(0, 0);
         }
-
-
 
 
 

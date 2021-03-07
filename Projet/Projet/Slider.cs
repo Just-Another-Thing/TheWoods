@@ -8,26 +8,97 @@ namespace Projet
 {
     public struct Slider
     {
-        private int IdSlider;
-        private int SliderX;
+        private int Position;
+        private int LastSelect;
+        private string[] Interval;
+        private String Name;
+        private String Description;
+        private String[] Value;
+        private int SliderType;
 
-
-        public int GetIdSlider()
+        #region Getters & Accessers
+        public int GetPosition()
         {
-            return this.IdSlider;
+            return this.Position;
         }
-        public void SetIdSlider(int IdSlider)
+        public void SetPosition(int Position)
         {
-            this.IdSlider = IdSlider;
-        }
-        public int GetSliderX()
-        {
-            return this.SliderX;
-        }
-        public void SetSliderX(int SliderX)
-        {
-            this.SliderX = SliderX;
+            this.Position = Position;
         }
 
+        public int GetLastSelect()
+        {
+            return this.LastSelect;
+        }
+        public void SetLastSelect(int LastSelect)
+        {
+            this.LastSelect = LastSelect;
+        }
+
+        public string[] GetInterval()
+        {
+            return this.Interval;
+        }
+        public void SetInterval(string[] Interval)
+        {
+            this.Interval = Interval;
+        }
+
+        public string GetName()
+        {
+            return this.Name;
+        }
+        public void SetName(string Name)
+        {
+            this.Name = Name;
+        }
+
+        public string GetDescription()
+        {
+            return this.Description;
+        }
+        public void SetDescription(string Description)
+        {
+            this.Description = Description;
+        }
+
+        public string[] GetValue()
+        {
+            return this.Value;
+        }
+        public void SetValue(string[] Value)
+        {
+            this.Value = Value;
+        }
+
+        public int GetSliderType()
+        {
+            return this.SliderType;
+        }
+        public void SetSliderType(int SliderType)
+        {
+            this.SliderType = SliderType;
+        }
+
+        #endregion
+
+        #region Function 
+        public Slider SetSlider(string name, string description, string[] value, string[] interval, int position, int lastSelect, int sliderType)
+        {
+            Name = name;
+            Description = description;
+            Value = value;
+            Interval = interval;
+            Position = position;
+            LastSelect = lastSelect;
+            SliderType = sliderType;
+
+            return this;
+
+        }
+
+
+
+        #endregion
     }
 }

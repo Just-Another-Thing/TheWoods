@@ -3,9 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows;
-using System.Text.Json;
-using System.IO;
+using System.Diagnostics;
 
 namespace Projet
 {
@@ -13,32 +11,22 @@ namespace Projet
     {
         #region ProgrammStart
 
-        //public class WeatherForecastWithPOCOs
-        //{
-        //    public string Clash { get; set; }
-        //    public string[] Test { get; set; }
-        //}
 
 
         public static void ProgrammStart()
         {
+            // Delete ScrollBar 
+            int origWidth = Console.WindowWidth;
+            int origHeight = Console.WindowHeight;
+            int width = origWidth / 2;
+            int height = origHeight / 4;
+            Console.SetWindowSize(width, height);
+            Console.SetBufferSize(width, height);
+
+
+
             string texte;
-            Config.SetFullScreen();
-            Config.SetTitle("Menu de démarage");
-            for (int i = 0; i< Console.WindowWidth;i += 2)
-            {
-                Console.SetCursorPosition(i,0);
-                Console.Write("*");
-                Console.SetCursorPosition(i, Console.WindowHeight - 1);
-                Console.Write("*");
-            };
-            for (int i = 0; i < Console.WindowHeight; i++)
-            {
-                Console.SetCursorPosition(0, i);
-                Console.Write("*");
-                Console.SetCursorPosition(Console.WindowWidth - 1, i);
-                Console.Write("*");
-            };
+            Config.ClearConsole("Menu de démarage");
             Console.ForegroundColor = ConsoleColor.Red;
             texte = "Avertissement : Enlever le mode pleine écran déformera l'enssemble du design !";
             Console.SetCursorPosition(Console.WindowWidth / 2 - (texte.Length / 2), 1);
@@ -60,16 +48,11 @@ namespace Projet
             Console.WriteLine(texte);
             Console.ForegroundColor = ConsoleColor.DarkYellow;
             texte = "Continuer: Espace";
-            Console.SetCursorPosition(Console.WindowWidth - texte.Length - 2, Console.WindowHeight - 2);
+            Console.SetCursorPosition(Console.WindowWidth - texte.Length - 3, Console.WindowHeight - 2);
             Console.WriteLine(texte);
             Console.ResetColor();
             Console.CursorVisible = false;
-
-
-            //string jsonString = File.ReadAllText("language.json");
-            //var weatherForecast = JsonSerializer.Deserialize<WeatherForecastWithPOCOs>(jsonString);
-            //Console.WriteLine(weatherForecast.Test[1]);
-
+            Slider[] SliderList = GenerateSlider();
 
 
             bool result = false;
@@ -84,9 +67,11 @@ namespace Projet
                 Console.Write("*");
             } while(!result);
 
-            Config.NavigationManager();
+            //Config.NavigationManager();
 
             if (result) return;
+
+
             //Console.WriteLine("╭━━━━╮╭╮╱╭╮╭━━━╮ ╭╮╭╮╭╮╭━━━╮╭━━━╮╭━━━╮╭━━━╮");
             //Console.WriteLine("┃╭╮╭╮┃┃┃╱┃┃┃╭━━╯ ┃┃┃┃┃┃┃╭━╮┃┃╭━╮┃╰╮╭╮┃┃╭━╮┃");
             //Console.WriteLine("╰╯┃┃╰╯┃╰━╯┃┃╰━━╮ ┃┃┃┃┃┃┃┃╱┃┃┃┃╱┃┃╱┃┃┃┃┃╰━━╮");
@@ -96,9 +81,29 @@ namespace Projet
 
 
         }
-
-
-
         #endregion
+
+
+
+
+
+        public static Slider[] GenerateSlider()
+        {
+            int NbSlider = 2;
+            Slider[] SliderList = new Slider[NbSlider] ;
+            string[] value0 = { "Automatique", "Manuel" };
+            string[] interval0 = { null };
+            SliderList[0] = new Slider().SetSlider("Mode de jeu", "Séléctionnez automatique ou manuel", value0, interval0, 10, 0, 1);
+            string[] value1 = { "OUI", " NON" };
+            string[] interval1 = { null };
+            SliderList[1] = new Slider().SetSlider("Propagation du feu", "xxxxxxx", value1, interval1, 20, 0, 1);
+
+            return SliderList;
+
+        }
+
+
+
+
     }
 }

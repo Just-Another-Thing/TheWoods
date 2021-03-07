@@ -12,7 +12,15 @@ namespace Projet
     {
         static void Main(string[] args)
         {
+
+            
+
             Menu.ProgrammStart();
+            Config.ClearConsole(null);
+            Navigation.SetDesignNav();
+
+            
+
             Console.ReadKey();
 
 
