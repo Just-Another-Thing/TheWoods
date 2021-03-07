@@ -7,6 +7,5 @@
         "**/obj",
         "**/platforms"
     ],
-    "Test": ["Ceci est un test", "Is a Test"],
-    "Clash": "TESTTESTTEST"
+    "Test": ["Ceci est un test", "Is a Test"]
 }

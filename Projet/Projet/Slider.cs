@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Projet
 {
-    public struct SliderNav
+    public struct Slider
     {
         private int IdSlider;
         private int SliderX;
