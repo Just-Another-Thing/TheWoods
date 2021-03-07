@@ -12,6 +12,7 @@ Lorems Ipsum [Nom de réalisateur]
 Création de la fonction FullScreen [Romain]
 Création de la fonction SetTitle [Romain]
 Début création de la fonction ProgrammStart [Romain]
+Début création de la Class SliderNav [Romain]
 ```
 
 
