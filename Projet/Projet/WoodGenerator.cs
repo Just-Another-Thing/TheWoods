@@ -12,7 +12,8 @@ namespace Projet
         {
             Random rdm = new Random();
             Cell[,] map = new Cell[c, l];
-            //generate terrain
+
+            //generate height terrain
             for (int i = 0; i < map.GetLength(0); i++)
             {
                 for (int j = 0; j < map.GetLength(1); j++)
@@ -104,68 +105,62 @@ namespace Projet
             return map;
         }
 
+        private static int HeightSurrounding(Cell[,] map, int x, int y)
+        {
+            float height = 0;
+            for (int i=-1; i<=1; i++)
+            {
+                for (int j=-1; j<=1; j++)
+                {
+                    Cell c = GetCase(map, x+i, y+j);
+                    height += c.GetHeight();
+                }
+            }
+            return 0;
+        }
+
         private static int GetSurrounding(Cell[,] map, int x, int y, int type)
         {
             int somme = 0;
-            if (x > 0)
+            for (int i = -1; i <= 1; i++)
             {
-                if (map[x - 1,y].GetType() == type)
+                for (int j = -1; j <= 1; j++)
                 {
-                    somme++;
-                }
-            }
-            if (y > 0)
-            {
-                if (map[x, y - 1].GetType() == type)
-                {
-                    somme++;
-                }
-            }
-            if (y > 0 && x > 0)
-            {
-                if (map[x - 1, y - 1].GetType() == type)
-                {
-                    somme++;
-                }
-            }
-
-            if (x < map.GetLength(0) - 1)
-            {
-                if (map[x + 1, y].GetType() == type)
-                {
-                    somme++;
-                }
-            }
-            if(y < map.GetLength(1) - 1)
-            {
-                if (map[x, y + 1].GetType() == type)
-                {
-                    somme++;
-                }
-            }
-            if (y < map.GetLength(1) - 1 && x < map.GetLength(0) - 1)
-            {
-                if (map[x + 1, y + 1].GetType() == type)
-                {
-                    somme++;
-                }
-            }
-            if (y>0 && x < map.GetLength(0) - 1)
-            {
-                if (map[x + 1, y - 1].GetType() == type)
-                {
-                    somme++;
-                }
-            }
-            if (y < map.GetLength(1) - 1 && x > 0)
-            {
-                if (map[x - 1, y + 1].GetType() == type)
-                {
-                    somme++;
+                    Cell c = GetCase(map, x + i, y + j);
+                    if (c.GetType() == type)
+                    {
+                        somme += 1;
+                    }
                 }
             }
             return somme;
         }
-        
+
+        public static Cell GetCase(Cell[,] map, int x, int y)
+        {
+            Cell rtrn;
+
+            if (x < 0)
+            {
+                x = map.GetLength(0) - 1;
+            }
+            if (y < 0)
+            {
+                y = map.GetLength(1) - 1;
+            }
+            if (x == map.GetLength(0))
+            {
+                x = 0;
+            }
+            if (y == map.GetLength(1))
+            {
+                y = 0;
+            }
+
+            rtrn = map[x, y];
+
+            return rtrn;
+        }
+
     }
 }
