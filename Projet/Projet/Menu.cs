@@ -92,40 +92,72 @@ namespace Projet
             Slider[] SliderList = new Slider[NbSlider] ;
             string[] value0 = { "Automatique", "Manuel" };
             string[] interval0 = { null };
-            SliderList[0] = new Slider("Mode de jeu", "Séléctionnez automatique ou manuel", value0, interval0, 4, 0, 1);
-            string[] value1 = { "OUI", " NON" };
+            SliderList[0] = new Slider("Mode de jeu", "Séléctionnez automatique ou manuel", value0, interval0, 3, 1, 1);
+            string[] value1 = { "OUI", "NON" };
             string[] interval1 = { null };
-            SliderList[1] = new Slider("Propagation du feu", "xxxxxxxx", value1, interval1, 8, 0, 1);
+            SliderList[1] = new Slider("Propagation du feu", "xxxxxxxx", value1, interval1, 7, 1, 1);
 
             return SliderList;
 
         }
 
-        public static void DisplaySlider(Slider[] SliderTab)
+        public static void DisplaySlider(Slider[] SliderTab, int select)
         {
             for (int i = 0; i< SliderTab.Length; i++) 
             {
                 int position = SliderTab[i].GetPosition();
-                string name = SliderTab[i].GetName();
-                string[] value = SliderTab[i].GetValue();
-                Debug.WriteLine(value[1]);
-                Console.SetCursorPosition(new Slider().CenterPositionSlider(name), position);
-                Console.Write(name);
-                if (SliderTab[i].GetSliderType() == 1)
+                if (position >= 3 && position <= Console.WindowHeight-2)
                 {
-                    string stringValue = "";
-                    for (int j = 0; j < value.Length - 1; j++)
+                    string name = SliderTab[i].GetName();
+                    string[] value = SliderTab[i].GetValue();
+                    int lastSelect = SliderTab[i].GetLastSelect();
+                    Console.SetCursorPosition(new Slider().CenterPositionSlider(name), position);
+                    if (select == i)
                     {
-                        stringValue += value[j] + " | ";
+                        Console.SetCursorPosition(new Slider().CenterPositionSlider(name)-1, position);
+                        Console.Write("> ");
+                        Console.ForegroundColor = ConsoleColor.Magenta;
                     }
-                    stringValue += value[value.Length - 1];
-                    Console.SetCursorPosition(new Slider().CenterPositionSlider(stringValue), position + 1);
-                    Console.Write(stringValue);
-                }
-                else
-                {
+                    Console.Write(name);
+                    Console.ResetColor();
+                    if (SliderTab[i].GetSliderType() == 1)
+                    {
+                        string stringValue = "";
+                        for (int j = 0; j < value.Length - 1; j++)
+                        {
+                            if(j == lastSelect)
+                            {
+                                Console.ForegroundColor = ConsoleColor.Green;
+                            }
+                            stringValue += value[j] + " | ";
+                        }
+                        stringValue += value[value.Length - 1];
+                        Console.ResetColor();
+                        Console.SetCursorPosition(new Slider().CenterPositionSlider(stringValue), position + 1);
+                        for (int j = 0; j < value.Length - 1; j++)
+                        {
+                            Debug.WriteLine(j + " /// "+ lastSelect);
+                            if (lastSelect <= j)
+                            {
+                                Console.ForegroundColor = ConsoleColor.Green;
+                            }
+                            Console.Write(value[j]);
+                            Console.ResetColor();
+                            Console.Write(" | ");
+                        }
+                        if (lastSelect >= value.Length-1)
+                        {
+                            Console.ForegroundColor = ConsoleColor.Green;
+                        }
+                        Console.Write(value[value.Length - 1]);
+                        Console.ResetColor();
+                    }
+                    else
+                    {
 
+                    }
                 }
+                
             }
         }
 

@@ -18,7 +18,7 @@ namespace Projet
             Menu.ProgrammStart();
             Config.ClearConsole(null);
             Navigation.SetDesignNav();
-            Menu.DisplaySlider(Menu.GenerateSlider());
+            Menu.DisplaySlider(Menu.GenerateSlider(), 1);
 
 
 
