@@ -32,7 +32,7 @@ namespace Projet
 
         public static void SetDesignNav()
         {
-            for (int i = 1; i < Console.WindowHeight - 1; i++)
+            for (int i = 0; i < Console.WindowHeight; i++)
             {
                 Console.SetCursorPosition(Console.WindowWidth - Console.WindowWidth / 3 + Console.WindowWidth / 10, i);
                 Console.Write("|");

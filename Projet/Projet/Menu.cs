@@ -92,10 +92,10 @@ namespace Projet
             Slider[] SliderList = new Slider[NbSlider] ;
             string[] value0 = { "Automatique", "Manuel" };
             string[] interval0 = { null };
-            SliderList[0] = new Slider("Mode de jeu", "Séléctionnez automatique ou manuel", value0, interval0, 3, 1, 1);
+            SliderList[0] = new Slider("Mode de jeu", "Séléctionnez automatique ou manuel", value0, interval0, 2, 1, 1);
             string[] value1 = { "OUI", "NON" };
             string[] interval1 = { null };
-            SliderList[1] = new Slider("Propagation du feu", "xxxxxxxx", value1, interval1, 7, 1, 1);
+            SliderList[1] = new Slider("Propagation du feu", "xxxxxxxx", value1, interval1, 6, 1, 1);
 
             return SliderList;
 
@@ -106,7 +106,7 @@ namespace Projet
             for (int i = 0; i< SliderTab.Length; i++) 
             {
                 int position = SliderTab[i].GetPosition();
-                if (position >= 3 && position <= Console.WindowHeight-2)
+                if (position >= 2 && position <= Console.WindowHeight-2)
                 {
                     string name = SliderTab[i].GetName();
                     string[] value = SliderTab[i].GetValue();
@@ -125,10 +125,6 @@ namespace Projet
                         string stringValue = "";
                         for (int j = 0; j < value.Length - 1; j++)
                         {
-                            if(j == lastSelect)
-                            {
-                                Console.ForegroundColor = ConsoleColor.Green;
-                            }
                             stringValue += value[j] + " | ";
                         }
                         stringValue += value[value.Length - 1];
@@ -137,7 +133,7 @@ namespace Projet
                         for (int j = 0; j < value.Length - 1; j++)
                         {
                             Debug.WriteLine(j + " /// "+ lastSelect);
-                            if (lastSelect <= j)
+                            if (lastSelect == j)
                             {
                                 Console.ForegroundColor = ConsoleColor.Green;
                             }
@@ -145,7 +141,7 @@ namespace Projet
                             Console.ResetColor();
                             Console.Write(" | ");
                         }
-                        if (lastSelect >= value.Length-1)
+                        if (lastSelect == value.Length-1)
                         {
                             Console.ForegroundColor = ConsoleColor.Green;
                         }
