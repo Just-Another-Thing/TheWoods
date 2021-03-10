@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Diagnostics;
 using System.Threading.Tasks;
 
 namespace Projet
@@ -40,7 +41,7 @@ namespace Projet
                     {
                         if (i == ActivateSlider)
                         {
-                            if (SliderList[i].GetLastSelect() < SliderList[i].GetValue().Length)
+                            if (SliderList[i].GetLastSelect() < SliderList[i].GetValue().Length-1)
                             {
                                 SliderList[i].SetLastSelect(SliderList[i].GetLastSelect() + 1);
                             }
@@ -52,14 +53,16 @@ namespace Projet
                 {
                     Console.SetCursorPosition(0, 0);
                     Console.WriteLine("*");
-                    if(ActivateSlider > 0)
+                    if (ActivateSlider > 0)
                     {
                         ActivateSlider--;
+                        Debug.WriteLine(SliderList[ActivateSlider].GetPosition());
+                        int activePosition = SliderList[ActivateSlider].GetPosition();
                         for (int i = 0; i < SliderList.Length; i++)
                         {
-                            if(SliderList[ActivateSlider].GetPosition() < 2)
+                            if(activePosition < 2)
                             {
-                                SliderList[i].SetPosition(SliderList[i].GetPosition() - 4);
+                                SliderList[i].SetPosition(SliderList[i].GetPosition() + 4);
                             }
                         }
                     }
@@ -72,11 +75,12 @@ namespace Projet
                     if (ActivateSlider < SliderList.Length-1)
                     {
                         ActivateSlider++;
+                        int activePosition = SliderList[ActivateSlider].GetPosition();
                         for (int i = 0; i < SliderList.Length; i++)
                         {
-                            if (SliderList[ActivateSlider].GetPosition() > Console.WindowHeight - 2)
+                            if (activePosition > Console.WindowHeight - 2)
                             {
-                                SliderList[i].SetPosition(SliderList[i].GetPosition() + 4);
+                                SliderList[i].SetPosition(SliderList[i].GetPosition() - 4);
                             }
                         }
                     }

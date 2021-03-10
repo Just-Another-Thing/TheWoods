@@ -50,7 +50,7 @@ namespace Projet
             Console.SetCursorPosition(Console.WindowWidth - texte.Length - 3, Console.WindowHeight - 2);
             Console.WriteLine(texte);
             Console.ResetColor();
-            //Console.CursorVisible = false;
+            Console.CursorVisible = false;
             Slider[] SliderList = GenerateSlider();
 
 
@@ -88,14 +88,40 @@ namespace Projet
 
         public static Slider[] GenerateSlider()
         {
-            int NbSlider = 2;
-            Slider[] SliderList = new Slider[NbSlider] ;
+            int NbSlider = 19;
+            Slider[] SliderList = new Slider[NbSlider];
+            string[] value01 = { "10","15","20","25","30","35" };
+            string[] interval01 = { null };
+            SliderList[0] = new Slider("Largeur (En case)", value01, interval01, 2, 0, 1);
+            string[] value02 = { "10", "15", "20", "25", "30", "35" };
+            string[] interval02 = { null };
+            SliderList[1] = new Slider("Hauteur (En case)", value02, interval02, 6, 0, 1);
             string[] value0 = { "Automatique", "Manuel" };
             string[] interval0 = { null };
-            SliderList[0] = new Slider("Mode de jeu", value0, interval0, 2, 0, 1);
+            //SliderList[0] = new Slider("Mode de jeu", value0, interval0, 2, 0, 1);
             string[] value1 = { "OUI", "NON" };
             string[] interval1 = { null };
-            SliderList[1] = new Slider("Propagation du feu", value1, interval1, 6, 0, 1);
+            //SliderList[1] = new Slider("Propagation du feu", value1, interval1, 6, 0, 1);
+            SliderList[2] = new Slider("Propagation du feu", value1, interval1, 10, 0, 1);
+            //string[] value2 = { "*","*","*","*","*","*","*","*","*","*","*" };
+            string[] value2 = { "*","*","*","*","*","*","*","*","*","*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*" };
+            string[] interval2 = { "0","100" };
+            SliderList[3] = new Slider("TEST", value2, interval2, 14, 0, 2);
+            SliderList[4] = new Slider("Propagation du feu", value1, interval1, 18, 0, 1);
+            SliderList[5] = new Slider("Propagation du feu", value1, interval1, 22, 0, 1);
+            SliderList[6] = new Slider("Propagation du feu", value1, interval1, 26, 0, 1);
+            SliderList[7] = new Slider("Propagation du feu", value1, interval1, 30, 0, 1);
+            SliderList[8] = new Slider("Propagation du feu", value1, interval1, 34, 0, 1);
+            SliderList[9] = new Slider("Propagation du feu", value1, interval1, 38, 0, 1);
+            SliderList[10] = new Slider("Propagation du feu", value1, interval1, 42, 0, 1);
+            SliderList[11] = new Slider("Propagation du feu", value1, interval1, 46, 0, 1);
+            SliderList[12] = new Slider("Propagation du feu", value1, interval1, 50, 0, 1);
+            SliderList[13] = new Slider("Propagation du feu", value1, interval1, 54, 0, 1);
+            SliderList[14] = new Slider("Propagation du feu", value1, interval1, 58, 0, 1);
+            SliderList[15] = new Slider("Propagation du feu", value1, interval1, 62, 0, 1);
+            SliderList[16] = new Slider("Propagation du feu", value1, interval1, 66, 0, 1);
+            SliderList[17] = new Slider("Propagation du feu", value1, interval1, 70, 0, 1);
+            SliderList[18] = new Slider("Propagation du feu", value1, interval1, 74, 0, 1);
 
             return SliderList;
 
@@ -111,6 +137,11 @@ namespace Projet
                     string name = SliderTab[i].GetName();
                     string[] value = SliderTab[i].GetValue();
                     int lastSelect = SliderTab[i].GetLastSelect();
+                    if (SliderTab[i].GetSliderType() == 2)
+                    {
+                        int nb = (SliderTab[i].GetLastSelect() + 1) * Convert.ToInt32(SliderTab[i].GetInterval()[1]) / SliderTab[i].GetValue().Length;
+                        name += " (" + nb + " %)";
+                    }
                     Console.SetCursorPosition(new Slider().CenterPositionSlider(name), position);
                     if (select == i)
                     {
@@ -147,8 +178,56 @@ namespace Projet
                         Console.Write(value[value.Length - 1]);
                         Console.ResetColor();
                     }
-                    else
+                    else if(SliderTab[i].GetSliderType() == 2)
                     {
+
+                        string stringValue = "";
+                        Debug.WriteLine(SliderTab[i].GetInterval()[0]);
+                        Debug.WriteLine(SliderTab[i].GetInterval()[1]);
+                        if (SliderTab[i].GetInterval()[0] != null)
+                        {
+                            stringValue += SliderTab[i].GetInterval()[0] + "  ";
+                        }
+                        for (int j = 0; j < value.Length - 1; j++)
+                        {
+                            stringValue += value[j];
+                        }
+                        stringValue += value[value.Length - 1];
+                        if (SliderTab[i].GetInterval()[1] != null)
+                        {
+                            stringValue += "  "+SliderTab[i].GetInterval()[1];
+                        }
+                        Debug.WriteLine(stringValue);
+                        Console.ResetColor();
+                        Console.SetCursorPosition(new Slider().CenterPositionSlider(stringValue), position + 1);
+                        if(select == i)
+                        {
+                            Console.ForegroundColor = ConsoleColor.Magenta;
+                        }
+                        Console.Write(SliderTab[i].GetInterval()[0]+ "  ");
+                        Console.ResetColor();
+                        for (int j = 0; j < value.Length - 1; j++)
+                        {
+                            if (lastSelect >= j)
+                            {
+                                Console.ForegroundColor = ConsoleColor.Green;
+                            }
+                            Console.Write(value[j]);
+                            Console.ResetColor();
+                        }
+                        if (lastSelect == value.Length - 1)
+                        {
+                            Console.ForegroundColor = ConsoleColor.Green;
+                        }
+                        Console.Write(value[value.Length - 1]); 
+                        if (select == i)
+                        {
+                            Console.ForegroundColor = ConsoleColor.Magenta;
+                        }
+                        Console.Write("  "+SliderTab[i].GetInterval()[1]);
+                        Console.ResetColor();
+
+
 
                     }
                 }
