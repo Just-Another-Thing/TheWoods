@@ -10,7 +10,7 @@ namespace Projet
     class Navigation
     {
 
-        public static int NavigationManager(Slider[] SliderList, int ActivateSlider)
+        public static int NavigationManager(Slider[] SliderList, int ActivateSlider, Cell[,] map)
         {
             bool result = false;
             do
@@ -86,6 +86,23 @@ namespace Projet
                     }
                     result = true;
                 }
+                else if (key == ConsoleKey.Enter)
+                {
+                    Console.SetCursorPosition(0, 0);
+                    Console.WriteLine("*");
+                    if(ActivateSlider == 0 || ActivateSlider == 1)
+                    {
+                        int maxl = ((Console.WindowWidth - Console.WindowWidth / 3 + Console.WindowWidth / 10) / 2) - 1;
+                        int maxm = Console.WindowHeight-1;
+                        int result1 = (SliderList[0].GetLastSelect() + 1) * maxl / SliderList[0].GetValue().Length;
+                        int result2 = (SliderList[1].GetLastSelect() + 1) * maxm / SliderList[1].GetValue().Length;
+                        Program.map = WoodGenerator.GenerateWoods(result1, result2);
+                    }
+                    result = true;
+                }
+
+
+
                 else if (key == ConsoleKey.Escape)
                 {
                     Console.SetCursorPosition(0, 0);
@@ -101,6 +118,7 @@ namespace Projet
         public static void SetDesignNav()
         {
             Config.ClearConsole(null);
+            Console.ResetColor();
             for (int i = 0; i < Console.WindowHeight; i++)
             {
                 Console.SetCursorPosition(Console.WindowWidth - Console.WindowWidth / 3 + Console.WindowWidth / 10, i);

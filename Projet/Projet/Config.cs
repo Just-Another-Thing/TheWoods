@@ -34,13 +34,8 @@ namespace Projet
             {
                 SetTitle(title);
             }
-            for (int i = 0; i < Console.WindowWidth; i += 2)
-            {
-                //Console.SetCursorPosition(i, 0);
-                //Console.Write("*");
-                //Console.SetCursorPosition(i, Console.WindowHeight - 1);
-                //Console.Write("*");
-            };
+
+            Console.ResetColor();
             for (int i = 0; i < Console.WindowHeight; i++)
             {
                 Console.SetCursorPosition(0, i);

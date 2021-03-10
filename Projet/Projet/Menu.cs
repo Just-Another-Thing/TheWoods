@@ -90,12 +90,14 @@ namespace Projet
         {
             int NbSlider = 19;
             Slider[] SliderList = new Slider[NbSlider];
-            string[] value01 = { "10","15","20","25","30","35" };
-            string[] interval01 = { null };
-            SliderList[0] = new Slider("Largeur (En case)", value01, interval01, 2, 0, 1);
-            string[] value02 = { "10", "15", "20", "25", "30", "35" };
-            string[] interval02 = { null };
-            SliderList[1] = new Slider("Hauteur (En case)", value02, interval02, 6, 0, 1);
+
+
+            string[] value01 = { "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*" };
+            string[] interval01 = { "5", "100" };
+            SliderList[0] = new Slider("Largeur (En case)", value01, interval01, 2, 9, 2);
+            string[] value02 = { "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*" };
+            string[] interval02 = { "5", "100" };
+            SliderList[1] = new Slider("Hauteur (En case)", value02, interval02, 6, 9, 2);
             string[] value0 = { "Automatique", "Manuel" };
             string[] interval0 = { null };
             //SliderList[0] = new Slider("Mode de jeu", value0, interval0, 2, 0, 1);
@@ -105,7 +107,7 @@ namespace Projet
             SliderList[2] = new Slider("Propagation du feu", value1, interval1, 10, 0, 1);
             //string[] value2 = { "*","*","*","*","*","*","*","*","*","*","*" };
             string[] value2 = { "*","*","*","*","*","*","*","*","*","*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*" };
-            string[] interval2 = { "0","100" };
+            string[] interval2 = { "5","100" };
             SliderList[3] = new Slider("TEST", value2, interval2, 14, 0, 2);
             SliderList[4] = new Slider("Propagation du feu", value1, interval1, 18, 0, 1);
             SliderList[5] = new Slider("Propagation du feu", value1, interval1, 22, 0, 1);
@@ -182,8 +184,6 @@ namespace Projet
                     {
 
                         string stringValue = "";
-                        Debug.WriteLine(SliderTab[i].GetInterval()[0]);
-                        Debug.WriteLine(SliderTab[i].GetInterval()[1]);
                         if (SliderTab[i].GetInterval()[0] != null)
                         {
                             stringValue += SliderTab[i].GetInterval()[0] + "  ";
@@ -197,7 +197,6 @@ namespace Projet
                         {
                             stringValue += "  "+SliderTab[i].GetInterval()[1];
                         }
-                        Debug.WriteLine(stringValue);
                         Console.ResetColor();
                         Console.SetCursorPosition(new Slider().CenterPositionSlider(stringValue), position + 1);
                         if(select == i)

@@ -11,21 +11,23 @@ namespace Projet
 {
     class Program
     {
+
+        public static Cell[,] map = WoodGenerator.GenerateWoods(3, 3);
         static void Main(string[] args)
         {
             int activeSlider = 0;
-            
 
             Menu.ProgrammStart();
             Navigation.SetDesignNav();
             Slider[] SliderList = Menu.GenerateSlider();
             Menu.DisplaySlider(SliderList, activeSlider);
-            activeSlider = Navigation.NavigationManager(SliderList, activeSlider);
+            Program.map = WoodGenerator.GenerateWoods(30, 30);
             do
             {
-                activeSlider = Navigation.NavigationManager(SliderList, activeSlider);
+                activeSlider = Navigation.NavigationManager(SliderList, activeSlider, WoodGenerator.GenerateWoods(55, 29));
                 Navigation.SetDesignNav();
                 Menu.DisplaySlider(SliderList, activeSlider);
+                Draw(Program.map, 0);
             } while (activeSlider != -1);
             
 
@@ -57,12 +59,13 @@ namespace Projet
 
         
 
-        static void Draw(Cell[,] map, int test = 0)
+        public static void Draw(Cell[,] map, int test = 0)
         {
             if (test == 0)
             {
                 for (int i = 0; i < map.GetLength(0); i++)
                 {
+                    Console.SetCursorPosition(2, i);
                     for (int j = 0; j < map.GetLength(1); j++)
                     {
                         if (map[i, j].GetType() == 5)
