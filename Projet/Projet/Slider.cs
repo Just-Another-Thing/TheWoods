@@ -83,7 +83,7 @@ namespace Projet
         #endregion
 
         #region Function 
-        public Slider SetSlider(string name, string description, string[] value, string[] interval, int position, int lastSelect, int sliderType)
+        public Slider (string name, string description, string[] value, string[] interval, int position, int lastSelect, int sliderType)
         {
             Name = name;
             Description = description;
@@ -93,11 +93,13 @@ namespace Projet
             LastSelect = lastSelect;
             SliderType = sliderType;
 
-            return this;
-
         }
 
-
+        public int CenterPositionSlider(string element)
+        {
+            int CenterPosition = (Console.WindowWidth - Console.WindowWidth / 3 + Console.WindowWidth / 10) - ((Console.WindowWidth / 10 - Console.WindowWidth / 3) / 2) - element.Length / 2;
+            return CenterPosition;
+        }
 
         #endregion
     }
