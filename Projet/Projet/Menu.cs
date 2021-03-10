@@ -92,10 +92,10 @@ namespace Projet
             Slider[] SliderList = new Slider[NbSlider] ;
             string[] value0 = { "Automatique", "Manuel" };
             string[] interval0 = { null };
-            SliderList[0] = new Slider("Mode de jeu", value0, interval0, 2, 1, 1);
+            SliderList[0] = new Slider("Mode de jeu", value0, interval0, 2, 0, 1);
             string[] value1 = { "OUI", "NON" };
             string[] interval1 = { null };
-            SliderList[1] = new Slider("Propagation du feu", value1, interval1, 6, 1, 1);
+            SliderList[1] = new Slider("Propagation du feu", value1, interval1, 6, 0, 1);
 
             return SliderList;
 
