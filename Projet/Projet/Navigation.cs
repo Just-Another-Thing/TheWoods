@@ -45,11 +45,34 @@ namespace Projet
                 }
                 else if (key == ConsoleKey.UpArrow)
                 {
-
+                    Console.SetCursorPosition(0, 0);
+                    Console.WriteLine("*");
+                    if(ActivateSlider > 0)
+                    {
+                        ActivateSlider--;
+                        for (int i = 0; i < SliderList.Length; i++)
+                        {
+                            if(SliderList[ActivateSlider].GetPosition() < 2)
+                            {
+                                SliderList[i].SetPosition(SliderList[i].GetPosition() - 4);
+                            }
+                        }
+                    }
+                    result = true;
                 }
                 else if (key == ConsoleKey.DownArrow)
                 {
-
+                    for (int i = 0; i < SliderList.Length; i++)
+                    {
+                        if (i == ActivateSlider)
+                        {
+                            if (SliderList[i].GetLastSelect() < SliderList[i].GetValue().Length)
+                            {
+                                SliderList[i].SetLastSelect(SliderList[i].GetLastSelect() + 1);
+                            }
+                        }
+                    }
+                    result = true;
                 }
             } while (!result);
 
