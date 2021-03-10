@@ -51,7 +51,8 @@ namespace Projet
                 }
             }
 
-            //generate water
+            /**
+            generate water
             for (int i = 0; i < map.GetLength(0); i++)
             {
                 for (int j = 0; j < map.GetLength(1); j++)
@@ -63,7 +64,7 @@ namespace Projet
                        
                     }
                 }
-            }
+            } */
 
             //generate leaves
             for (int i = 0; i < map.GetLength(0); i++)
