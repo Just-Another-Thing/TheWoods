@@ -12,35 +12,39 @@ namespace Projet
     {
         static void Main(string[] args)
         {
-
-            Cell[,] map = WoodGenerator.GenerateWoods(55, 29);
-            Draw(map);
-            Console.ReadKey();
-            InitiateFire(map);
-            Console.SetCursorPosition(0, 0);
-            Draw(map);
-            while (true)
-            {
-                PassTour(map);
-                ConsoleKey k = Console.ReadKey().Key;
-                if (k == ConsoleKey.F)
-                {
-                    InitiateFire(map);
-                }
-            }
+            int activeSlider = 0;
+            
 
             Menu.ProgrammStart();
             Config.ClearConsole(null);
             Navigation.SetDesignNav();
             Slider[] SliderList = Menu.GenerateSlider();
-            Menu.DisplaySlider(SliderList, 1);
-            Navigation.NavigationManager(SliderList, 0);
+            Menu.DisplaySlider(SliderList, activeSlider);
+            activeSlider = Navigation.NavigationManager(SliderList, activeSlider);
+            Menu.DisplaySlider(SliderList, activeSlider);
 
-           
 
+
+
+            Console.ReadKey();
 
 
             
+                Cell[,] map = WoodGenerator.GenerateWoods(55, 29);
+                Draw(map);
+                Console.ReadKey();
+                InitiateFire(map);
+                Console.SetCursorPosition(0, 0);
+                Draw(map);
+                while (true)
+                {
+                    PassTour(map);
+                    ConsoleKey k =Console.ReadKey().Key;
+                    if (k == ConsoleKey.F)
+                    {
+                        InitiateFire(map);
+                    }
+                }
             
             
         }
