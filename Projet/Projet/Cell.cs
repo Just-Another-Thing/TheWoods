@@ -69,39 +69,78 @@ namespace Projet
         }
         #endregion
 
-        public string GetDisplaySymbol()
+        public string GetDisplaySymbol(int IconeType)
         {
             string rtrn = "";
-            if (this.type == 1)
+            if (IconeType == 0)
             {
-                rtrn = "x";
-            }else if (this.type == 2)
-            {
-                rtrn = "*";
+                if (this.type == 1)
+                {
+                    rtrn = "x";
+                }
+                else if (this.type == 2)
+                {
+                    rtrn = "*";
+                }
+                else if (this.type == 3)
+                {
+                    rtrn = " ";
+                }
+                else if (this.type == 4)
+                {
+                    rtrn = "#";
+                }
+                else if (this.type == 5)
+                {
+                    rtrn = "~";
+                }
+                else if (this.type == 6)
+                {
+                    rtrn = "O";
+                }
+                else if (this.type == 7)
+                {
+                    rtrn = "'";
+                }
+                else if (this.type == 8)
+                {
+                    rtrn = ".";
+                }
             }
-            else if (this.type == 3)
+            else
             {
-                rtrn = " ";
-            }
-            else if (this.type == 4)
-            {
-                rtrn = "#";
-            }
-            else if (this.type == 5)
-            {
-                rtrn = "~";
-            }
-            else if (this.type == 6)
-            {
-                rtrn = "O";
-            }
-            else if (this.type == 7)
-            {
-                rtrn = "'";
-            }
-            else if (this.type == 8)
-            {
-                rtrn = ".";
+                if (this.type == 1)
+                {
+                    rtrn = "x";
+                }
+                else if (this.type == 2)
+                {
+                    rtrn = "*";
+                }
+                else if (this.type == 3)
+                {
+                    rtrn = "+";
+                }
+                else if (this.type == 4)
+                {
+                    rtrn = " ";
+                }
+                else if (this.type == 5)
+                {
+                    rtrn = "/";
+                }
+                else if (this.type == 6)
+                {
+                    rtrn = "#";
+                }
+                else if (this.type == 7)
+                {
+                    rtrn = "-";
+                }
+                else if (this.type == 8)
+                {
+                    rtrn = ".";
+                }
             }
 
             return rtrn;

@@ -27,7 +27,7 @@ namespace Projet
                 activeSlider = Navigation.NavigationManager(SliderList, activeSlider, WoodGenerator.GenerateWoods(55, 29));
                 Navigation.SetDesignNav();
                 Menu.DisplaySlider(SliderList, activeSlider);
-                Draw(Program.map, 0);
+                Draw(Program.map, SliderList[2].GetLastSelect(), 0);
             } while (activeSlider != -1);
             
 
@@ -38,7 +38,7 @@ namespace Projet
 
 
             
-                Cell[,] map = WoodGenerator.GenerateWoods(55, 29);
+                /*Cell[,] map = WoodGenerator.GenerateWoods(55, 29);
                 Draw(map, 0);
                 Console.ReadKey();
                 InitiateFire(map);
@@ -52,20 +52,25 @@ namespace Projet
                     {
                         InitiateFire(map);
                     }
-                }
+                }*/
             
             
         }
 
         
 
-        public static void Draw(Cell[,] map, int test = 0)
+        public static void Draw(Cell[,] map, int IconeType, int test = 0)
         {
+            int maxl = ((Console.WindowWidth - Console.WindowWidth / 3 + Console.WindowWidth / 10) / 2) - 1;
+            int maxh = Console.WindowHeight - 1;
+            int x = maxh - ((maxh+ map.GetLength(0))/2);
+            int z = maxl - maxl/2 - map.GetLength(1)/2;
+            Debug.WriteLine(map.GetLength(0));
             if (test == 0)
             {
                 for (int i = 0; i < map.GetLength(0); i++)
                 {
-                    Console.SetCursorPosition(2, i);
+                    Console.SetCursorPosition(z+1, x/2+i);
                     for (int j = 0; j < map.GetLength(1); j++)
                     {
                         if (map[i, j].GetType() == 5)
@@ -92,10 +97,8 @@ namespace Projet
                         {
                             Console.ForegroundColor = ConsoleColor.Red;
                         }
-
-                        Console.Write(map[i, j].GetDisplaySymbol() + " ");
+                        Console.Write(map[i, j].GetDisplaySymbol(IconeType) + " ");
                     }
-                    Console.Write("\n");
                 }
             }
             else if (test == 1)
@@ -148,7 +151,7 @@ namespace Projet
                 }
             }
             Console.SetCursorPosition(0,0);
-            Draw(map, 0);
+            //Draw(map, 0);
         }
 
         static bool AreSurroundingInFire(Cell[,] map, int x, int y)

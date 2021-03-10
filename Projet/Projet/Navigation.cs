@@ -56,7 +56,6 @@ namespace Projet
                     if (ActivateSlider > 0)
                     {
                         ActivateSlider--;
-                        Debug.WriteLine(SliderList[ActivateSlider].GetPosition());
                         int activePosition = SliderList[ActivateSlider].GetPosition();
                         for (int i = 0; i < SliderList.Length; i++)
                         {
@@ -75,6 +74,7 @@ namespace Projet
                     if (ActivateSlider < SliderList.Length-1)
                     {
                         ActivateSlider++;
+                        Debug.WriteLine(SliderList[ActivateSlider].GetPosition());
                         int activePosition = SliderList[ActivateSlider].GetPosition();
                         for (int i = 0; i < SliderList.Length; i++)
                         {
@@ -90,14 +90,13 @@ namespace Projet
                 {
                     Console.SetCursorPosition(0, 0);
                     Console.WriteLine("*");
-                    if(ActivateSlider == 0 || ActivateSlider == 1)
-                    {
-                        int maxl = ((Console.WindowWidth - Console.WindowWidth / 3 + Console.WindowWidth / 10) / 2) - 1;
-                        int maxm = Console.WindowHeight-1;
-                        int result1 = (SliderList[0].GetLastSelect() + 1) * maxl / SliderList[0].GetValue().Length;
-                        int result2 = (SliderList[1].GetLastSelect() + 1) * maxm / SliderList[1].GetValue().Length;
-                        Program.map = WoodGenerator.GenerateWoods(result1, result2);
-                    }
+
+                    int maxl = ((Console.WindowWidth - Console.WindowWidth / 3 + Console.WindowWidth / 10) / 2) - 1;
+                    int maxm = Console.WindowHeight-1;
+                    int result1 = (SliderList[0].GetLastSelect() + 1) * maxl / SliderList[0].GetValue().Length;
+                    int result2 = (SliderList[1].GetLastSelect() + 1) * maxm / SliderList[1].GetValue().Length;
+                    Program.map = WoodGenerator.GenerateWoods(result1, result2);
+                    
                     result = true;
                 }
 

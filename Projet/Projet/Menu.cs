@@ -88,43 +88,26 @@ namespace Projet
 
         public static Slider[] GenerateSlider()
         {
-            int NbSlider = 19;
+            int NbSlider = 3;
             Slider[] SliderList = new Slider[NbSlider];
 
 
+            string[] value00 = { "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*" };
+            string[] interval00 = { "5", "100" };
+            SliderList[0] = new Slider("Largeur", value00, interval00, 2, 9, 2);
             string[] value01 = { "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*" };
             string[] interval01 = { "5", "100" };
-            SliderList[0] = new Slider("Largeur (En case)", value01, interval01, 2, 9, 2);
-            string[] value02 = { "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*" };
-            string[] interval02 = { "5", "100" };
-            SliderList[1] = new Slider("Hauteur (En case)", value02, interval02, 6, 9, 2);
-            string[] value0 = { "Automatique", "Manuel" };
-            string[] interval0 = { null };
-            //SliderList[0] = new Slider("Mode de jeu", value0, interval0, 2, 0, 1);
-            string[] value1 = { "OUI", "NON" };
-            string[] interval1 = { null };
-            //SliderList[1] = new Slider("Propagation du feu", value1, interval1, 6, 0, 1);
-            SliderList[2] = new Slider("Propagation du feu", value1, interval1, 10, 0, 1);
-            //string[] value2 = { "*","*","*","*","*","*","*","*","*","*","*" };
-            string[] value2 = { "*","*","*","*","*","*","*","*","*","*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*" };
-            string[] interval2 = { "5","100" };
-            SliderList[3] = new Slider("TEST", value2, interval2, 14, 0, 2);
-            SliderList[4] = new Slider("Propagation du feu", value1, interval1, 18, 0, 1);
-            SliderList[5] = new Slider("Propagation du feu", value1, interval1, 22, 0, 1);
-            SliderList[6] = new Slider("Propagation du feu", value1, interval1, 26, 0, 1);
-            SliderList[7] = new Slider("Propagation du feu", value1, interval1, 30, 0, 1);
-            SliderList[8] = new Slider("Propagation du feu", value1, interval1, 34, 0, 1);
-            SliderList[9] = new Slider("Propagation du feu", value1, interval1, 38, 0, 1);
-            SliderList[10] = new Slider("Propagation du feu", value1, interval1, 42, 0, 1);
-            SliderList[11] = new Slider("Propagation du feu", value1, interval1, 46, 0, 1);
-            SliderList[12] = new Slider("Propagation du feu", value1, interval1, 50, 0, 1);
-            SliderList[13] = new Slider("Propagation du feu", value1, interval1, 54, 0, 1);
-            SliderList[14] = new Slider("Propagation du feu", value1, interval1, 58, 0, 1);
-            SliderList[15] = new Slider("Propagation du feu", value1, interval1, 62, 0, 1);
-            SliderList[16] = new Slider("Propagation du feu", value1, interval1, 66, 0, 1);
-            SliderList[17] = new Slider("Propagation du feu", value1, interval1, 70, 0, 1);
-            SliderList[18] = new Slider("Propagation du feu", value1, interval1, 74, 0, 1);
-
+            SliderList[1] = new Slider("Hauteur", value01, interval01, 6, 9, 2);
+            string[] value02 = { "Consigne", "Réaliste" };
+            string[] interval02 = { null };
+            SliderList[2] = new Slider("Icone", value02, interval02, 10, 0, 1);
+            //string[] value02 = { "Automatique", "Manuel" };
+            //string[] interval02 = { null };
+            //SliderList[2] = new Slider("Mode de jeu", value02, interval02, 10, 0, 1);
+            //string[] value03 = { "OUI", "NON" };
+            //string[] interval03 = { null };
+            //SliderList[3] = new Slider("Propagation du feu", value03, interval03, 14, 0, 1);
+            Debug.WriteLine(SliderList);
             return SliderList;
 
         }
@@ -218,7 +201,8 @@ namespace Projet
                         {
                             Console.ForegroundColor = ConsoleColor.Green;
                         }
-                        Console.Write(value[value.Length - 1]); 
+                        Console.Write(value[value.Length - 1]);
+                        Console.ResetColor();
                         if (select == i)
                         {
                             Console.ForegroundColor = ConsoleColor.Magenta;
