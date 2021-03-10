@@ -132,7 +132,6 @@ namespace Projet
                         Console.SetCursorPosition(new Slider().CenterPositionSlider(stringValue), position + 1);
                         for (int j = 0; j < value.Length - 1; j++)
                         {
-                            Debug.WriteLine(j + " /// "+ lastSelect);
                             if (lastSelect == j)
                             {
                                 Console.ForegroundColor = ConsoleColor.Green;

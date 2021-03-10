@@ -12,18 +12,21 @@ namespace Projet
     {
         static void Main(string[] args)
         {
-            int activeSlider = 1;
+            int activeSlider = 0;
             
 
             Menu.ProgrammStart();
-            Config.ClearConsole(null);
             Navigation.SetDesignNav();
             Slider[] SliderList = Menu.GenerateSlider();
             Menu.DisplaySlider(SliderList, activeSlider);
             activeSlider = Navigation.NavigationManager(SliderList, activeSlider);
-            Config.ClearConsole(null);
-            Navigation.SetDesignNav();
-            Menu.DisplaySlider(SliderList, activeSlider);
+            do
+            {
+                activeSlider = Navigation.NavigationManager(SliderList, activeSlider);
+                Navigation.SetDesignNav();
+                Menu.DisplaySlider(SliderList, activeSlider);
+            } while (activeSlider != -1);
+            
 
 
 

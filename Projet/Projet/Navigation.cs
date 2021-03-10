@@ -14,9 +14,12 @@ namespace Projet
             bool result = false;
             do
             {
+                Console.SetCursorPosition(0, 0);
                 ConsoleKey key = Console.ReadKey().Key;
                 if (key == ConsoleKey.LeftArrow)
                 {
+                    Console.SetCursorPosition(0, 0);
+                    Console.WriteLine("*");
                     for (int i = 0; i<SliderList.Length;i++)
                     {
                         if (i == ActivateSlider)
@@ -31,6 +34,8 @@ namespace Projet
                 }
                 else if (key == ConsoleKey.RightArrow)
                 {
+                    Console.SetCursorPosition(0, 0);
+                    Console.WriteLine("*");
                     for (int i = 0; i < SliderList.Length; i++)
                     {
                         if (i == ActivateSlider)
@@ -62,17 +67,27 @@ namespace Projet
                 }
                 else if (key == ConsoleKey.DownArrow)
                 {
-                    for (int i = 0; i < SliderList.Length; i++)
+                    Console.SetCursorPosition(0, 0);
+                    Console.WriteLine("*");
+                    if (ActivateSlider < SliderList.Length-1)
                     {
-                        if (i == ActivateSlider)
+                        ActivateSlider++;
+                        for (int i = 0; i < SliderList.Length; i++)
                         {
-                            if (SliderList[i].GetLastSelect() < SliderList[i].GetValue().Length)
+                            if (SliderList[ActivateSlider].GetPosition() > Console.WindowHeight - 2)
                             {
-                                SliderList[i].SetLastSelect(SliderList[i].GetLastSelect() + 1);
+                                SliderList[i].SetPosition(SliderList[i].GetPosition() + 4);
                             }
                         }
                     }
                     result = true;
+                }
+                else if (key == ConsoleKey.Escape)
+                {
+                    Console.SetCursorPosition(0, 0);
+                    Console.WriteLine("*");
+                    result = true;
+                    ActivateSlider = -1;
                 }
             } while (!result);
 
@@ -81,6 +96,7 @@ namespace Projet
 
         public static void SetDesignNav()
         {
+            Config.ClearConsole(null);
             for (int i = 0; i < Console.WindowHeight; i++)
             {
                 Console.SetCursorPosition(Console.WindowWidth - Console.WindowWidth / 3 + Console.WindowWidth / 10, i);
