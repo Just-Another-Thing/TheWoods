@@ -9,7 +9,7 @@ namespace Projet
     class Navigation
     {
 
-        public static void NavigationManager(Slider[] SliderList, int ActivateSlider)
+        public static int NavigationManager(Slider[] SliderList, int ActivateSlider)
         {
             bool result = false;
             do
@@ -17,11 +17,31 @@ namespace Projet
                 ConsoleKey key = Console.ReadKey().Key;
                 if (key == ConsoleKey.LeftArrow)
                 {
-
+                    for (int i = 0; i<SliderList.Length;i++)
+                    {
+                        if (i == ActivateSlider)
+                        {
+                            if (SliderList[i].GetLastSelect() > 0)
+                            {
+                                SliderList[i].SetLastSelect(SliderList[i].GetLastSelect() - 1);
+                            }
+                        }
+                    }
+                    result = true;
                 }
                 else if (key == ConsoleKey.RightArrow)
                 {
-
+                    for (int i = 0; i < SliderList.Length; i++)
+                    {
+                        if (i == ActivateSlider)
+                        {
+                            if (SliderList[i].GetLastSelect() < SliderList[i].GetValue().Length)
+                            {
+                                SliderList[i].SetLastSelect(SliderList[i].GetLastSelect() + 1);
+                            }
+                        }
+                    }
+                    result = true;
                 }
                 else if (key == ConsoleKey.UpArrow)
                 {
@@ -32,6 +52,8 @@ namespace Projet
 
                 }
             } while (!result);
+
+            return ActivateSlider;
         }
 
         public static void SetDesignNav()
