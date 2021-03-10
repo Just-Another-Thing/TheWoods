@@ -31,11 +31,11 @@ namespace Projet
 
             
                 Cell[,] map = WoodGenerator.GenerateWoods(55, 29);
-                Draw(map);
+                Draw(map, 0);
                 Console.ReadKey();
                 InitiateFire(map);
                 Console.SetCursorPosition(0, 0);
-                Draw(map);
+                Draw(map, 0);
                 while (true)
                 {
                     PassTour(map);
@@ -51,40 +51,56 @@ namespace Projet
 
         
 
-        static void Draw(Cell[,] map)
+        static void Draw(Cell[,] map, int test = 0)
         {
-            for (int i=0; i<map.GetLength(0); i++)
+            if (test == 0)
             {
-                for (int j=0; j<map.GetLength(1); j++)
+                for (int i = 0; i < map.GetLength(0); i++)
                 {
-                    if (map[i,j].GetType() == 5)
+                    for (int j = 0; j < map.GetLength(1); j++)
                     {
-                        Console.ForegroundColor = ConsoleColor.Blue;
-                    } else if(map[i,j].GetType() == 2)
-                    {
-                        Console.ForegroundColor = ConsoleColor.DarkGray;
+                        if (map[i, j].GetType() == 5)
+                        {
+                            Console.ForegroundColor = ConsoleColor.Blue;
+                        }
+                        else if (map[i, j].GetType() == 2)
+                        {
+                            Console.ForegroundColor = ConsoleColor.DarkGray;
+                        }
+                        else if (map[i, j].GetType() == 4)
+                        {
+                            Console.ForegroundColor = ConsoleColor.DarkGreen;
+                        }
+                        else if (map[i, j].GetType() == 1)
+                        {
+                            Console.ForegroundColor = ConsoleColor.Green;
+                        }
+                        else
+                        {
+                            Console.ForegroundColor = ConsoleColor.White;
+                        }
+                        if (map[i, j].GetIsInFire() == 1 || map[i, j].GetIsInFire() == 2)
+                        {
+                            Console.ForegroundColor = ConsoleColor.Red;
+                        }
+
+                        Console.Write(map[i, j].GetDisplaySymbol() + " ");
                     }
-                    else if (map[i, j].GetType() == 4)
-                    {
-                        Console.ForegroundColor = ConsoleColor.DarkGreen;
-                    }
-                    else if (map[i, j].GetType() == 1)
-                    {
-                        Console.ForegroundColor = ConsoleColor.Green;
-                    }
-                    else
-                    {
-                        Console.ForegroundColor = ConsoleColor.White;
-                    }
-                    if (map[i, j].GetIsInFire() == 1 || map[i, j].GetIsInFire() == 2)
-                    {
-                        Console.ForegroundColor = ConsoleColor.Red;
-                    }
-                    
-                    Console.Write(map[i, j].GetDisplaySymbol() + " ");
+                    Console.Write("\n");
                 }
-                Console.Write("\n");
             }
+            else if (test == 1)
+            {
+                for (int i = 0; i < map.GetLength(0); i++)
+                {
+                    for (int j = 0; j < map.GetLength(1); j++)
+                    {
+                        Console.Write((int)(map[i, j].GetHeight()*100)+"|");
+                    }
+                    Console.Write("\n");
+                }
+            }
+            
         }
 
         static void PassTour(Cell[,] map)
@@ -123,7 +139,7 @@ namespace Projet
                 }
             }
             Console.SetCursorPosition(0,0);
-            Draw(map);
+            Draw(map, 0);
         }
 
         static bool AreSurroundingInFire(Cell[,] map, int x, int y)
