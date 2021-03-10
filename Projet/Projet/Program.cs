@@ -13,7 +13,21 @@ namespace Projet
         static void Main(string[] args)
         {
 
-            
+            Cell[,] map = WoodGenerator.GenerateWoods(55, 29);
+            Draw(map);
+            Console.ReadKey();
+            InitiateFire(map);
+            Console.SetCursorPosition(0, 0);
+            Draw(map);
+            while (true)
+            {
+                PassTour(map);
+                ConsoleKey k = Console.ReadKey().Key;
+                if (k == ConsoleKey.F)
+                {
+                    InitiateFire(map);
+                }
+            }
 
             Menu.ProgrammStart();
             Config.ClearConsole(null);
@@ -22,28 +36,11 @@ namespace Projet
             Menu.DisplaySlider(SliderList, 1);
             Navigation.NavigationManager(SliderList, 0);
 
+           
 
-
-
-            Console.ReadKey();
 
 
             
-                Cell[,] map = WoodGenerator.GenerateWoods(55, 29);
-                Draw(map);
-                Console.ReadKey();
-                InitiateFire(map);
-                Console.SetCursorPosition(0, 0);
-                Draw(map);
-                while (true)
-                {
-                    PassTour(map);
-                    ConsoleKey k =Console.ReadKey().Key;
-                    if (k == ConsoleKey.F)
-                    {
-                        InitiateFire(map);
-                    }
-                }
             
             
         }

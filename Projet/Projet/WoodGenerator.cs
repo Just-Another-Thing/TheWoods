@@ -13,6 +13,7 @@ namespace Projet
             Random rdm = new Random();
             Cell[,] map = new Cell[c, l];
 
+            
             //generate height terrain
             for (int i = 0; i < map.GetLength(0); i++)
             {
@@ -20,6 +21,7 @@ namespace Projet
                 {
                     map[i, j].SetType(3);
                     map[i, j].SetLife(0);
+                    map[i, j].SetHeight(HeightSurrounding(map, i, j) + ((float) rdm.NextDouble()-((float) 0.5)));
                 }
             }
 
@@ -44,12 +46,11 @@ namespace Projet
             {
                 for (int j = 0; j < map.GetLength(1); j++)
                 {
-                    int pourc = GetSurrounding(map, i, j, 5);
-                    int rand = rdm.Next(0, 100);
-                    if (rand <= pourc * 12 + 4 && map[i,j].GetType() == 3)
+                    if (map[i,j].GetHeight() <= -0.35)
                     {
                         map[i, j].SetType(5);
                         map[i, j].SetLife(0);
+                       
                     }
                 }
             }
