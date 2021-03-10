@@ -98,7 +98,7 @@ namespace Projet
             string[] value01 = { "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*" };
             string[] interval01 = { "5", "100" };
             SliderList[1] = new Slider("Hauteur", value01, interval01, 6, 9, 2);
-            string[] value02 = { "Consigne", "Réaliste" };
+            string[] value02 = { "Réaliste", "Consigne"};
             string[] interval02 = { null };
             SliderList[2] = new Slider("Icone", value02, interval02, 10, 0, 1);
             //string[] value02 = { "Automatique", "Manuel" };
@@ -217,7 +217,5 @@ namespace Projet
                 
             }
         }
-
-
     }
 }
