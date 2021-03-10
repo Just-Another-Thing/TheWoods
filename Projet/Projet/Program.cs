@@ -18,7 +18,9 @@ namespace Projet
             Menu.ProgrammStart();
             Config.ClearConsole(null);
             Navigation.SetDesignNav();
-            Menu.DisplaySlider(Menu.GenerateSlider(), 1);
+            Slider[] SliderList = Menu.GenerateSlider();
+            Menu.DisplaySlider(SliderList, 1);
+            Navigation.NavigationManager(SliderList, 0);
 
 
 

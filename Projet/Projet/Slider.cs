@@ -12,7 +12,6 @@ namespace Projet
         private int LastSelect;
         private string[] Interval;
         private String Name;
-        private String Description;
         private String[] Value;
         private int SliderType;
 
@@ -53,15 +52,6 @@ namespace Projet
             this.Name = Name;
         }
 
-        public string GetDescription()
-        {
-            return this.Description;
-        }
-        public void SetDescription(string Description)
-        {
-            this.Description = Description;
-        }
-
         public string[] GetValue()
         {
             return this.Value;
@@ -83,10 +73,9 @@ namespace Projet
         #endregion
 
         #region Function 
-        public Slider (string name, string description, string[] value, string[] interval, int position, int lastSelect, int sliderType)
+        public Slider (string name, string[] value, string[] interval, int position, int lastSelect, int sliderType)
         {
             Name = name;
-            Description = description;
             Value = value;
             Interval = interval;
             Position = position;
