@@ -26,7 +26,7 @@ namespace Projet
             Console.ReadKey();
 
 
-            /**
+            
                 Cell[,] map = WoodGenerator.GenerateWoods(55, 29);
                 Draw(map);
                 Console.ReadKey();
@@ -42,7 +42,7 @@ namespace Projet
                         InitiateFire(map);
                     }
                 }
-            */
+            
             
         }
 
@@ -126,117 +126,16 @@ namespace Projet
         static bool AreSurroundingInFire(Cell[,] map, int x, int y)
         {
             int somme = 0;
-            if (x > 0)
-            {
-                if (map[x - 1, y].GetIsInFire() == 1)
-                {
-                    somme++;
-                }
-            }
-            else
-            {
-                if (map[map.GetLength(0)-1, y].GetIsInFire() == 1)
-                {
-                    somme++;
-                }
-            }
-            if (y > 0)
-            {
-                if (map[x, y - 1].GetIsInFire() == 1)
-                {
-                    somme++;
-                }
-            }
-            else
-            {
-                if (map[x, map.GetLength(1)-1].GetIsInFire() == 1)
-                {
-                    somme++;
-                }
-            }
-            if (y > 0 && x > 0)
-            {
-                if (map[x - 1, y - 1].GetIsInFire() == 1)
-                {
-                    somme++;
-                }
-            }
-            else
-            {
-                if (map[map.GetLength(0)-1, map.GetLength(1)-1].GetIsInFire() == 1)
-                {
-                    somme++;
-                }
-            }
 
-            if (x < map.GetLength(0) - 1)
+            for (int i = -1; i <= 1; i++)
             {
-                if (map[x + 1, y].GetIsInFire() == 1)
+                for (int j = -1; j <= 1; j++)
                 {
-                    somme++;
-                }
-            }
-            else
-            {
-                if (map[0, y].GetIsInFire() == 1)
-                {
-                    somme++;
-                }
-            }
-            if (y < map.GetLength(1) - 1)
-            {
-                if (map[x, y + 1].GetIsInFire() == 1)
-                {
-                    somme++;
-                }
-            }
-            else
-            {
-                if (map[x, 0].GetIsInFire() == 1)
-                {
-                    somme++;
-                }
-            }
-            if (y < map.GetLength(1) - 1 && x < map.GetLength(0) - 1)
-            {
-                if (map[x + 1, y + 1].GetIsInFire() == 1)
-                {
-                    somme++;
-                }
-            }
-            else
-            {
-                if (map[0,0].GetIsInFire() == 1)
-                {
-                    somme++;
-                }
-            }
-            if (y > 0 && x < map.GetLength(0) - 1)
-            {
-                if (map[x + 1, y - 1].GetIsInFire() == 1)
-                {
-                    somme++;
-                }
-            }
-            else
-            {
-                if (map[0, map.GetLength(1) - 1].GetIsInFire() == 1)
-                {
-                    somme++;
-                }
-            }
-            if (y < map.GetLength(1) - 1 && x > 0)
-            {
-                if (map[x - 1, y + 1].GetIsInFire() == 1)
-                {
-                    somme++;
-                }
-            }
-            else
-            {
-                if (map[map.GetLength(0) - 1, 0].GetIsInFire() == 1)
-                {
-                    somme++;
+                    Cell c = WoodGenerator.GetCase(map, x + i, y + j);
+                    if (c.GetIsInFire() == 1)
+                    {
+                        somme++;
+                    }
                 }
             }
 

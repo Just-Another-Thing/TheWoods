@@ -11,6 +11,7 @@ namespace Projet
         private int type;
         private int isInFire;
         private int life;
+        private float height;
         private bool isFireable;
         
 
@@ -43,6 +44,17 @@ namespace Projet
         public void SetLife(int life)
         {
             this.life = life;
+        }
+
+
+        public float GetHeight()
+        {
+            return this.height;
+        }
+
+        public void SetHeight(float height)
+        {
+            this.height = height;
         }
 
 
