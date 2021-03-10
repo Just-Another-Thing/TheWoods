@@ -9,7 +9,7 @@ namespace Projet
     class Navigation
     {
 
-        public static void NavigationManager()
+        public static void NavigationManager(Slider[] SliderList, int ActivateSlider)
         {
             bool result = false;
             do
@@ -17,15 +17,19 @@ namespace Projet
                 ConsoleKey key = Console.ReadKey().Key;
                 if (key == ConsoleKey.LeftArrow)
                 {
+
                 }
                 else if (key == ConsoleKey.RightArrow)
                 {
+
                 }
                 else if (key == ConsoleKey.UpArrow)
                 {
+
                 }
                 else if (key == ConsoleKey.DownArrow)
                 {
+
                 }
             } while (!result);
         }
