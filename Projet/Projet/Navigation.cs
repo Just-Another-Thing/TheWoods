@@ -116,7 +116,7 @@ namespace Projet
 
         public static void SetDesignNav()
         {
-            Config.ClearConsole(null);
+            Config.ClearConsole(null,1);
             Console.ResetColor();
             for (int i = 0; i < Console.WindowHeight; i++)
             {

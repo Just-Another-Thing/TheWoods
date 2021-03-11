@@ -26,25 +26,41 @@ namespace Projet
         }
 
 
-        public static void ClearConsole(string title)
+        public static void ClearConsole(string title, int zone)
         {
             SetFullScreen();
-            Console.Clear();
+            //Console.Clear();
             if (title != null)
             {
                 SetTitle(title);
             }
-
             Console.ResetColor();
-            for (int i = 0; i < Console.WindowHeight; i++)
-            {
-                Console.SetCursorPosition(0, i);
-                Console.Write("*");
-                Console.SetCursorPosition(Console.WindowWidth - 2, i);
-                Console.Write("*");
-            };
+            //for (int i = 0; i < Console.WindowHeight; i++)
+            //{
+            //   Console.SetCursorPosition(0, i);
+            //    Console.Write("*");
+            //    Console.SetCursorPosition(Console.WindowWidth - 2, i);
+            //    Console.Write("*");
+            //};
             Console.SetCursorPosition(0, 0);
+            if(zone == 1)
+            {
+                int max = Console.WindowWidth - Console.WindowWidth / 3 + Console.WindowWidth / 10;
+                for (int i = 0; i< Console.WindowHeight; i++)
+                {
+                    
+                    for (int j = max; j<Console.WindowWidth;j++)
+                    {
+                        Console.SetCursorPosition(j, i);
+                        Console.Write("");
+                    }
+                }
+            }
         }
+
+
+
+
 
 
 

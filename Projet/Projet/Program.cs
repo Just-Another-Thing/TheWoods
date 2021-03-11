@@ -64,13 +64,13 @@ namespace Projet
             int maxl = ((Console.WindowWidth - Console.WindowWidth / 3 + Console.WindowWidth / 10) / 2) - 1;
             int maxh = Console.WindowHeight - 1;
             int x = maxh - ((maxh+ map.GetLength(0))/2);
-            int z = maxl - maxl/2 - map.GetLength(1)/2;
+            int y = maxl - maxl/2 - map.GetLength(1)/2;
             Debug.WriteLine(map.GetLength(0));
             if (test == 0)
             {
                 for (int i = 0; i < map.GetLength(0); i++)
                 {
-                    Console.SetCursorPosition(z+1, x/2+i);
+                    Console.SetCursorPosition(y, x/2+i+1);
                     for (int j = 0; j < map.GetLength(1); j++)
                     {
                         if (map[i, j].GetType() == 5)

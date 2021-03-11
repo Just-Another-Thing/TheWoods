@@ -25,7 +25,7 @@ namespace Projet
 
             // Menu de start
             string texte;
-            Config.ClearConsole("Menu de démarage");
+            Config.ClearConsole("Menu de démarage",0);
             Console.ForegroundColor = ConsoleColor.Red;
             texte = "Avertissement : Enlever le mode pleine écran déformera l'enssemble du design !";
             Console.SetCursorPosition(Console.WindowWidth / 2 - (texte.Length / 2), 1);
