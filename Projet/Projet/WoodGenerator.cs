@@ -13,27 +13,15 @@ namespace Projet
             Random rdm = new Random();
             Cell[,] map = new Cell[c, l];
 
-            //generate height terrain
+            //generate terrain
             for (int i = 0; i < map.GetLength(0); i++)
             {
                 for (int j = 0; j < map.GetLength(1); j++)
                 {
                     map[i, j].SetType(3);
                     map[i, j].SetLife(0);
-                    map[i, j].SetHeight((float) (2*rdm.NextDouble()));
                 }
             }
-
-            //smooth height terrain
-            for (int i = 0; i < map.GetLength(0); i++)
-            {
-                for (int j = 0; j < map.GetLength(1); j++)
-                {
-                    map[i, j].SetType(3);
-                    map[i, j].SetLife(0);
-                    map[i, j].SetHeight(HeightSurrounding(map, i, j));
-                }
-            } 
 
             //generate trees
             for (int i = 0; i < map.GetLength(0); i++)
@@ -51,20 +39,22 @@ namespace Projet
                 }
             }
 
-            /**
-            generate water
+            
+            //generate water
             for (int i = 0; i < map.GetLength(0); i++)
             {
                 for (int j = 0; j < map.GetLength(1); j++)
                 {
-                    if (map[i,j].GetHeight() <= 0.000001)
+                    int pourc = GetSurrounding(map, i, j, 5);
+                    int rand = rdm.Next(0, 100);
+                    if (rand <= pourc * 6 + 10)
                     {
                         map[i, j].SetType(5);
                         map[i, j].SetLife(0);
-                       
                     }
+                    
                 }
-            } */
+            } 
 
             //generate leaves
             for (int i = 0; i < map.GetLength(0); i++)
