@@ -94,13 +94,13 @@ namespace Projet
 
             string[] value00 = { "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*" };
             string[] interval00 = { "5", "100" };
-            SliderList[0] = new Slider("Largeur", value00, interval00, 2, 9, 2);
+            SliderList[0] = new Slider("Largeur", value00, interval00, 6, 9, 2);
             string[] value01 = { "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*" };
             string[] interval01 = { "5", "100" };
-            SliderList[1] = new Slider("Hauteur", value01, interval01, 6, 9, 2);
+            SliderList[1] = new Slider("Hauteur", value01, interval01, 10, 9, 2);
             string[] value02 = { "Réaliste", "Consigne"};
             string[] interval02 = { null };
-            SliderList[2] = new Slider("Icone", value02, interval02, 10, 0, 1);
+            SliderList[2] = new Slider("Icone", value02, interval02, 14, 0, 1);
             //string[] value02 = { "Automatique", "Manuel" };
             //string[] interval02 = { null };
             //SliderList[2] = new Slider("Mode de jeu", value02, interval02, 10, 0, 1);

@@ -59,7 +59,7 @@ namespace Projet
                         int activePosition = SliderList[ActivateSlider].GetPosition();
                         for (int i = 0; i < SliderList.Length; i++)
                         {
-                            if(activePosition < 2)
+                            if(activePosition < 6)
                             {
                                 SliderList[i].SetPosition(SliderList[i].GetPosition() + 4);
                             }
@@ -98,25 +98,25 @@ namespace Projet
                     Program.map = WoodGenerator.GenerateWoods(result1, result2);
                     
                     result = true;
-                }
-
-
-
-                else if (key == ConsoleKey.Escape)
+                }else if (key == ConsoleKey.Escape)
                 {
                     Console.SetCursorPosition(0, 0);
                     Console.WriteLine("*");
                     result = true;
                     ActivateSlider = -1;
                 }
+                else
+                {
+                    Console.SetCursorPosition(0, 0);
+                    Console.WriteLine("*");
+                }
             } while (!result);
-
             return ActivateSlider;
         }
 
         public static void SetDesignNav()
         {
-            Config.ClearConsole(null,1);
+            Config.ClearConsole(null,12);
             Console.ResetColor();
             for (int i = 0; i < Console.WindowHeight; i++)
             {
