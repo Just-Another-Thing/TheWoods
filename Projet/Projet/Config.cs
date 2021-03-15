@@ -38,7 +38,8 @@ namespace Projet
             }
             Console.ResetColor();
             Console.SetCursorPosition(0, 0);
-            if (zone == 2 || zone == 12)
+            Console.Clear();
+            /**if (zone == 2 || zone == 12)
             {
                 int max = Console.WindowWidth - Console.WindowWidth / 3 + Console.WindowWidth / 10;
                 Debug.WriteLine(max);
@@ -62,7 +63,7 @@ namespace Projet
                         Console.Write(" ");
                     }
                 }
-            }
+            }*/
 
             for (int i = 0; i < Console.WindowHeight; i++)
             {

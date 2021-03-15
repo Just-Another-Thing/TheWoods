@@ -19,7 +19,7 @@ namespace Projet
 
             Menu.ProgrammStart();
             Navigation.SetDesignNav();
-            Slider[] SliderList = Menu.GenerateSlider();
+            Slider[] SliderList = Slider.GenerateSlider();
             Menu.DisplaySlider(SliderList, activeSlider);
             Program.map = WoodGenerator.GenerateWoods(30, 30);
             do
@@ -27,7 +27,7 @@ namespace Projet
                 activeSlider = Navigation.NavigationManager(SliderList, activeSlider, WoodGenerator.GenerateWoods(55, 29));
                 Navigation.SetDesignNav();
                 Menu.DisplaySlider(SliderList, activeSlider);
-                Draw(Program.map, SliderList[2].GetLastSelect(), 0);
+                Draw(Program.map, SliderList[3].GetLastSelect(), 0);
             } while (activeSlider != -1);
             
 
@@ -75,7 +75,7 @@ namespace Projet
                     {
                         if (map[i, j].GetType() == 5)
                         {
-                            Console.ForegroundColor = ConsoleColor.Blue;
+                            Console.ForegroundColor = ConsoleColor.Cyan;
                         }
                         else if (map[i, j].GetType() == 2)
                         {

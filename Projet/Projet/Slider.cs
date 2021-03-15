@@ -90,6 +90,35 @@ namespace Projet
             return CenterPosition;
         }
 
+        public static Slider[] GenerateSlider()
+        {
+            int NbSlider = 4;
+            Slider[] SliderList = new Slider[NbSlider];
+
+            string[] value00 = { "1", "2", "3", "4", "5", "6", "7", "8" };
+            string[] interval00 = { null };
+            SliderList[0] = new Slider("Légende", value00, interval00, 2, 0, 3);
+
+            string[] value01 = { "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*" };
+            string[] interval01 = { "5", "100" };
+            SliderList[1] = new Slider("Largeur", value01, interval01, 6, 9, 2);
+            string[] value02 = { "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*" };
+            string[] interval02 = { "5", "100" };
+            SliderList[2] = new Slider("Hauteur", value02, interval02, 10, 9, 2);
+            string[] value03 = { "Réaliste", "Consigne" };
+            string[] interval03 = { null };
+            SliderList[3] = new Slider("Icone", value03, interval03, 14, 0, 1);
+            //string[] value02 = { "Automatique", "Manuel" };
+            //string[] interval02 = { null };
+            //SliderList[2] = new Slider("Mode de jeu", value02, interval02, 10, 0, 1);
+            //string[] value03 = { "OUI", "NON" };
+            //string[] interval03 = { null };
+            //SliderList[3] = new Slider("Propagation du feu", value03, interval03, 14, 0, 1);
+            //Debug.WriteLine(SliderList);
+            return SliderList;
+
+        }
+
         #endregion
     }
 }

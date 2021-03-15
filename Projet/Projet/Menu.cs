@@ -51,7 +51,7 @@ namespace Projet
             Console.WriteLine(texte);
             Console.ResetColor();
             Console.CursorVisible = false;
-            Slider[] SliderList = GenerateSlider();
+            Slider[] SliderList = Slider.GenerateSlider();
 
 
             bool result = false;
@@ -86,32 +86,7 @@ namespace Projet
 
 
 
-        public static Slider[] GenerateSlider()
-        {
-            int NbSlider = 3;
-            Slider[] SliderList = new Slider[NbSlider];
-
-
-            string[] value00 = { "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*" };
-            string[] interval00 = { "5", "100" };
-            SliderList[0] = new Slider("Largeur", value00, interval00, 6, 9, 2);
-            string[] value01 = { "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*" };
-            string[] interval01 = { "5", "100" };
-            SliderList[1] = new Slider("Hauteur", value01, interval01, 10, 9, 2);
-            string[] value02 = { "Réaliste", "Consigne"};
-            string[] interval02 = { null };
-            SliderList[2] = new Slider("Icone", value02, interval02, 14, 0, 1);
-            //string[] value02 = { "Automatique", "Manuel" };
-            //string[] interval02 = { null };
-            //SliderList[2] = new Slider("Mode de jeu", value02, interval02, 10, 0, 1);
-            //string[] value03 = { "OUI", "NON" };
-            //string[] interval03 = { null };
-            //SliderList[3] = new Slider("Propagation du feu", value03, interval03, 14, 0, 1);
-            Debug.WriteLine(SliderList);
-            return SliderList;
-
-        }
-
+        
         public static void DisplaySlider(Slider[] SliderTab, int select)
         {
             for (int i = 0; i< SliderTab.Length; i++) 
@@ -162,8 +137,7 @@ namespace Projet
                         }
                         Console.Write(value[value.Length - 1]);
                         Console.ResetColor();
-                    }
-                    else if(SliderTab[i].GetSliderType() == 2)
+                    }else if(SliderTab[i].GetSliderType() == 2)
                     {
 
                         string stringValue = "";
@@ -209,9 +183,43 @@ namespace Projet
                         }
                         Console.Write("  "+SliderTab[i].GetInterval()[1]);
                         Console.ResetColor();
-
-
-
+                    }else if (SliderTab[i].GetSliderType() == 3)
+                    {
+                        string stringValue = "";
+                        string[] Name = { "Herbe", "Arbre", "Terrain", "Feuille", "Eau", "Rocher", "Cendres", "Cendres éteintes" };
+                        stringValue += Name[SliderTab[i].GetLastSelect()] + " : ";
+                        Cell type = new Cell();
+                        type.SetType(SliderTab[i].GetLastSelect()+1);
+                        stringValue += "\""+type.GetDisplaySymbol(SliderTab[3].GetLastSelect()) + "\"";
+                        Console.SetCursorPosition(new Slider().CenterPositionSlider(stringValue), position + 1);
+                        Console.ForegroundColor = ConsoleColor.Green;
+                        Console.Write(Name[SliderTab[i].GetLastSelect()]);
+                        Console.ResetColor();
+                        Console.Write(" : \"");
+                        if (type.GetType() == 5)
+                        {
+                            Console.ForegroundColor = ConsoleColor.Cyan;
+                        }
+                        else if (type.GetType() == 2)
+                        {
+                            Console.ForegroundColor = ConsoleColor.DarkGray;
+                        }
+                        else if (type.GetType() == 4)
+                        {
+                            Console.ForegroundColor = ConsoleColor.DarkGreen;
+                        }
+                        else if (type.GetType() == 1)
+                        {
+                            Console.ForegroundColor = ConsoleColor.Green;
+                        }
+                        else
+                        {
+                            Console.ForegroundColor = ConsoleColor.White;
+                        }
+                        Console.Write(type.GetDisplaySymbol(SliderTab[3].GetLastSelect()));
+                        Console.ResetColor();
+                        Console.Write("\"");
+                        Console.ResetColor();
                     }
                 }
                 
