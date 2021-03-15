@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{523DAD78-0932-4625-A7EA-E990630183B9}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>Projet</RootNamespace>
-    <AssemblyName>Projet</AssemblyName>
+    <RootNamespace>TheWoods</RootNamespace>
+    <AssemblyName>TheWoods</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -51,6 +51,11 @@
   <ItemGroup>
     <Compile Include="Cell.cs" />
     <Compile Include="Navigation.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
     <Compile Include="Slider.cs" />
     <Compile Include="Config.cs" />
     <Compile Include="Menu.cs" />
@@ -60,6 +65,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Logo simple.ico" />

@@ -28,7 +28,12 @@ namespace Projet
         }
 
 
-        public static void ClearConsole(string title, int zone)
+        /// <summary>
+        /// Méthode permettant la remise a 0 de la console avec le design de base
+        /// </summary>
+        /// <param name=title>Titre a afficher dans la console</param>
+        /// <returns>Aucun retour (Fonction d'affichage)</returns>
+        public static void ClearConsole(string title)
         {
             SetFullScreen();
             //Console.Clear();
@@ -39,32 +44,6 @@ namespace Projet
             Console.ResetColor();
             Console.SetCursorPosition(0, 0);
             Console.Clear();
-            /**if (zone == 2 || zone == 12)
-            {
-                int max = Console.WindowWidth - Console.WindowWidth / 3 + Console.WindowWidth / 10;
-                Debug.WriteLine(max);
-                for (int i = 0; i < Console.WindowHeight; i++)
-                {
-                    for (int j = 0; j < max - 1; j++)
-                    {
-                        Console.SetCursorPosition(j, i);
-                        Console.Write(" ");
-                    }
-                }
-            }
-            if (zone == 1 || zone == 12)
-            {
-                int start = Console.WindowWidth - Console.WindowWidth / 3 + Console.WindowWidth / 10;
-                for (int i = 0; i< Console.WindowHeight; i++)
-                {
-                    for (int j = start; j<Console.WindowWidth;j++)
-                    {
-                        Console.SetCursorPosition(j, i);
-                        Console.Write(" ");
-                    }
-                }
-            }*/
-
             for (int i = 0; i < Console.WindowHeight; i++)
             {
                 Console.SetCursorPosition(0, i);
