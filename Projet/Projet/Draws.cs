@@ -11,6 +11,7 @@ namespace Projet
     class Draws
     {
         static Thread mthread = new Thread(DrawMap);
+        static Thread sthread = new Thread(DisplaySlider);
         private struct Param
         {
             public Cell[,] map;
@@ -18,7 +19,7 @@ namespace Projet
             public int test;
         }
 
-        public static void Draw(Cell[,] map, int IconeType, int test = 0)
+        public static void Draw(Cell[,] map, int IconeType, int test, int activeSlider)
         {
             Param p = new Param();
             p.map = map;
@@ -29,15 +30,25 @@ namespace Projet
             {
                 mthread.Abort();
                 mthread = new Thread(DrawMap);
-                mthread.Start((object)p);
+                mthread.Start((object) activeSlider);
             }
             else
             {
-                mthread = new Thread(DrawMap);
-                mthread.Start((object)p);
+                sthread = new Thread(DisplaySlider);
+                sthread.Start((object) activeSlider);
             }
-            
 
+            if (mthread.IsAlive)
+            {
+                sthread.Abort();
+                sthread = new Thread(DisplaySlider);
+                sthread.Start((object) activeSlider);
+            }
+            else
+            {
+                sthread = new Thread(DisplaySlider);
+                sthread.Start((object) activeSlider);
+            }
         }
 
         private static void DrawMap(object p)
@@ -97,6 +108,159 @@ namespace Projet
                     }
                     Console.Write("\n");
                 }
+            }
+
+        }
+
+        public static void DisplaySlider(object slct)
+        {
+            int select = (int) slct;
+            Config.ClearConsole(null);
+            Console.ResetColor();
+            for (int i = 0; i < Console.WindowHeight; i++)
+            {
+                Console.SetCursorPosition(Console.WindowWidth - Console.WindowWidth / 3 + Console.WindowWidth / 10, i);
+                Console.Write("|");
+
+            }
+            Console.SetCursorPosition(0, 0);
+
+            for (int i = 0; i < Navigation.GetSliderList().Length; i++)
+            {
+                int position = Navigation.GetSliderListByID(i).GetPosition();
+                if (position >= 2 && position <= Console.WindowHeight - 2)
+                {
+                    string name = Navigation.GetSliderListByID(i).GetName();
+                    string[] value = Navigation.GetSliderListByID(i).GetValue();
+                    int lastSelect = Navigation.GetSliderListByID(i).GetLastSelect();
+                    if (Navigation.GetSliderListByID(i).GetSliderType() == 2)
+                    {
+                        int nb = (Navigation.GetSliderListByID(i).GetLastSelect() + 1) * Convert.ToInt32(Navigation.GetSliderListByID(i).GetInterval()[1]) / Navigation.GetSliderListByID(i).GetValue().Length;
+                        name += " (" + nb + " %)";
+                    }
+                    Console.SetCursorPosition(new Slider().CenterPositionSlider(name), position);
+                    if (select == i)
+                    {
+                        Console.SetCursorPosition(new Slider().CenterPositionSlider(name) - 1, position);
+                        Console.Write("> ");
+                        Console.ForegroundColor = ConsoleColor.Magenta;
+                    }
+                    Console.Write(name);
+                    Console.ResetColor();
+                    if (Navigation.GetSliderListByID(i).GetSliderType() == 1)
+                    {
+                        string stringValue = "";
+                        for (int j = 0; j < value.Length - 1; j++)
+                        {
+                            stringValue += value[j] + " | ";
+                        }
+                        stringValue += value[value.Length - 1];
+                        Console.ResetColor();
+                        Console.SetCursorPosition(new Slider().CenterPositionSlider(stringValue), position + 1);
+                        for (int j = 0; j < value.Length - 1; j++)
+                        {
+                            if (lastSelect == j)
+                            {
+                                Console.ForegroundColor = ConsoleColor.Green;
+                            }
+                            Console.Write(value[j]);
+                            Console.ResetColor();
+                            Console.Write(" | ");
+                        }
+                        if (lastSelect == value.Length - 1)
+                        {
+                            Console.ForegroundColor = ConsoleColor.Green;
+                        }
+                        Console.Write(value[value.Length - 1]);
+                        Console.ResetColor();
+                    }
+                    else if (Navigation.GetSliderListByID(i).GetSliderType() == 2)
+                    {
+
+                        string stringValue = "";
+                        if (Navigation.GetSliderListByID(i).GetInterval()[0] != null)
+                        {
+                            stringValue += Navigation.GetSliderListByID(i).GetInterval()[0] + "  ";
+                        }
+                        for (int j = 0; j < value.Length - 1; j++)
+                        {
+                            stringValue += value[j];
+                        }
+                        stringValue += value[value.Length - 1];
+                        if (Navigation.GetSliderListByID(i).GetInterval()[1] != null)
+                        {
+                            stringValue += "  " + Navigation.GetSliderListByID(i).GetInterval()[1];
+                        }
+                        Console.ResetColor();
+                        Console.SetCursorPosition(new Slider().CenterPositionSlider(stringValue), position + 1);
+                        if (select == i)
+                        {
+                            Console.ForegroundColor = ConsoleColor.Magenta;
+                        }
+                        Console.Write(Navigation.GetSliderListByID(i).GetInterval()[0] + "  ");
+                        Console.ResetColor();
+                        for (int j = 0; j < value.Length - 1; j++)
+                        {
+                            if (lastSelect >= j)
+                            {
+                                Console.ForegroundColor = ConsoleColor.Green;
+                            }
+                            Console.Write(value[j]);
+                            Console.ResetColor();
+                        }
+                        if (lastSelect == value.Length - 1)
+                        {
+                            Console.ForegroundColor = ConsoleColor.Green;
+                        }
+                        Console.Write(value[value.Length - 1]);
+                        Console.ResetColor();
+                        if (select == i)
+                        {
+                            Console.ForegroundColor = ConsoleColor.Magenta;
+                        }
+                        Console.Write("  " + Navigation.GetSliderListByID(i).GetInterval()[1]);
+                        Console.ResetColor();
+                    }
+                    else if (Navigation.GetSliderListByID(i).GetSliderType() == 3)
+                    {
+                        string stringValue = "";
+                        string[] Name = { "Herbe", "Arbre", "Terrain", "Feuille", "Eau", "Rocher", "Cendres", "Cendres éteintes" };
+                        stringValue += Name[Navigation.GetSliderListByID(i).GetLastSelect()] + " : ";
+                        Cell type = new Cell();
+                        type.SetType(Navigation.GetSliderListByID(i).GetLastSelect() + 1);
+                        stringValue += "\"" + type.GetDisplaySymbol(Navigation.GetSliderListByID(i).GetLastSelect()) + "\"";
+                        Console.SetCursorPosition(new Slider().CenterPositionSlider(stringValue), position + 1);
+                        Console.ForegroundColor = ConsoleColor.Green;
+                        Console.Write(Name[Navigation.GetSliderListByID(i).GetLastSelect()]);
+                        Console.ResetColor();
+                        Console.Write(" : \"");
+                        if (type.GetType() == 5)
+                        {
+                            Console.ForegroundColor = ConsoleColor.Cyan;
+                        }
+                        else if (type.GetType() == 2)
+                        {
+                            Console.ForegroundColor = ConsoleColor.DarkGray;
+                        }
+                        else if (type.GetType() == 4)
+                        {
+                            Console.ForegroundColor = ConsoleColor.DarkGreen;
+                        }
+                        else if (type.GetType() == 1)
+                        {
+                            Console.ForegroundColor = ConsoleColor.Green;
+                        }
+                        else
+                        {
+                            Console.ForegroundColor = ConsoleColor.White;
+                        }
+                        Console.Write(type.GetDisplaySymbol(Navigation.GetSliderListByID(3).GetLastSelect()));
+                        Console.ResetColor();
+                        Console.Write("\"");
+                        Console.ResetColor();
+                    }
+                }
+
             }
 
         }

@@ -19,12 +19,10 @@ namespace Projet
             Menu.ProgrammStart();
             map = WoodGenerator.GenerateWoods();
 
-            Menu.DisplaySlider(activeSlider);
             do
             {
-                Draws.Draw(map, Navigation.GetSliderListByID(3).GetLastSelect(), 0);
+                Draws.Draw(map, Navigation.GetSliderListByID(3).GetLastSelect(), 0, activeSlider);
                 activeSlider = Navigation.NavigationManager(activeSlider, WoodGenerator.GenerateWoods());
-                Menu.DisplaySlider(activeSlider);
             } while (activeSlider != -1);
             
 
