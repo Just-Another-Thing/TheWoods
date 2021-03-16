@@ -77,7 +77,6 @@ namespace Projet
                     map[i, j].SetLife(0);
                 }
             }
-            Console.Write(treeProportion);
             //generate trees
             for (int i = 0; i < map.GetLength(0); i++)
             {

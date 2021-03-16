@@ -111,7 +111,8 @@ namespace Projet
                     Console.WriteLine("*");
                 }
             } while (!result);
-            //here
+
+            //send values to woodgenerator.
             WoodGenerator.SetTreeProportion((SliderList[5].GetLastSelect()+1)*10);
             WoodGenerator.SetWaterProportion((SliderList[6].GetLastSelect()+1)*10);
             WoodGenerator.SetLeaveProportion((SliderList[7].GetLastSelect() + 1) * 10);
