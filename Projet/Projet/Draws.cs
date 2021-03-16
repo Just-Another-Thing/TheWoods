@@ -11,7 +11,6 @@ namespace Projet
     class Draws
     {
         static Thread mthread = new Thread(DrawMap);
-        static Thread sthread = new Thread(DisplaySlider);
         private struct Param
         {
             public Cell[,] map;
@@ -26,29 +25,21 @@ namespace Projet
             p.IconeType = IconeType;
             p.test = test;
 
+            DisplaySlider(activeSlider);
+
             if (mthread.IsAlive)
             {
                 mthread.Abort();
                 mthread = new Thread(DrawMap);
-                mthread.Start((object) activeSlider);
+                mthread.Start((object) p);
             }
             else
             {
-                sthread = new Thread(DisplaySlider);
-                sthread.Start((object) activeSlider);
+                mthread = new Thread(DrawMap);
+                mthread.Start((object) p);
             }
 
-            if (mthread.IsAlive)
-            {
-                sthread.Abort();
-                sthread = new Thread(DisplaySlider);
-                sthread.Start((object) activeSlider);
-            }
-            else
-            {
-                sthread = new Thread(DisplaySlider);
-                sthread.Start((object) activeSlider);
-            }
+            
         }
 
         private static void DrawMap(object p)
@@ -112,13 +103,13 @@ namespace Projet
 
         }
 
-        public static void DisplaySlider(object slct)
+        public static void DisplaySlider(int select)
         {
-            int select = (int) slct;
             Config.ClearConsole(null);
             Console.ResetColor();
             for (int i = 0; i < Console.WindowHeight; i++)
             {
+                Console.ForegroundColor = ConsoleColor.White;
                 Console.SetCursorPosition(Console.WindowWidth - Console.WindowWidth / 3 + Console.WindowWidth / 10, i);
                 Console.Write("|");
 
