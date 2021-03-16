@@ -125,22 +125,13 @@ namespace Projet
                     Console.WriteLine("*");
                 }
             } while (!result);
-<<<<<<< Updated upstream
-
-            //send values to woodgenerator.
-            WoodGenerator.SetTreeProportion((SliderList[5].GetLastSelect()+1)*10);
-            WoodGenerator.SetWaterProportion((SliderList[6].GetLastSelect()+1)*10);
-            WoodGenerator.SetLeaveProportion((SliderList[7].GetLastSelect() + 1) * 10);
-            WoodGenerator.SetRockProportion((SliderList[8].GetLastSelect() + 1) * 10);
-            WoodGenerator.SetGrassProportion((SliderList[9].GetLastSelect() + 1) * 10);
-=======
             //here
             WoodGenerator.SetTreeProportion((GetSliderListByID(5).GetLastSelect()+1)*10);
             WoodGenerator.SetWaterProportion((GetSliderListByID(6).GetLastSelect()+1)*10);
             WoodGenerator.SetLeaveProportion((GetSliderListByID(7).GetLastSelect() + 1) * 10);
             WoodGenerator.SetRockProportion((GetSliderListByID(8).GetLastSelect() + 1) * 10);
             WoodGenerator.SetGrassProportion((GetSliderListByID(9).GetLastSelect() + 1) * 10);
->>>>>>> Stashed changes
+
             return ActivateSlider;
         }
 
