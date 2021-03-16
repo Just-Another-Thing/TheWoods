@@ -91,7 +91,7 @@ namespace Projet
                 {
                     float pourc = GetSurrounding(map, i, j, 2);
                     float rand = rdm.Next(0, 100);
-                    if (rand <= (pourc * 8 + 10)*(treeProportion/100))
+                    if (rand <= (pourc * 8 + 10)+(treeProportion/10-10))
                     {
                         map[i, j].SetType(2);
                         map[i, j].SetLife(10);
@@ -108,7 +108,7 @@ namespace Projet
                 {
                     float pourc = GetSurrounding(map, i, j, 5);
                     float rand = rdm.Next(0, 100);
-                    if (rand <= (pourc * 6 + 10)*(waterProportion/100))
+                    if (rand <= (pourc * 6 + 10)+(waterProportion/10-10) && map[i, j].GetType() == 3)
                     {
                         map[i, j].SetType(5);
                         map[i, j].SetLife(0);
@@ -122,9 +122,9 @@ namespace Projet
             {
                 for (int j = 0; j < map.GetLength(1); j++)
                 {
-                    int pourc = GetSurrounding(map, i, j, 2);
-                    int rand = rdm.Next(0, 100);
-                    if (rand <= (pourc * 10)*(leaveProportion / 100) && map[i, j].GetType() == 3)
+                    float pourc = GetSurrounding(map, i, j, 2);
+                    float rand = rdm.Next(0, 100);
+                    if (rand <= (pourc * 10)+(leaveProportion / 10-10) && map[i, j].GetType() == 3)
                     {
                         map[i, j].SetType(4);
                         map[i, j].SetLife(4);
@@ -138,9 +138,9 @@ namespace Projet
             {
                 for (int j = 0; j < map.GetLength(1); j++)
                 {
-                    int pourc = GetSurrounding(map, i, j, 5);
-                    int rand = rdm.Next(0, 100);
-                    if (rand <= (pourc * 6 + 10)* (rockProportion / 100) && map[i, j].GetType() == 3)
+                    float pourc = GetSurrounding(map, i, j, 5);
+                    float rand = rdm.Next(0, 100);
+                    if (rand <= (pourc * 6 + 10) + (rockProportion / 10-10) && map[i, j].GetType() == 3)
                     {
                         map[i, j].SetType(6);
                         map[i, j].SetLife(0);
@@ -152,10 +152,10 @@ namespace Projet
             {
                 for (int j = 0; j < map.GetLength(1); j++)
                 {
-                    int pourc = GetSurrounding(map, i, j, 5)/2;
+                    float pourc = GetSurrounding(map, i, j, 5)/2;
                     pourc += GetSurrounding(map, i, j, 2) / 2;
-                    int rand = rdm.Next(0, 100);
-                    if (rand <= (pourc * 12)*(grassProportion / 100) && map[i, j].GetType() == 3)
+                    float rand = rdm.Next(0, 100);
+                    if (rand <= (pourc * 12)+(grassProportion / 10-10) && map[i, j].GetType() == 3)
                     {
                         map[i, j].SetType(1);
                         map[i, j].SetLife(8);

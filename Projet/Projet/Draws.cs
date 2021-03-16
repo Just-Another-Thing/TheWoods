@@ -16,6 +16,7 @@ namespace Projet
             public Cell[,] map;
             public int IconeType;
             public int test;
+            public int select;
         }
 
         public static void Draw(Cell[,] map, int IconeType, int test, int activeSlider)
@@ -24,8 +25,7 @@ namespace Projet
             p.map = map;
             p.IconeType = IconeType;
             p.test = test;
-
-            DisplaySlider(activeSlider);
+            p.select = activeSlider;
 
             if (mthread.IsAlive)
             {
@@ -48,6 +48,8 @@ namespace Projet
             Cell[,] map = param.map;
             int IconeType = param.IconeType;
             int test = param.test;
+            int active = param.select;
+            DisplaySlider(active);
 
             int maxl = ((Console.WindowWidth - Console.WindowWidth / 3 + Console.WindowWidth / 10) / 2) - 1;
             int maxh = Console.WindowHeight - 1;
@@ -149,7 +151,7 @@ namespace Projet
                         Console.ResetColor();
                         Console.SetCursorPosition(new Slider().CenterPositionSlider(stringValue), position + 1);
                         for (int j = 0; j < value.Length - 1; j++)
-                        {
+                        { 
                             if (lastSelect == j)
                             {
                                 Console.ForegroundColor = ConsoleColor.Green;
