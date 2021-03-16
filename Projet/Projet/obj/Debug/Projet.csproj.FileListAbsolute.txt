@@ -5,13 +5,8 @@ C:\Users\ALEXA\Documents\Alexandre\Drive\Alexandre\ESILV\P1\Info\Projet2\Projet\
 C:\Users\ALEXA\Documents\Alexandre\Drive\Alexandre\ESILV\P1\Info\Projet2\Projet\Projet\obj\Debug\Projet.csproj.CoreCompileInputs.cache
 C:\Users\ALEXA\Documents\Alexandre\Drive\Alexandre\ESILV\P1\Info\Projet2\Projet\Projet\obj\Debug\Projet.exe
 C:\Users\ALEXA\Documents\Alexandre\Drive\Alexandre\ESILV\P1\Info\Projet2\Projet\Projet\obj\Debug\Projet.pdb
-C:\Users\ALEXA\Documents\Alexandre\Drive\Alexandre\GitHub\Projet2\Projet\Projet\bin\Debug\Projet.exe.config
-C:\Users\ALEXA\Documents\Alexandre\Drive\Alexandre\GitHub\Projet2\Projet\Projet\bin\Debug\Projet.exe
-C:\Users\ALEXA\Documents\Alexandre\Drive\Alexandre\GitHub\Projet2\Projet\Projet\bin\Debug\Projet.pdb
 C:\Users\ALEXA\Documents\Alexandre\Drive\Alexandre\GitHub\Projet2\Projet\Projet\obj\Debug\Projet.csprojAssemblyReference.cache
 C:\Users\ALEXA\Documents\Alexandre\Drive\Alexandre\GitHub\Projet2\Projet\Projet\obj\Debug\Projet.csproj.CoreCompileInputs.cache
-C:\Users\ALEXA\Documents\Alexandre\Drive\Alexandre\GitHub\Projet2\Projet\Projet\obj\Debug\Projet.exe
-C:\Users\ALEXA\Documents\Alexandre\Drive\Alexandre\GitHub\Projet2\Projet\Projet\obj\Debug\Projet.pdb
 H:\TheWoods\Projet\Projet\obj\Debug\Projet.csprojAssemblyReference.cache
 H:\TheWoods\Projet\Projet\obj\Debug\Projet.csproj.CoreCompileInputs.cache
 H:\TheWoods\Projet\Projet\bin\Debug\System.Memory.dll
@@ -31,7 +26,6 @@ C:\Users\ALEXA\Documents\Alexandre\Drive\Alexandre\GitHub\Projet2\Projet\Projet\
 C:\Users\ALEXA\Documents\Alexandre\Drive\Alexandre\GitHub\Projet2\Projet\Projet\bin\Debug\System.Text.Encodings.Web.dll
 C:\Users\ALEXA\Documents\Alexandre\Drive\Alexandre\GitHub\Projet2\Projet\Projet\bin\Debug\System.Threading.Tasks.Extensions.dll
 C:\Users\ALEXA\Documents\Alexandre\Drive\Alexandre\GitHub\Projet2\Projet\Projet\bin\Debug\Microsoft.Bcl.AsyncInterfaces.dll
-C:\Users\ALEXA\Documents\Alexandre\Drive\Alexandre\GitHub\Projet2\Projet\Projet\obj\Debug\Projet.exe.config
 C:\Users\ALEXA\Documents\Alexandre\Drive\Alexandre\GitHub\Projet2\Projet\Projet\obj\Debug\Projet.csproj.CopyComplete
 H:\TheWoods\Projet\Projet\obj\Debug\TheWoods.exe.config
 H:\TheWoods\Projet\Projet\bin\Debug\TheWoods.exe.config
@@ -39,3 +33,9 @@ H:\TheWoods\Projet\Projet\bin\Debug\TheWoods.exe
 H:\TheWoods\Projet\Projet\bin\Debug\TheWoods.pdb
 H:\TheWoods\Projet\Projet\obj\Debug\TheWoods.exe
 H:\TheWoods\Projet\Projet\obj\Debug\TheWoods.pdb
+C:\Users\ALEXA\Documents\Alexandre\Drive\Alexandre\GitHub\Projet2\Projet\Projet\obj\Debug\TheWoods.exe.config
+C:\Users\ALEXA\Documents\Alexandre\Drive\Alexandre\GitHub\Projet2\Projet\Projet\obj\Debug\TheWoods.exe
+C:\Users\ALEXA\Documents\Alexandre\Drive\Alexandre\GitHub\Projet2\Projet\Projet\obj\Debug\TheWoods.pdb
+C:\Users\ALEXA\Documents\Alexandre\Drive\Alexandre\GitHub\Projet2\Projet\Projet\bin\Debug\TheWoods.exe.config
+C:\Users\ALEXA\Documents\Alexandre\Drive\Alexandre\GitHub\Projet2\Projet\Projet\bin\Debug\TheWoods.exe
+C:\Users\ALEXA\Documents\Alexandre\Drive\Alexandre\GitHub\Projet2\Projet\Projet\bin\Debug\TheWoods.pdb
