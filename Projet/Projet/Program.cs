@@ -22,14 +22,15 @@ namespace Projet
             Slider[] SliderList = Slider.GenerateSlider();
             Menu.DisplaySlider(SliderList, activeSlider);
             Program.map = WoodGenerator.GenerateWoods(30, 30);
+            InitiateFire(Program.map);
             do
             {
                 activeSlider = Navigation.NavigationManager(SliderList, activeSlider, WoodGenerator.GenerateWoods(55, 29));
                 Navigation.SetDesignNav();
                 Menu.DisplaySlider(SliderList, activeSlider);
                 Draw(Program.map, SliderList[3].GetLastSelect(), 0);
+                PassTour(Program.map);
             } while (activeSlider != -1);
-            
 
 
 
