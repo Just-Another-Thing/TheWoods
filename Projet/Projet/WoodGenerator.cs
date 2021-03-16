@@ -8,6 +8,61 @@ namespace Projet
 {
     class WoodGenerator
     {
+        private static int treeProportion = 100;
+        private static int waterProportion = 100;
+        private static int leaveProportion = 100;
+        private static int rockProportion = 100;
+        private static int grassProportion = 100;
+
+        #region getters && setters
+        public static int GetTreeProportion()
+        {
+            return treeProportion;
+        }
+        public static void SetTreeProportion(int proportion)
+        {
+            treeProportion = proportion;
+        }
+
+        public static int GetWaterProportion()
+        {
+            return waterProportion;
+        }
+        public static void SetWaterProportion(int proportion)
+        {
+            waterProportion = proportion;
+        }
+
+        public static int GetLeaveProportion()
+        {
+            return leaveProportion;
+        }
+        public static void SetLeaveProportion(int proportion)
+        {
+            leaveProportion = proportion;
+        }
+
+        public static int GetRockProportion()
+        {
+            return rockProportion;
+        }
+        public static void SetRockProportion(int proportion)
+        {
+            rockProportion = proportion;
+        }
+
+        public static int GetGrassProportion()
+        {
+            return grassProportion;
+        }
+        public static void SetGrassProportion(int proportion)
+        {
+            grassProportion = proportion;
+        }
+
+        #endregion
+
+
         public static Cell[,] GenerateWoods(int l, int c)
         {
             Random rdm = new Random();
@@ -22,15 +77,15 @@ namespace Projet
                     map[i, j].SetLife(0);
                 }
             }
-
+            Console.Write(treeProportion);
             //generate trees
             for (int i = 0; i < map.GetLength(0); i++)
             {
                 for (int j = 0; j < map.GetLength(1); j++)
                 {
-                    int pourc = GetSurrounding(map, i, j, 2);
-                    int rand = rdm.Next(0, 100);
-                    if (rand <= pourc * 8 + 10)
+                    float pourc = GetSurrounding(map, i, j, 2);
+                    float rand = rdm.Next(0, 100);
+                    if (rand <= (pourc * 8 + 10)*(treeProportion/100))
                     {
                         map[i, j].SetType(2);
                         map[i, j].SetLife(10);
@@ -45,9 +100,9 @@ namespace Projet
             {
                 for (int j = 0; j < map.GetLength(1); j++)
                 {
-                    int pourc = GetSurrounding(map, i, j, 5);
-                    int rand = rdm.Next(0, 100);
-                    if (rand <= pourc * 6 + 10)
+                    float pourc = GetSurrounding(map, i, j, 5);
+                    float rand = rdm.Next(0, 100);
+                    if (rand <= (pourc * 6 + 10)*(waterProportion/100))
                     {
                         map[i, j].SetType(5);
                         map[i, j].SetLife(0);
@@ -63,7 +118,7 @@ namespace Projet
                 {
                     int pourc = GetSurrounding(map, i, j, 2);
                     int rand = rdm.Next(0, 100);
-                    if (rand <= pourc * 10 && map[i, j].GetType() == 3)
+                    if (rand <= (pourc * 10)*(leaveProportion / 100) && map[i, j].GetType() == 3)
                     {
                         map[i, j].SetType(4);
                         map[i, j].SetLife(4);
@@ -79,7 +134,7 @@ namespace Projet
                 {
                     int pourc = GetSurrounding(map, i, j, 5);
                     int rand = rdm.Next(0, 100);
-                    if (rand <= pourc * 6 + 10 && map[i, j].GetType() == 3)
+                    if (rand <= (pourc * 6 + 10)* (rockProportion / 100) && map[i, j].GetType() == 3)
                     {
                         map[i, j].SetType(6);
                         map[i, j].SetLife(0);
@@ -94,7 +149,7 @@ namespace Projet
                     int pourc = GetSurrounding(map, i, j, 5)/2;
                     pourc += GetSurrounding(map, i, j, 2) / 2;
                     int rand = rdm.Next(0, 100);
-                    if (rand <= pourc * 12 && map[i, j].GetType() == 3)
+                    if (rand <= (pourc * 12)*(grassProportion / 100) && map[i, j].GetType() == 3)
                     {
                         map[i, j].SetType(1);
                         map[i, j].SetLife(8);

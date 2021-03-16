@@ -111,6 +111,12 @@ namespace Projet
                     Console.WriteLine("*");
                 }
             } while (!result);
+            //here
+            WoodGenerator.SetTreeProportion((SliderList[5].GetLastSelect()+1)*10);
+            WoodGenerator.SetWaterProportion((SliderList[6].GetLastSelect()+1)*10);
+            WoodGenerator.SetLeaveProportion((SliderList[7].GetLastSelect() + 1) * 10);
+            WoodGenerator.SetRockProportion((SliderList[8].GetLastSelect() + 1) * 10);
+            WoodGenerator.SetGrassProportion((SliderList[9].GetLastSelect() + 1) * 10);
             return ActivateSlider;
         }
 

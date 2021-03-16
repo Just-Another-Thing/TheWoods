@@ -10,7 +10,7 @@ namespace Projet
 {
     class Draws
     {
-        static Thread thread = new Thread(DrawThread);
+        static Thread mthread = new Thread(DrawMap);
         private struct Param
         {
             public Cell[,] map;
@@ -25,24 +25,22 @@ namespace Projet
             p.IconeType = IconeType;
             p.test = test;
 
-            if (thread.IsAlive)
+            if (mthread.IsAlive)
             {
-                thread.Abort();
-                thread = new Thread(DrawThread);
-                thread.Start((object)p);
+                mthread.Abort();
+                mthread = new Thread(DrawMap);
+                mthread.Start((object)p);
             }
             else
             {
-                thread = new Thread(DrawThread);
-                thread.Start((object)p);
+                mthread = new Thread(DrawMap);
+                mthread.Start((object)p);
             }
             
 
         }
 
-
-
-        private static void DrawThread(object p)
+        private static void DrawMap(object p)
         {
             Param param = (Param) p;
             Cell[,] map = param.map;

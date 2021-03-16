@@ -92,7 +92,7 @@ namespace Projet
 
         public static Slider[] GenerateSlider()
         {
-            int NbSlider = 5;
+            int NbSlider = 10;
             Slider[] SliderList = new Slider[NbSlider];
 
             string[] value00 = { "1", "2", "3", "4", "5", "6", "7", "8" };
@@ -112,7 +112,13 @@ namespace Projet
             string[] interval04 = { null };
             SliderList[4] = new Slider("Propagation du feu", value04, interval04, 18, 0, 1);
 
-
+            string[] value05 = {"*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*" };
+            string[] interval05 = { "5", "200"};
+            SliderList[5] = new Slider("Fréquence arbres", value05, interval05, 22, 9, 2);
+            SliderList[6] = new Slider("Fréquence eau", value05, interval05, 26, 9, 2);
+            SliderList[7] = new Slider("Fréquence feuilles", value05, interval05, 30, 9, 2);
+            SliderList[8] = new Slider("Fréquence rochers", value05, interval05, 34, 9, 2);
+            SliderList[9] = new Slider("Fréquence herbe", value05, interval05, 38, 9, 2);
 
             return SliderList;
 
