@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -63,8 +64,14 @@ namespace Projet
         #endregion
 
 
-        public static Cell[,] GenerateWoods(int l, int c)
+        public static Cell[,] GenerateWoods()
         {
+            int maxl = ((Console.WindowWidth - Console.WindowWidth / 3 + Console.WindowWidth / 10) / 2) - 1;
+            int maxm = Console.WindowHeight - 1;
+            int l = (Navigation.GetSliderListByID(1).GetLastSelect() + 1) * maxl / Navigation.GetSliderListByID(1).GetValue().Length;
+            int c = (Navigation.GetSliderListByID(2).GetLastSelect() + 1) * maxm / Navigation.GetSliderListByID(2).GetValue().Length;
+
+
             Random rdm = new Random();
             Cell[,] map = new Cell[c, l];
 

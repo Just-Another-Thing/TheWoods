@@ -51,7 +51,6 @@ namespace Projet
             Console.WriteLine(texte);
             Console.ResetColor();
             Console.CursorVisible = false;
-            Slider[] SliderList = Slider.GenerateSlider();
 
 
             bool result = false;
@@ -87,19 +86,30 @@ namespace Projet
 
 
         
-        public static void DisplaySlider(Slider[] SliderTab, int select)
+        public static void DisplaySlider(int select)
         {
-            for (int i = 0; i< SliderTab.Length; i++) 
+
+            Config.ClearConsole(null);
+            Console.ResetColor();
+            for (int i = 0; i < Console.WindowHeight; i++)
             {
-                int position = SliderTab[i].GetPosition();
+                Console.SetCursorPosition(Console.WindowWidth - Console.WindowWidth / 3 + Console.WindowWidth / 10, i);
+                Console.Write("|");
+
+            }
+            Console.SetCursorPosition(0, 0);
+
+            for (int i = 0; i< Navigation.GetSliderList().Length; i++) 
+            {
+                int position = Navigation.GetSliderListByID(i).GetPosition();
                 if (position >= 2 && position <= Console.WindowHeight-2)
                 {
-                    string name = SliderTab[i].GetName();
-                    string[] value = SliderTab[i].GetValue();
-                    int lastSelect = SliderTab[i].GetLastSelect();
-                    if (SliderTab[i].GetSliderType() == 2)
+                    string name = Navigation.GetSliderListByID(i).GetName();
+                    string[] value = Navigation.GetSliderListByID(i).GetValue();
+                    int lastSelect = Navigation.GetSliderListByID(i).GetLastSelect();
+                    if (Navigation.GetSliderListByID(i).GetSliderType() == 2)
                     {
-                        int nb = (SliderTab[i].GetLastSelect() + 1) * Convert.ToInt32(SliderTab[i].GetInterval()[1]) / SliderTab[i].GetValue().Length;
+                        int nb = (Navigation.GetSliderListByID(i).GetLastSelect() + 1) * Convert.ToInt32(Navigation.GetSliderListByID(i).GetInterval()[1]) / Navigation.GetSliderListByID(i).GetValue().Length;
                         name += " (" + nb + " %)";
                     }
                     Console.SetCursorPosition(new Slider().CenterPositionSlider(name), position);
@@ -111,7 +121,7 @@ namespace Projet
                     }
                     Console.Write(name);
                     Console.ResetColor();
-                    if (SliderTab[i].GetSliderType() == 1)
+                    if (Navigation.GetSliderListByID(i).GetSliderType() == 1)
                     {
                         string stringValue = "";
                         for (int j = 0; j < value.Length - 1; j++)
@@ -137,22 +147,22 @@ namespace Projet
                         }
                         Console.Write(value[value.Length - 1]);
                         Console.ResetColor();
-                    }else if(SliderTab[i].GetSliderType() == 2)
+                    }else if(Navigation.GetSliderListByID(i).GetSliderType() == 2)
                     {
 
                         string stringValue = "";
-                        if (SliderTab[i].GetInterval()[0] != null)
+                        if (Navigation.GetSliderListByID(i).GetInterval()[0] != null)
                         {
-                            stringValue += SliderTab[i].GetInterval()[0] + "  ";
+                            stringValue += Navigation.GetSliderListByID(i).GetInterval()[0] + "  ";
                         }
                         for (int j = 0; j < value.Length - 1; j++)
                         {
                             stringValue += value[j];
                         }
                         stringValue += value[value.Length - 1];
-                        if (SliderTab[i].GetInterval()[1] != null)
+                        if (Navigation.GetSliderListByID(i).GetInterval()[1] != null)
                         {
-                            stringValue += "  "+SliderTab[i].GetInterval()[1];
+                            stringValue += "  "+ Navigation.GetSliderListByID(i).GetInterval()[1];
                         }
                         Console.ResetColor();
                         Console.SetCursorPosition(new Slider().CenterPositionSlider(stringValue), position + 1);
@@ -160,7 +170,7 @@ namespace Projet
                         {
                             Console.ForegroundColor = ConsoleColor.Magenta;
                         }
-                        Console.Write(SliderTab[i].GetInterval()[0]+ "  ");
+                        Console.Write(Navigation.GetSliderListByID(i).GetInterval()[0]+ "  ");
                         Console.ResetColor();
                         for (int j = 0; j < value.Length - 1; j++)
                         {
@@ -181,19 +191,19 @@ namespace Projet
                         {
                             Console.ForegroundColor = ConsoleColor.Magenta;
                         }
-                        Console.Write("  "+SliderTab[i].GetInterval()[1]);
+                        Console.Write("  "+ Navigation.GetSliderListByID(i).GetInterval()[1]);
                         Console.ResetColor();
-                    }else if (SliderTab[i].GetSliderType() == 3)
+                    }else if (Navigation.GetSliderListByID(i).GetSliderType() == 3)
                     {
                         string stringValue = "";
                         string[] Name = { "Herbe", "Arbre", "Terrain", "Feuille", "Eau", "Rocher", "Cendres", "Cendres éteintes" };
-                        stringValue += Name[SliderTab[i].GetLastSelect()] + " : ";
+                        stringValue += Name[Navigation.GetSliderListByID(i).GetLastSelect()] + " : ";
                         Cell type = new Cell();
-                        type.SetType(SliderTab[i].GetLastSelect()+1);
-                        stringValue += "\""+type.GetDisplaySymbol(SliderTab[3].GetLastSelect()) + "\"";
+                        type.SetType(Navigation.GetSliderListByID(i).GetLastSelect()+1);
+                        stringValue += "\""+type.GetDisplaySymbol(Navigation.GetSliderListByID(i).GetLastSelect()) + "\"";
                         Console.SetCursorPosition(new Slider().CenterPositionSlider(stringValue), position + 1);
                         Console.ForegroundColor = ConsoleColor.Green;
-                        Console.Write(Name[SliderTab[i].GetLastSelect()]);
+                        Console.Write(Name[Navigation.GetSliderListByID(i).GetLastSelect()]);
                         Console.ResetColor();
                         Console.Write(" : \"");
                         if (type.GetType() == 5)
@@ -216,7 +226,7 @@ namespace Projet
                         {
                             Console.ForegroundColor = ConsoleColor.White;
                         }
-                        Console.Write(type.GetDisplaySymbol(SliderTab[3].GetLastSelect()));
+                        Console.Write(type.GetDisplaySymbol(Navigation.GetSliderListByID(3).GetLastSelect()));
                         Console.ResetColor();
                         Console.Write("\"");
                         Console.ResetColor();
@@ -224,6 +234,7 @@ namespace Projet
                 }
                 
             }
+
         }
     }
 }

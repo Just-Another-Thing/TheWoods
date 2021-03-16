@@ -9,8 +9,28 @@ namespace Projet
 {
     class Navigation
     {
+        private static Slider[] SliderList = new Slider[10];
 
-        public static int NavigationManager(Slider[] SliderList, int ActivateSlider, Cell[,] map)
+
+        #region Getters & Accessers
+
+        public static Slider[] GetSliderList()
+        {
+            return SliderList;
+        }
+        public static Slider GetSliderListByID(int id)
+        {
+            return SliderList[id];
+        }
+        public static void AddSlider(int position, Slider NewSlider)
+        {
+            SliderList[position] = NewSlider;
+        }
+        #endregion
+
+
+
+        public static int NavigationManager(int ActivateSlider, Cell[,] map)
         {
             bool result = false;
             do
@@ -21,13 +41,13 @@ namespace Projet
                 {
                     Console.SetCursorPosition(0, 0);
                     Console.WriteLine("*");
-                    for (int i = 0; i<SliderList.Length;i++)
+                    for (int i = 0; i<GetSliderList().Length;i++)
                     {
                         if (i == ActivateSlider)
                         {
-                            if (SliderList[i].GetLastSelect() > 0)
+                            if (GetSliderListByID(i).GetLastSelect() > 0)
                             {
-                                SliderList[i].SetLastSelect(SliderList[i].GetLastSelect() - 1);
+                                GetSliderList()[i].SetLastSelect(GetSliderListByID(i).GetLastSelect() - 1);
                             }
                         }
                     }
@@ -41,9 +61,9 @@ namespace Projet
                     {
                         if (i == ActivateSlider)
                         {
-                            if (SliderList[i].GetLastSelect() < SliderList[i].GetValue().Length-1)
+                            if (GetSliderListByID(i).GetLastSelect() < GetSliderListByID(i).GetValue().Length-1)
                             {
-                                SliderList[i].SetLastSelect(SliderList[i].GetLastSelect() + 1);
+                                GetSliderList()[i].SetLastSelect(GetSliderListByID(i).GetLastSelect() + 1);
                             }
                         }
                     }
@@ -56,12 +76,12 @@ namespace Projet
                     if (ActivateSlider > 0)
                     {
                         ActivateSlider--;
-                        int activePosition = SliderList[ActivateSlider].GetPosition();
-                        for (int i = 1; i < SliderList.Length; i++)
+                        int activePosition = GetSliderListByID(ActivateSlider).GetPosition();
+                        for (int i = 1; i < GetSliderList().Length; i++)
                         {
                             if(activePosition < 2)
                             {
-                                SliderList[i].SetPosition(SliderList[i].GetPosition() + 4);
+                                GetSliderListByID(i).SetPosition(GetSliderListByID(i).GetPosition() + 4);
                             }
                         }
                     }
@@ -74,13 +94,12 @@ namespace Projet
                     if (ActivateSlider < SliderList.Length-1)
                     {
                         ActivateSlider++;
-                        Debug.WriteLine(SliderList[ActivateSlider].GetPosition());
-                        int activePosition = SliderList[ActivateSlider].GetPosition();
-                        for (int i = 1; i < SliderList.Length; i++)
+                        int activePosition = GetSliderListByID(ActivateSlider).GetPosition();
+                        for (int i = 1; i < GetSliderList().Length; i++)
                         {
                             if (activePosition > Console.WindowHeight - 2)
                             {
-                                SliderList[i].SetPosition(SliderList[i].GetPosition() - 4);
+                                GetSliderListByID(i).SetPosition(GetSliderListByID(i).GetPosition() - 4);
                             }
                         }
                     }
@@ -90,12 +109,7 @@ namespace Projet
                 {
                     Console.SetCursorPosition(0, 0);
                     Console.WriteLine("*");
-
-                    int maxl = ((Console.WindowWidth - Console.WindowWidth / 3 + Console.WindowWidth / 10) / 2) - 1;
-                    int maxm = Console.WindowHeight-1;
-                    int result1 = (SliderList[1].GetLastSelect() + 1) * maxl / SliderList[1].GetValue().Length;
-                    int result2 = (SliderList[2].GetLastSelect() + 1) * maxm / SliderList[2].GetValue().Length;
-                    Program.map = WoodGenerator.GenerateWoods(result1, result2);
+                    Program.map = WoodGenerator.GenerateWoods();
                     
                     result = true;
                 }else if (key == ConsoleKey.Escape)
@@ -111,6 +125,7 @@ namespace Projet
                     Console.WriteLine("*");
                 }
             } while (!result);
+<<<<<<< Updated upstream
 
             //send values to woodgenerator.
             WoodGenerator.SetTreeProportion((SliderList[5].GetLastSelect()+1)*10);
@@ -118,20 +133,15 @@ namespace Projet
             WoodGenerator.SetLeaveProportion((SliderList[7].GetLastSelect() + 1) * 10);
             WoodGenerator.SetRockProportion((SliderList[8].GetLastSelect() + 1) * 10);
             WoodGenerator.SetGrassProportion((SliderList[9].GetLastSelect() + 1) * 10);
+=======
+            //here
+            WoodGenerator.SetTreeProportion((GetSliderListByID(5).GetLastSelect()+1)*10);
+            WoodGenerator.SetWaterProportion((GetSliderListByID(6).GetLastSelect()+1)*10);
+            WoodGenerator.SetLeaveProportion((GetSliderListByID(7).GetLastSelect() + 1) * 10);
+            WoodGenerator.SetRockProportion((GetSliderListByID(8).GetLastSelect() + 1) * 10);
+            WoodGenerator.SetGrassProportion((GetSliderListByID(9).GetLastSelect() + 1) * 10);
+>>>>>>> Stashed changes
             return ActivateSlider;
-        }
-
-        public static void SetDesignNav()
-        {
-            Config.ClearConsole(null);
-            Console.ResetColor();
-            for (int i = 0; i < Console.WindowHeight; i++)
-            {
-                Console.SetCursorPosition(Console.WindowWidth - Console.WindowWidth / 3 + Console.WindowWidth / 10, i);
-                Console.Write("|");
-                
-            }
-            Console.SetCursorPosition(0, 0);
         }
 
     }

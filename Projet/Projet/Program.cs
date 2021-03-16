@@ -11,22 +11,20 @@ namespace Projet
     class Program
     {
 
-        public static Cell[,] map = WoodGenerator.GenerateWoods(3, 3);
+        public static Cell[,] map;
         static void Main(string[] args)
         {
             int activeSlider = 0;
-
+            Slider.GenerateSlider();
             Menu.ProgrammStart();
-            Navigation.SetDesignNav();
-            Slider[] SliderList = Slider.GenerateSlider();
-            Menu.DisplaySlider(SliderList, activeSlider);
-            Program.map = WoodGenerator.GenerateWoods(30, 30);
+            map = WoodGenerator.GenerateWoods();
+
+            Menu.DisplaySlider(activeSlider);
             do
             {
-                activeSlider = Navigation.NavigationManager(SliderList, activeSlider, WoodGenerator.GenerateWoods(55, 29));
-                Navigation.SetDesignNav();
-                Menu.DisplaySlider(SliderList, activeSlider);
-                Draws.Draw(Program.map, SliderList[3].GetLastSelect(), 0);
+                Draws.Draw(map, Navigation.GetSliderListByID(3).GetLastSelect(), 0);
+                activeSlider = Navigation.NavigationManager(activeSlider, WoodGenerator.GenerateWoods());
+                Menu.DisplaySlider(activeSlider);
             } while (activeSlider != -1);
             
 
