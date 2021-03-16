@@ -39,3 +39,5 @@ C:\Users\ALEXA\Documents\Alexandre\Drive\Alexandre\GitHub\Projet2\Projet\Projet\
 C:\Users\ALEXA\Documents\Alexandre\Drive\Alexandre\GitHub\Projet2\Projet\Projet\bin\Debug\TheWoods.exe.config
 C:\Users\ALEXA\Documents\Alexandre\Drive\Alexandre\GitHub\Projet2\Projet\Projet\bin\Debug\TheWoods.exe
 C:\Users\ALEXA\Documents\Alexandre\Drive\Alexandre\GitHub\Projet2\Projet\Projet\bin\Debug\TheWoods.pdb
+C:\Users\ALEXA\Documents\Alexandre\Drive\Alexandre\GitHub\Projet2\Projet\Projet\obj\Debug\TheWoods.Properties.Resources.resources
+C:\Users\ALEXA\Documents\Alexandre\Drive\Alexandre\GitHub\Projet2\Projet\Projet\obj\Debug\Projet.csproj.GenerateResource.cache

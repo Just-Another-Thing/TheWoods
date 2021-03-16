@@ -122,8 +122,9 @@ namespace Projet
             {
                 Console.SetCursorPosition(Console.WindowWidth - Console.WindowWidth / 3 + Console.WindowWidth / 10, i);
                 Console.Write("|");
-                Console.SetCursorPosition(0, 0);
-            };
+                
+            }
+            Console.SetCursorPosition(0, 0);
         }
 
     }

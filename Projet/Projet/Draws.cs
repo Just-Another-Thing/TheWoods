@@ -10,6 +10,7 @@ namespace Projet
 {
     class Draws
     {
+        static Thread thread = new Thread(DrawThread);
         private struct Param
         {
             public Cell[,] map;
@@ -19,13 +20,23 @@ namespace Projet
 
         public static void Draw(Cell[,] map, int IconeType, int test = 0)
         {
-            Thread thread = new Thread(DrawThread);
             Param p = new Param();
             p.map = map;
             p.IconeType = IconeType;
             p.test = test;
 
-            thread.Start((object) p);
+            if (thread.IsAlive)
+            {
+                thread.Abort();
+                thread = new Thread(DrawThread);
+                thread.Start((object)p);
+            }
+            else
+            {
+                thread = new Thread(DrawThread);
+                thread.Start((object)p);
+            }
+            
 
         }
 
@@ -46,9 +57,10 @@ namespace Projet
             {
                 for (int i = 0; i < map.GetLength(0); i++)
                 {
-                    Console.SetCursorPosition(y, x / 2 + i + 1);
+                    
                     for (int j = 0; j < map.GetLength(1); j++)
                     {
+                        Console.SetCursorPosition(y+j*2+1, x / 2 + i + 1);
                         if (map[i, j].GetType() == 5)
                         {
                             Console.ForegroundColor = ConsoleColor.Cyan;
