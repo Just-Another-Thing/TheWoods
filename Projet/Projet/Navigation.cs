@@ -30,7 +30,7 @@ namespace Projet
 
 
 
-        public static int NavigationManager(int ActivateSlider, Cell[,] map)
+        public static int NavigationManager(int ActivateSlider)
         {
             bool result = false;
             do
@@ -39,8 +39,6 @@ namespace Projet
                 ConsoleKey key = Console.ReadKey().Key;
                 if (key == ConsoleKey.LeftArrow)
                 {
-                    Console.SetCursorPosition(0, 0);
-                    Console.WriteLine("*");
                     for (int i = 0; i<GetSliderList().Length;i++)
                     {
                         if (i == ActivateSlider)
@@ -55,8 +53,6 @@ namespace Projet
                 }
                 else if (key == ConsoleKey.RightArrow)
                 {
-                    Console.SetCursorPosition(0, 0);
-                    Console.WriteLine("*");
                     for (int i = 0; i < SliderList.Length; i++)
                     {
                         if (i == ActivateSlider)
@@ -71,8 +67,6 @@ namespace Projet
                 }
                 else if (key == ConsoleKey.UpArrow)
                 {
-                    Console.SetCursorPosition(0, 0);
-                    Console.WriteLine("*");
                     if (ActivateSlider > 0)
                     {
                         ActivateSlider--;
@@ -89,8 +83,6 @@ namespace Projet
                 }
                 else if (key == ConsoleKey.DownArrow)
                 {
-                    Console.SetCursorPosition(0, 0);
-                    Console.WriteLine("*");
                     if (ActivateSlider < SliderList.Length-1)
                     {
                         ActivateSlider++;
@@ -107,31 +99,24 @@ namespace Projet
                 }
                 else if (key == ConsoleKey.Enter)
                 {
-                    Console.SetCursorPosition(0, 0);
-                    Console.WriteLine("*");
                     Program.map = WoodGenerator.GenerateWoods();
                     
                     result = true;
                 }else if (key == ConsoleKey.Escape)
                 {
-                    Console.SetCursorPosition(0, 0);
-                    Console.WriteLine("*");
                     result = true;
                     ActivateSlider = -1;
                 }else if (key == ConsoleKey.Spacebar)
                 {
-                    Program.PassTour(map);
+                    Program.PassTour(Program.map);
                     result = true;
                 }else if (key == ConsoleKey.F)
                 {
-                    Program.InitiateFire(map);
+                    Program.InitiateFire(Program.map);
                     result = true;
                 }
-                else
-                {
-                    Console.SetCursorPosition(0, 0);
-                    Console.WriteLine("*");
-                }
+                Console.SetCursorPosition(0, 0);
+                Console.WriteLine("*");
             } while (!result);
             //here
             WoodGenerator.SetTreeProportion((GetSliderListByID(5).GetLastSelect()+1)*10);
