@@ -63,6 +63,7 @@ namespace Projet
 
         public static void PassTour(Cell[,] map)
         {
+            //les feux qui ont commencés au tour précédent deviennent propagateurs. 
             for (int i = 0; i < map.GetLength(0); i++)
             {
                 for (int j = 0; j < map.GetLength(1); j++)

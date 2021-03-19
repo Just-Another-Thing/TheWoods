@@ -144,7 +144,15 @@ namespace Projet
                     if (Navigation.GetSliderListByID(i).GetSliderType() == 2)
                     {
                         int nb = (Navigation.GetSliderListByID(i).GetLastSelect() + 1) * Convert.ToInt32(Navigation.GetSliderListByID(i).GetInterval()[1]) / Navigation.GetSliderListByID(i).GetValue().Length;
-                        name += " (" + nb + " %)";
+                        if (nb >= 10)
+                        {
+                            name += " (" + nb + " %)";
+                        }
+                        else
+                        {
+                            name += " (0" + nb + " %)";
+                        }
+                        
                     }
                     Console.SetCursorPosition(new Slider().CenterPositionSlider(name) - 1, position);
                     if (select == i)
