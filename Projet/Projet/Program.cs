@@ -119,7 +119,7 @@ namespace Projet
             }
         }
 
-        static void InitiateFire(Cell[,] map)
+        public static void InitiateFire(Cell[,] map)
         {
             Random rdm = new Random();
             int x;

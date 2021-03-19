@@ -118,6 +118,14 @@ namespace Projet
                     Console.WriteLine("*");
                     result = true;
                     ActivateSlider = -1;
+                }else if (key == ConsoleKey.Spacebar)
+                {
+                    Program.PassTour(map);
+                    result = true;
+                }else if (key == ConsoleKey.F)
+                {
+                    Program.InitiateFire(map);
+                    result = true;
                 }
                 else
                 {
