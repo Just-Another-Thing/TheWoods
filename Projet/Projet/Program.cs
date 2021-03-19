@@ -22,7 +22,7 @@ namespace Projet
             do
             {
                 Draws.Draw(map, Navigation.GetSliderListByID(3).GetLastSelect(), 0, activeSlider);
-                activeSlider = Navigation.NavigationManager(activeSlider, WoodGenerator.GenerateWoods());
+                activeSlider = Navigation.NavigationManager(activeSlider);
             } while (activeSlider != -1);
             
 
