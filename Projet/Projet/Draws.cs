@@ -232,7 +232,7 @@ namespace Projet
                     else if (Navigation.GetSliderListByID(i).GetSliderType() == 3)
                     {
                         string stringValue = "";
-                        string[] Name = { "Herbe", "Arbre", "Terrain", "Feuille", "Eau", "Rocher", "Cendres", "Cendres éteintes" };
+                        string[] Name = { "     Herbe      ", "     Arbre      ", "    Terrain     ", "    Feuille     ", "      Eau       ", "     Rocher     ", "    Cendres     ", "Cendres éteintes" };
                         stringValue += Name[Navigation.GetSliderListByID(i).GetLastSelect()] + " : ";
                         Cell type = new Cell();
                         type.SetType(Navigation.GetSliderListByID(i).GetLastSelect() + 1);

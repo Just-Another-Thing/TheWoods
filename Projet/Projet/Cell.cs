@@ -13,10 +13,11 @@ namespace Projet
         private int life;
         private float height;
         private bool isFireable;
+
         
 
         #region accessers & getters 
-        public int GetType()
+            public int GetType()
         {
             return this.type;
         }

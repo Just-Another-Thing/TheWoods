@@ -59,7 +59,7 @@ namespace Projet
             
         }
 
-        
+
 
         public static void PassTour(Cell[,] map)
         {
@@ -67,10 +67,17 @@ namespace Projet
             {
                 for (int j = 0; j < map.GetLength(1); j++)
                 {
-                    if (map[i,j].GetIsInFire() == 2)
+                    if (map[i, j].GetIsInFire() == 2)
                     {
                         map[i, j].SetIsInFire(1);
                     }
+                }
+            }
+
+            for (int i = 0; i < map.GetLength(0); i++)
+            {
+                for (int j = 0; j < map.GetLength(1); j++)
+                {
                     if (map[i,j].GetIsInFire() == 1 && map[i,j].GetLife() > 1)
                     {
                         map[i, j].SetLife(map[i, j].GetLife() - 1);
@@ -110,9 +117,6 @@ namespace Projet
                 {
                     Cell c = WoodGenerator.GetCase(map, x + i, y + j);
                     if (c.GetIsInFire() == 1)
-                    {
-                        somme++;
-                    } else if (c.GetIsInFire() == 2 && (i> 0 || j > 0))
                     {
                         somme++;
                     }
