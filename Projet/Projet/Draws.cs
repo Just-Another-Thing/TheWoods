@@ -16,16 +16,18 @@ namespace Projet
             public Cell[,] map;
             public int IconeType;
             public int test;
-            public int select;
+            public int selectTab;
+            public int onlyRedrawMap;
         }
 
-        public static void Draw(Cell[,] map, int IconeType, int test, int activeSlider)
+        public static void Draw(Cell[,] map, int IconeType, int test, int activeSlider, int onlyRedrawMap)
         {
             Param p = new Param();
             p.map = map;
             p.IconeType = IconeType;
             p.test = test;
-            p.select = activeSlider;
+            p.selectTab = activeSlider;
+            p.onlyRedrawMap = onlyRedrawMap;
 
             if (mthread.IsAlive)
             {
@@ -48,58 +50,72 @@ namespace Projet
             Cell[,] map = param.map;
             int IconeType = param.IconeType;
             int test = param.test;
-            int active = param.select;
-            DisplaySlider(active);
+            int active = param.selectTab;
+            int redraw = param.onlyRedrawMap;
 
-            int maxl = ((Console.WindowWidth - Console.WindowWidth / 3 + Console.WindowWidth / 10) / 2) - 1;
-            int maxh = Console.WindowHeight - 1;
-            int x = maxh - ((maxh + map.GetLength(0)) / 2);
-            int y = maxl - maxl / 2 - map.GetLength(1) / 2;
-            if (test == 0)
+            if (redraw == 2)
             {
-                for (int i = 0; i < map.GetLength(0); i++)
+                Config.ClearConsole(null);
+            }
+            
+            if (redraw == 1 || redraw == 2)
+            {
+                DisplaySlider(active);
+            }
+            
+            if (redraw == 0 || redraw == 2)
+            {
+
+                int maxl = ((Console.WindowWidth - Console.WindowWidth / 3 + Console.WindowWidth / 10) / 2) - 1;
+                int maxh = Console.WindowHeight - 1;
+                int x = maxh - ((maxh + map.GetLength(0)) / 2);
+                int y = maxl - maxl / 2 - map.GetLength(1) / 2;
+                if (test == 0)
                 {
-                    
-                    for (int j = 0; j < map.GetLength(1); j++)
+                    for (int i = 0; i < map.GetLength(0); i++)
                     {
-                        Console.SetCursorPosition(y+j*2+1, x / 2 + i + 1);
-                        if (map[i, j].GetType() == 5)
+
+                        for (int j = 0; j < map.GetLength(1); j++)
                         {
-                            Console.ForegroundColor = ConsoleColor.Cyan;
+                            Console.SetCursorPosition(y + j * 2 + 1, x / 2 + i + 1);
+                            if (map[i, j].GetType() == 5)
+                            {
+                                Console.ForegroundColor = ConsoleColor.Cyan;
+                            }
+                            else if (map[i, j].GetType() == 2)
+                            {
+                                Console.ForegroundColor = ConsoleColor.DarkGray;
+                            }
+                            else if (map[i, j].GetType() == 4)
+                            {
+                                Console.ForegroundColor = ConsoleColor.DarkGreen;
+                            }
+                            else if (map[i, j].GetType() == 1)
+                            {
+                                Console.ForegroundColor = ConsoleColor.Green;
+                            }
+                            else
+                            {
+                                Console.ForegroundColor = ConsoleColor.White;
+                            }
+                            if (map[i, j].GetIsInFire() == 1 || map[i, j].GetIsInFire() == 2)
+                            {
+                                Console.ForegroundColor = ConsoleColor.Red;
+                            }
+                            Console.Write(map[i, j].GetDisplaySymbol(IconeType) + " ");
                         }
-                        else if (map[i, j].GetType() == 2)
-                        {
-                            Console.ForegroundColor = ConsoleColor.DarkGray;
-                        }
-                        else if (map[i, j].GetType() == 4)
-                        {
-                            Console.ForegroundColor = ConsoleColor.DarkGreen;
-                        }
-                        else if (map[i, j].GetType() == 1)
-                        {
-                            Console.ForegroundColor = ConsoleColor.Green;
-                        }
-                        else
-                        {
-                            Console.ForegroundColor = ConsoleColor.White;
-                        }
-                        if (map[i, j].GetIsInFire() == 1 || map[i, j].GetIsInFire() == 2)
-                        {
-                            Console.ForegroundColor = ConsoleColor.Red;
-                        }
-                        Console.Write(map[i, j].GetDisplaySymbol(IconeType) + " ");
                     }
                 }
-            }
-            else if (test == 1)
-            {
-                for (int i = 0; i < map.GetLength(0); i++)
+                else if (test == 1)
                 {
-                    for (int j = 0; j < map.GetLength(1); j++)
+                    for (int i = 0; i < map.GetLength(0); i++)
                     {
-                        Console.Write((int)(map[i, j].GetHeight() * 100) + "|");
+                        for (int j = 0; j < map.GetLength(1); j++)
+                        {
+                            Console.Write((int)(map[i, j].GetHeight() * 100) + "|");
+                        }
+                        Console.Write("\n");
                     }
-                    Console.Write("\n");
                 }
             }
 
@@ -107,7 +123,6 @@ namespace Projet
 
         public static void DisplaySlider(int select)
         {
-            Config.ClearConsole(null);
             Console.ResetColor();
             for (int i = 0; i < Console.WindowHeight; i++)
             {
@@ -131,14 +146,14 @@ namespace Projet
                         int nb = (Navigation.GetSliderListByID(i).GetLastSelect() + 1) * Convert.ToInt32(Navigation.GetSliderListByID(i).GetInterval()[1]) / Navigation.GetSliderListByID(i).GetValue().Length;
                         name += " (" + nb + " %)";
                     }
-                    Console.SetCursorPosition(new Slider().CenterPositionSlider(name), position);
+                    Console.SetCursorPosition(new Slider().CenterPositionSlider(name) - 1, position);
                     if (select == i)
                     {
                         Console.SetCursorPosition(new Slider().CenterPositionSlider(name) - 1, position);
                         Console.Write("> ");
                         Console.ForegroundColor = ConsoleColor.Magenta;
                     }
-                    Console.Write(name);
+                    Console.Write(name + "  ");
                     Console.ResetColor();
                     if (Navigation.GetSliderListByID(i).GetSliderType() == 1)
                     {

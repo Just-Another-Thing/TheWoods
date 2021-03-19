@@ -33,6 +33,7 @@ namespace Projet
         public static int NavigationManager(int ActivateSlider)
         {
             bool result = false;
+            Program.setOnlyRedrawMap(2);
             do
             {
                 Console.SetCursorPosition(0, 0);
@@ -49,6 +50,7 @@ namespace Projet
                             }
                         }
                     }
+                    Program.setOnlyRedrawMap(1);
                     result = true;
                 }
                 else if (key == ConsoleKey.RightArrow)
@@ -63,6 +65,7 @@ namespace Projet
                             }
                         }
                     }
+                    Program.setOnlyRedrawMap(1);
                     result = true;
                 }
                 else if (key == ConsoleKey.UpArrow)
@@ -79,6 +82,7 @@ namespace Projet
                             }
                         }
                     }
+                    Program.setOnlyRedrawMap(1);
                     result = true;
                 }
                 else if (key == ConsoleKey.DownArrow)
@@ -95,12 +99,13 @@ namespace Projet
                             }
                         }
                     }
+                    Program.setOnlyRedrawMap(1);
                     result = true;
                 }
                 else if (key == ConsoleKey.Enter)
                 {
                     Program.map = WoodGenerator.GenerateWoods();
-                    
+                    Program.setOnlyRedrawMap(2);
                     result = true;
                 }else if (key == ConsoleKey.Escape)
                 {
@@ -109,10 +114,12 @@ namespace Projet
                 }else if (key == ConsoleKey.Spacebar)
                 {
                     Program.PassTour(Program.map);
+                    Program.setOnlyRedrawMap(0);
                     result = true;
                 }else if (key == ConsoleKey.F)
                 {
                     Program.InitiateFire(Program.map);
+                    Program.setOnlyRedrawMap(0);
                     result = true;
                 }
                 Console.SetCursorPosition(0, 0);

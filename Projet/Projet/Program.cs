@@ -10,8 +10,15 @@ namespace Projet
 {
     class Program
     {
-
+        static private int onlyRedrawMap = 2;
         public static Cell[,] map;
+        #region accessers
+        static public void setOnlyRedrawMap(int value)
+        {
+            onlyRedrawMap = value;
+        }
+        #endregion
+        
         static void Main(string[] args)
         {
             int activeSlider = 0;
@@ -21,7 +28,7 @@ namespace Projet
 
             do
             {
-                Draws.Draw(map, Navigation.GetSliderListByID(3).GetLastSelect(), 0, activeSlider);
+                Draws.Draw(map, Navigation.GetSliderListByID(3).GetLastSelect(), 0, activeSlider, onlyRedrawMap);
                 activeSlider = Navigation.NavigationManager(activeSlider);
             } while (activeSlider != -1);
             
@@ -103,6 +110,9 @@ namespace Projet
                 {
                     Cell c = WoodGenerator.GetCase(map, x + i, y + j);
                     if (c.GetIsInFire() == 1)
+                    {
+                        somme++;
+                    } else if (c.GetIsInFire() == 2 && (i> 0 || j > 0))
                     {
                         somme++;
                     }
