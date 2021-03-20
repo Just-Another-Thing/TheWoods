@@ -244,7 +244,7 @@ namespace Projet
                         stringValue += Name[Slider.GetSliderListByID(i).GetLastSelect()] + " : ";
                         Cell type = new Cell();
                         type.SetType(Slider.GetSliderListByID(i).GetLastSelect() + 1);
-                        stringValue += "\"" + type.GetDisplaySymbol(NavigSlideration.GetSliderListByID(i).GetLastSelect()) + "\"";
+                        stringValue += "\"" + type.GetDisplaySymbol(Slider.GetSliderListByID(i).GetLastSelect()) + "\"";
                         Console.SetCursorPosition(new Slider().CenterPositionSlider(stringValue), position + 1);
                         Console.ForegroundColor = ConsoleColor.Green;
                         Console.Write(Name[Slider.GetSliderListByID(i).GetLastSelect()]);
