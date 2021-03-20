@@ -1,25 +1,30 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Runtime.InteropServices;
-using System.Diagnostics;
 
 namespace Projet
 {
     class Config
     {
+        /// <summary>
+        /// Initialiser le titre de la console
+        /// </summary>
+        /// <param name="title">Nom de l'onglet</param>
         public static void SetTitle(string title)
         {
             Console.Title = "> The Woods - " + title + " | Par Romain Pathé & Alexandre Michaud";
         }
 
+        /// <summary>
+        /// Librairie externe permettant de récupérer les informations du systéme de l'utilisateur afin de set en pleine ecran la console
+        /// </summary>
         [DllImport("kernel32.dll", ExactSpelling = true)]
         private static extern IntPtr GetConsoleWindow();
         private static readonly IntPtr ThisConsole = GetConsoleWindow();
         [DllImport("user32.dll", CharSet = CharSet.Auto, SetLastError = true)]
         private static extern bool ShowWindow(IntPtr hWnd, int nCmdShow);
+        /// <summary>
+        /// Fonction pour set le full screen de l'utilisateur
+        /// </summary>
         public static void SetFullScreen()
         {
             int status = 3;
