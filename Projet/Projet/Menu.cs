@@ -7,7 +7,7 @@ namespace Projet
         #region ProgrammStart
 
         /// <summary>
-        /// Méthode executé au lancement du programme (me demandé pas pourquoi j'ai pas fait sur le main)
+        /// Start method
         /// </summary>
         public static void ProgrammStart()
         {

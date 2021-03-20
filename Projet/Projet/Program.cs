@@ -6,6 +6,10 @@ namespace Projet
     {
         private static int onlyRedrawMap = 2;
         public static Cell[,] map;
+
+        /// <summary>
+        /// Region with all accessers/getters necessary for the project. 
+        /// </summary>
         #region accessers
         static public void SetOnlyRedrawMap(int value)
         {
@@ -14,7 +18,7 @@ namespace Projet
         #endregion
         
         /// <summary>
-        /// Methode de début du programme
+        /// Start of the program.
         /// </summary>
         static void Main()
         {
@@ -33,9 +37,9 @@ namespace Projet
             
         }
         /// <summary>
-        /// Méthode afin de passer au tour suivant et de mettre le feu
+        /// Simulate a round, and update the array map. 
         /// </summary>
-        /// <param name="map">Map sur laquel les actions vont être effectué</param>
+        /// <param name="map">The 'map' array, where the game is stored.</param>
         public static void PassTour(Cell[,] map)
         {
             
@@ -84,7 +88,13 @@ namespace Projet
             Console.SetCursorPosition(0,0);
         }
 
-
+        /// <summary>
+        /// Check if there is fire in the surrounding area.  
+        /// </summary>
+        /// <param name="map">The 'map' array, where the game is stored</param>
+        /// <param name="x">The abscissa position of the cell</param>
+        /// <param name="y">The ordinate position of the cell</param>
+        /// <returns>Return if there is at least one cell in fire in the surrounding area</returns>
         static bool AreSurroundingInFire(Cell[,] map, int x, int y)
         {
             int somme = 0;
@@ -110,10 +120,11 @@ namespace Projet
                 return false;
             }
         }
+
         /// <summary>
-        /// Permet d'initialisé un feu sur la map
+        /// Initiate a new fire pit on the map.
         /// </summary>
-        /// <param name="map">Map sur laquel un feu va ce créer</param>
+        /// <param name="map">The 'map' array, where the game is stored.</param>
         public static void InitiateFire(Cell[,] map)
         {
             Random rdm = new Random();

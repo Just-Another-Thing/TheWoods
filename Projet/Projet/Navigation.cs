@@ -5,9 +5,9 @@ namespace Projet
     class Navigation
     {
 
-         /// <summary>Permet de gérer la navigation dans le menu de droite</summary>
-         /// <param name="ActivateSlider">Tableau avec ID du slider activé</param>
-         /// <returns>Tableau du nouveau slider activé et de l'ancien</returns>
+         /// <summary>Allow to navigate throug the sliders</summary>
+         /// <param name="ActivateSlider">Array with the slider used</param>
+         /// <returns>Array with the new slider in use and the old one</returns>
         public static int[] NavigationManager(int[] ActivateSlider)
         {
             bool result = false;

@@ -7,7 +7,7 @@ namespace Projet
     {
         static Thread mthread = new Thread(DrawMap);
         /// <summary>
-        /// Déclaration de la structure des paramettres
+        /// Parameters structure.
         /// </summary>
         private struct Param
         {
@@ -19,14 +19,14 @@ namespace Projet
             public int onlyRedrawMap;
         }
         /// <summary>
-        /// Affichage de la map (Gestion des Threads)
+        /// Map display, with thread management. 
         /// </summary>
-        /// <param name="map">map utilisé</param>
-        /// <param name="IconeType">Type d'icone utilisé</param>
-        /// <param name="test">Si version test</param>
-        /// <param name="activeSlider">slider actuellement activé</param>
-        /// <param name="onlyRedrawMap">Savoir ce qu'il faut réécrire (Map et/ou slider)</param>
-        /// <param name="oldSelectSlider">Slider activé précédement</param>
+        /// <param name="map">The 'map' array, where the game is stored</param>
+        /// <param name="IconeType">Icone type</param>
+        /// <param name="test">Jsut for test purpose, only there because it could be useful in specifics cases</param>
+        /// <param name="activeSlider">The slider in use</param>
+        /// <param name="onlyRedrawMap"> Allow to choose what to redraw : the map, the sliders or both (0,1,2)</param>
+        /// <param name="oldSelectSlider">The old selected slider</param>
         public static void Draw(Cell[,] map, int IconeType, int test, int activeSlider, int onlyRedrawMap, int oldSelectSlider)
         {
             Param p;
@@ -52,9 +52,9 @@ namespace Projet
             
         }
         /// <summary>
-        /// Affichage de la map
+        /// Display of the map.
         /// </summary>
-        /// <param name="p">Parametres de la map</param>
+        /// <param name="p">All parameters of the map</param>
         private static void DrawMap(object p)
         {
             Param param = (Param) p;
@@ -138,9 +138,9 @@ namespace Projet
 
         }
         /// <summary>
-        /// Affichage du slider de droite
+        /// Display of the sliders. 
         /// </summary>
-        /// <param name="select">slider actuellement séléctionné</param>
+        /// <param name="select">Slider in use</param>
         public static void DisplaySlider(int select)
         {
             Console.ResetColor();

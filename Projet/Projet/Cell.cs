@@ -8,8 +8,10 @@
         private float height;
         private bool isFireable;
 
-        
 
+        /// <summary>
+        /// Region with all accessers/getters necessary for the project. 
+        /// </summary>
         #region accessers & getters 
         /// <summary>
         /// Récupere le type d'une cellule
@@ -90,10 +92,10 @@
         #endregion
 
         /// <summary>
-        /// Retourne un caractére en fonction du type retourné
+        /// Return the symbol associated with the type and the icone type. 
         /// </summary>
-        /// <param name="IconeType">Type d'icone séléctionné</param>
-        /// <returns>Caractére a affiché</returns>
+        /// <param name="IconeType">The icone type. Refer to how the a type should look</param>
+        /// <returns>The "char" to display</returns>
         public char GetDisplaySymbol(int IconeType)
         {
             char rtrn;

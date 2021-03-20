@@ -6,7 +6,7 @@ namespace Projet
     class Config
     {
         /// <summary>
-        /// Initialiser le titre de la console
+        /// Initiate title of the console. 
         /// </summary>
         /// <param name="title">Nom de l'onglet</param>
         public static void SetTitle(string title)
@@ -14,7 +14,7 @@ namespace Projet
             Console.Title = "> The Woods - " + title + " | Par Romain Pathé & Alexandre Michaud";
         }
         /// <summary>
-        /// Librairie externe permettant de récupérer les informations du systéme de l'utilisateur afin de set en pleine ecran la console
+        /// Library allowing to get user information, as Length/height of the screen.
         /// </summary>
         [DllImport("kernel32.dll", ExactSpelling = true)]
         private static extern IntPtr GetConsoleWindow();
@@ -22,7 +22,7 @@ namespace Projet
         [DllImport("user32.dll", CharSet = CharSet.Auto, SetLastError = true)]
         private static extern bool ShowWindow(IntPtr hWnd, int nCmdShow);
         /// <summary>
-        /// Fonction pour set le full screen de l'utilisateur
+        /// Full screen function
         /// </summary>
         public static void SetFullScreen()
         {
@@ -32,10 +32,9 @@ namespace Projet
         }
 
         /// <summary>
-        /// Méthode permettant la remise a 0 de la console avec le design de base
+        /// More advanced clear. 
         /// </summary>
-        /// <param name=title>Titre a afficher dans la console</param>
-        /// <returns>Aucun retour (Fonction d'affichage)</returns>
+        /// <param name=title>Title to show on the console</param>
         public static void ClearConsole(string title)
         {
             SetFullScreen();
@@ -55,12 +54,5 @@ namespace Projet
                 Console.Write("*");
             };
         }
-
-
-
-
-
-
-
     }
 }

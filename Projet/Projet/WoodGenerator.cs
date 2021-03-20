@@ -10,6 +10,9 @@ namespace Projet
         private static int rockProportion = 100;
         private static int grassProportion = 100;
 
+        /// <summary>
+        /// Region with all accessers/getters necessary for the project. 
+        /// </summary>
         #region getters && setters
         public static int GetTreeProportion()
         {
@@ -58,7 +61,10 @@ namespace Projet
 
         #endregion
 
-
+        /// <summary>
+        /// Generate the woods with semi random generation. 
+        /// </summary>
+        /// <returns>A Cell array already filled</returns>
         public static Cell[,] GenerateWoods()
         {
             int maxl = ((Console.WindowWidth - Console.WindowWidth / 3 + Console.WindowWidth / 10) / 2) - 1;
@@ -162,7 +168,14 @@ namespace Projet
 
             return map;
         }
-
+        /// <summary>
+        /// Get the amount of cell with specific type around a specific cell. 
+        /// </summary>
+        /// <param name="map">The 'map' array, where the game is stored</param>
+        /// <param name="x">Abscissa position of the cell to check</param>
+        /// <param name="y">Ordonate position of the cell to check</param>
+        /// <param name="type">The cell's type to check</param>
+        /// <returns>The amount of cell fullfilling the test</returns>
         private static int GetSurrounding(Cell[,] map, int x, int y, int type)
         {
             int somme = 0;
@@ -180,6 +193,13 @@ namespace Projet
             return somme;
         }
 
+        /// <summary>
+        /// Return a cell at a specific place, with connection between edges. 
+        /// </summary>
+        /// <param name="map">The 'map' array, where the game is stored</param>
+        /// <param name="x">Abscissa position of the cell to check</param>
+        /// <param name="y">Ordonate position of the cell to check</param>
+        /// <returns>The cell</returns>
         public static Cell GetCase(Cell[,] map, int x, int y)
         {
             Cell rtrn;
