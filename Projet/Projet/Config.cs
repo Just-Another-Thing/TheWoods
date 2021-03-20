@@ -13,7 +13,6 @@ namespace Projet
         {
             Console.Title = "> The Woods - " + title + " | Par Romain Pathé & Alexandre Michaud";
         }
-
         /// <summary>
         /// Librairie externe permettant de récupérer les informations du systéme de l'utilisateur afin de set en pleine ecran la console
         /// </summary>
@@ -31,7 +30,6 @@ namespace Projet
             Console.SetWindowSize(Console.LargestWindowWidth, Console.LargestWindowHeight); 
             ShowWindow(ThisConsole, status);
         }
-
 
         /// <summary>
         /// Méthode permettant la remise a 0 de la console avec le design de base

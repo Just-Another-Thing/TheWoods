@@ -6,6 +6,9 @@ namespace Projet
     class Draws
     {
         static Thread mthread = new Thread(DrawMap);
+        /// <summary>
+        /// Déclaration de la structure des paramettres
+        /// </summary>
         private struct Param
         {
             public Cell[,] map;
@@ -15,7 +18,15 @@ namespace Projet
             public int oldSelectTab;
             public int onlyRedrawMap;
         }
-
+        /// <summary>
+        /// Affichage de la map (Gestion des Threads)
+        /// </summary>
+        /// <param name="map">map utilisé</param>
+        /// <param name="IconeType">Type d'icone utilisé</param>
+        /// <param name="test">Si version test</param>
+        /// <param name="activeSlider">slider actuellement activé</param>
+        /// <param name="onlyRedrawMap">Savoir ce qu'il faut réécrire (Map et/ou slider)</param>
+        /// <param name="oldSelectSlider">Slider activé précédement</param>
         public static void Draw(Cell[,] map, int IconeType, int test, int activeSlider, int onlyRedrawMap, int oldSelectSlider)
         {
             Param p;
@@ -40,7 +51,10 @@ namespace Projet
 
             
         }
-
+        /// <summary>
+        /// Affichage de la map
+        /// </summary>
+        /// <param name="p">Parametres de la map</param>
         private static void DrawMap(object p)
         {
             Param param = (Param) p;
@@ -123,7 +137,10 @@ namespace Projet
             }
 
         }
-
+        /// <summary>
+        /// Affichage du slider de droite
+        /// </summary>
+        /// <param name="select">slider actuellement séléctionné</param>
         public static void DisplaySlider(int select)
         {
             Console.ResetColor();
@@ -289,7 +306,5 @@ namespace Projet
             }
 
         }
-
-
     }
 }

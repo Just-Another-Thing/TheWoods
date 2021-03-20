@@ -4,7 +4,7 @@ namespace Projet
 {
     class Program
     {
-        static private int onlyRedrawMap = 2;
+        private static int onlyRedrawMap = 2;
         public static Cell[,] map;
         #region accessers
         static public void SetOnlyRedrawMap(int value)
@@ -13,8 +13,10 @@ namespace Projet
         }
         #endregion
         
-        //OUI
-        static void Main(string[] args)
+        /// <summary>
+        /// Methode de début du programme
+        /// </summary>
+        static void Main()
         {
             int[] activeSlider = { 0, 0};
             Slider.GenerateSlider();
@@ -26,23 +28,19 @@ namespace Projet
                 Draws.Draw(map, Slider.GetSliderListByID(3).GetLastSelect(), 0, activeSlider[0], onlyRedrawMap, activeSlider[1]);
                 activeSlider = Navigation.NavigationManager(activeSlider);
             } while (activeSlider[0] != -1);
-            
-
-
-
 
             Console.ReadKey();
             
         }
-
-
-
+        /// <summary>
+        /// Méthode afin de passer au tour suivant et de mettre le feu
+        /// </summary>
+        /// <param name="map">Map sur laquel les actions vont être effectué</param>
         public static void PassTour(Cell[,] map)
         {
             
             if (Slider.GetSliderListByID(4).GetLastSelect() == 0)
             {
-                //les feux qui ont commencés au tour précédent deviennent propagateurs. 
                 for (int i = 0; i < map.GetLength(0); i++)
                 {
                     for (int j = 0; j < map.GetLength(1); j++)
@@ -86,6 +84,7 @@ namespace Projet
             Console.SetCursorPosition(0,0);
         }
 
+
         static bool AreSurroundingInFire(Cell[,] map, int x, int y)
         {
             int somme = 0;
@@ -111,7 +110,10 @@ namespace Projet
                 return false;
             }
         }
-
+        /// <summary>
+        /// Permet d'initialisé un feu sur la map
+        /// </summary>
+        /// <param name="map">Map sur laquel un feu va ce créer</param>
         public static void InitiateFire(Cell[,] map)
         {
             Random rdm = new Random();

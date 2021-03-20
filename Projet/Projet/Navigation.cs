@@ -6,8 +6,8 @@ namespace Projet
     {
 
          /// <summary>Permet de gérer la navigation dans le menu de droite</summary>
-         /// <param name="ActivateSlider">ID du slider activé</param>
-         /// <returns>L'ID du nouveau slider activé</returns>
+         /// <param name="ActivateSlider">Tableau avec ID du slider activé</param>
+         /// <returns>Tableau du nouveau slider activé et de l'ancien</returns>
         public static int[] NavigationManager(int[] ActivateSlider)
         {
             bool result = false;

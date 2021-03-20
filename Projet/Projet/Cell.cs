@@ -88,6 +88,7 @@
             this.isFireable = isFireable;
         }
         #endregion
+
         /// <summary>
         /// Retourne un caractére en fonction du type retourné
         /// </summary>
