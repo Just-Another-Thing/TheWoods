@@ -68,8 +68,8 @@ namespace Projet
         {
             int maxl = ((Console.WindowWidth - Console.WindowWidth / 3 + Console.WindowWidth / 10) / 2) - 1;
             int maxm = Console.WindowHeight - 1;
-            int l = (Navigation.GetSliderListByID(1).GetLastSelect() + 1) * maxl / Navigation.GetSliderListByID(1).GetValue().Length;
-            int c = (Navigation.GetSliderListByID(2).GetLastSelect() + 1) * maxm / Navigation.GetSliderListByID(2).GetValue().Length;
+            int l = (Slider.GetSliderListByID(1).GetLastSelect() + 1) * maxl / Slider.GetSliderListByID(1).GetValue().Length;
+            int c = (Slider.GetSliderListByID(2).GetLastSelect() + 1) * maxm / Slider.GetSliderListByID(2).GetValue().Length;
 
 
             Random rdm = new Random();
@@ -108,7 +108,7 @@ namespace Projet
                 {
                     float pourc = GetSurrounding(map, i, j, 5);
                     float rand = rdm.Next(0, 100);
-                    if (rand <= (pourc * 6 + 10)+(waterProportion/10-10) && map[i, j].GetType() == 3)
+                    if (rand <= (pourc * 6 + 10)+(waterProportion/10-10) && map[i, j].GetCellType() == 3)
                     {
                         map[i, j].SetType(5);
                         map[i, j].SetLife(0);
@@ -124,7 +124,7 @@ namespace Projet
                 {
                     float pourc = GetSurrounding(map, i, j, 2);
                     float rand = rdm.Next(0, 100);
-                    if (rand <= (pourc * 10)+(leaveProportion / 10-10) && map[i, j].GetType() == 3)
+                    if (rand <= (pourc * 10)+(leaveProportion / 10-10) && map[i, j].GetCellType() == 3)
                     {
                         map[i, j].SetType(4);
                         map[i, j].SetLife(4);
@@ -140,7 +140,7 @@ namespace Projet
                 {
                     float pourc = GetSurrounding(map, i, j, 5);
                     float rand = rdm.Next(0, 100);
-                    if (rand <= (pourc * 6 + 10) + (rockProportion / 10-10) && map[i, j].GetType() == 3)
+                    if (rand <= (pourc * 6 + 10) + (rockProportion / 10-10) && map[i, j].GetCellType() == 3)
                     {
                         map[i, j].SetType(6);
                         map[i, j].SetLife(0);
@@ -155,7 +155,7 @@ namespace Projet
                     float pourc = GetSurrounding(map, i, j, 5)/2;
                     pourc += GetSurrounding(map, i, j, 2) / 2;
                     float rand = rdm.Next(0, 100);
-                    if (rand <= (pourc * 12)+(grassProportion / 10-10) && map[i, j].GetType() == 3)
+                    if (rand <= (pourc * 12)+(grassProportion / 10-10) && map[i, j].GetCellType() == 3)
                     {
                         map[i, j].SetType(1);
                         map[i, j].SetLife(8);
@@ -168,20 +168,6 @@ namespace Projet
             return map;
         }
 
-        private static int HeightSurrounding(Cell[,] map, int x, int y)
-        {
-            float height = 0;
-            for (int i=-1; i<=1; i++)
-            {
-                for (int j=-1; j<=1; j++)
-                {
-                    Cell c = GetCase(map, x+i, y+j);
-                    height += c.GetHeight();
-                }
-            }
-            return 0;
-        }
-
         private static int GetSurrounding(Cell[,] map, int x, int y, int type)
         {
             int somme = 0;
@@ -190,7 +176,7 @@ namespace Projet
                 for (int j = -1; j <= 1; j++)
                 {
                     Cell c = GetCase(map, x + i, y + j);
-                    if (c.GetType() == type)
+                    if (c.GetCellType() == type)
                     {
                         somme += 1;
                     }

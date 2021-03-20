@@ -11,8 +11,7 @@ namespace Projet
     {
         #region ProgrammStart
 
-
-
+        
         public static void ProgrammStart()
         {
             // Delete ScrollBar 

@@ -17,7 +17,7 @@ namespace Projet
         
 
         #region accessers & getters 
-            public int GetType()
+        public int GetCellType()
         {
             return this.type;
         }

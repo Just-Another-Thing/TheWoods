@@ -9,27 +9,10 @@ namespace Projet
 {
     class Navigation
     {
-        private static Slider[] SliderList = new Slider[10];
 
-
-        #region Getters & Accessers
-
-        public static Slider[] GetSliderList()
-        {
-            return SliderList;
-        }
-        public static Slider GetSliderListByID(int id)
-        {
-            return SliderList[id];
-        }
-        public static void AddSlider(int position, Slider NewSlider)
-        {
-            SliderList[position] = NewSlider;
-        }
-        #endregion
-
-
-
+         /// <summary>Permet de gérer la navigation dans le menu de droite</summary>
+         /// <param name="ActivateSlider">ID du slider activé</param>
+         /// <returns>L'ID du nouveau slider activé</returns>
         public static int NavigationManager(int ActivateSlider)
         {
             bool result = false;
@@ -40,13 +23,13 @@ namespace Projet
                 ConsoleKey key = Console.ReadKey().Key;
                 if (key == ConsoleKey.LeftArrow)
                 {
-                    for (int i = 0; i<GetSliderList().Length;i++)
+                    for (int i = 0; i<Slider.GetSliderList().Length;i++)
                     {
                         if (i == ActivateSlider)
                         {
-                            if (GetSliderListByID(i).GetLastSelect() > 0)
+                            if (Slider.GetSliderListByID(i).GetLastSelect() > 0)
                             {
-                                GetSliderList()[i].SetLastSelect(GetSliderListByID(i).GetLastSelect() - 1);
+                                Slider.GetSliderList()[i].SetLastSelect(Slider.GetSliderListByID(i).GetLastSelect() - 1);
                             }
                         }
                     }
@@ -62,13 +45,13 @@ namespace Projet
                 }
                 else if (key == ConsoleKey.RightArrow)
                 {
-                    for (int i = 0; i < SliderList.Length; i++)
+                    for (int i = 0; i < Slider.GetSliderList().Length; i++)
                     {
                         if (i == ActivateSlider)
                         {
-                            if (GetSliderListByID(i).GetLastSelect() < GetSliderListByID(i).GetValue().Length-1)
+                            if (Slider.GetSliderListByID(i).GetLastSelect() < Slider.GetSliderListByID(i).GetValue().Length-1)
                             {
-                                GetSliderList()[i].SetLastSelect(GetSliderListByID(i).GetLastSelect() + 1);
+                                Slider.GetSliderList()[i].SetLastSelect(Slider.GetSliderListByID(i).GetLastSelect() + 1);
                             }
                         }
                     }
@@ -87,12 +70,12 @@ namespace Projet
                     if (ActivateSlider > 0)
                     {
                         ActivateSlider--;
-                        int activePosition = GetSliderListByID(ActivateSlider).GetPosition();
-                        for (int i = 1; i < GetSliderList().Length; i++)
+                        int activePosition = Slider.GetSliderListByID(ActivateSlider).GetPosition();
+                        for (int i = 1; i < Slider.GetSliderList().Length; i++)
                         {
                             if(activePosition < 2)
                             {
-                                GetSliderListByID(i).SetPosition(GetSliderListByID(i).GetPosition() + 4);
+                                Slider.GetSliderListByID(i).SetPosition(Slider.GetSliderListByID(i).GetPosition() + 4);
                             }
                         }
                     }
@@ -101,15 +84,15 @@ namespace Projet
                 }
                 else if (key == ConsoleKey.DownArrow)
                 {
-                    if (ActivateSlider < SliderList.Length-1)
+                    if (ActivateSlider < Slider.GetSliderList().Length-1)
                     {
                         ActivateSlider++;
-                        int activePosition = GetSliderListByID(ActivateSlider).GetPosition();
-                        for (int i = 1; i < GetSliderList().Length; i++)
+                        int activePosition = Slider.GetSliderListByID(ActivateSlider).GetPosition();
+                        for (int i = 1; i < Slider.GetSliderList().Length; i++)
                         {
                             if (activePosition > Console.WindowHeight - 2)
                             {
-                                GetSliderListByID(i).SetPosition(GetSliderListByID(i).GetPosition() - 4);
+                                Slider.GetSliderListByID(i).SetPosition(Slider.GetSliderListByID(i).GetPosition() - 4);
                             }
                         }
                     }
@@ -139,12 +122,11 @@ namespace Projet
                 Console.SetCursorPosition(0, 0);
                 Console.WriteLine("*");
             } while (!result);
-            //here
-            WoodGenerator.SetTreeProportion((GetSliderListByID(5).GetLastSelect()+1)*10);
-            WoodGenerator.SetWaterProportion((GetSliderListByID(6).GetLastSelect()+1)*10);
-            WoodGenerator.SetLeaveProportion((GetSliderListByID(7).GetLastSelect() + 1) * 10);
-            WoodGenerator.SetRockProportion((GetSliderListByID(8).GetLastSelect() + 1) * 10);
-            WoodGenerator.SetGrassProportion((GetSliderListByID(9).GetLastSelect() + 1) * 10);
+            WoodGenerator.SetTreeProportion((Slider.GetSliderListByID(5).GetLastSelect()+1)*10);
+            WoodGenerator.SetWaterProportion((Slider.GetSliderListByID(6).GetLastSelect()+1)*10);
+            WoodGenerator.SetLeaveProportion((Slider.GetSliderListByID(7).GetLastSelect() + 1) * 10);
+            WoodGenerator.SetRockProportion((Slider.GetSliderListByID(8).GetLastSelect() + 1) * 10);
+            WoodGenerator.SetGrassProportion((Slider.GetSliderListByID(9).GetLastSelect() + 1) * 10);
 
             return ActivateSlider;
         }
