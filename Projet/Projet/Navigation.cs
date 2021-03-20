@@ -50,7 +50,14 @@ namespace Projet
                             }
                         }
                     }
-                    Program.setOnlyRedrawMap(1);
+                    if (ActivateSlider == 3)
+                    {
+                        Program.setOnlyRedrawMap(2);
+                    }
+                    else
+                    {
+                        Program.setOnlyRedrawMap(1);
+                    }
                     result = true;
                 }
                 else if (key == ConsoleKey.RightArrow)
@@ -65,7 +72,14 @@ namespace Projet
                             }
                         }
                     }
-                    Program.setOnlyRedrawMap(1);
+                    if (ActivateSlider == 3)
+                    {
+                        Program.setOnlyRedrawMap(2);
+                    }
+                    else
+                    {
+                        Program.setOnlyRedrawMap(1);
+                    }
                     result = true;
                 }
                 else if (key == ConsoleKey.UpArrow)

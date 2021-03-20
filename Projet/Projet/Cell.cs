@@ -75,72 +75,62 @@ namespace Projet
             string rtrn = "";
             if (IconeType == 0)
             {
-                if (this.type == 1)
+                switch (this.type)
                 {
-                    rtrn = "x";
-                }
-                else if (this.type == 2)
-                {
-                    rtrn = "*";
-                }
-                else if (this.type == 3)
-                {
-                    rtrn = " ";
-                }
-                else if (this.type == 4)
-                {
-                    rtrn = "#";
-                }
-                else if (this.type == 5)
-                {
-                    rtrn = "~";
-                }
-                else if (this.type == 6)
-                {
-                    rtrn = "O";
-                }
-                else if (this.type == 7)
-                {
-                    rtrn = "'";
-                }
-                else if (this.type == 8)
-                {
-                    rtrn = ".";
+                    case 1:
+                        rtrn = "x";
+                        break;
+                    case 2:
+                        rtrn = "*";
+                        break;
+                    case 3:
+                        rtrn = " ";
+                        break;
+                    case 4:
+                        rtrn = "#";
+                        break;
+                    case 5:
+                        rtrn = "~";
+                        break;
+                    case 6:
+                        rtrn = "O";
+                        break;
+                    case 7:
+                        rtrn = "'";
+                        break;
+                    case 8:
+                        rtrn = ".";
+                        break;
                 }
             }
             else
             {
-                if (this.type == 1)
+                switch (this.type)
                 {
-                    rtrn = "x";
-                }
-                else if (this.type == 2)
-                {
-                    rtrn = "*";
-                }
-                else if (this.type == 3)
-                {
-                    rtrn = "+";
-                }
-                else if (this.type == 4)
-                {
-                    rtrn = " ";
-                }
-                else if (this.type == 5)
-                {
-                    rtrn = "/";
-                }
-                else if (this.type == 6)
-                {
-                    rtrn = "#";
-                }
-                else if (this.type == 7)
-                {
-                    rtrn = "-";
-                }
-                else if (this.type == 8)
-                {
-                    rtrn = ".";
+                    case 1:
+                        rtrn = "x";
+                        break;
+                    case 2:
+                        rtrn = "*";
+                        break;
+                    case 3:
+                        rtrn = "+";
+                        break;
+                    case 4:
+                        rtrn = " ";
+                        break;
+                    case 5:
+                        rtrn = "/";
+                        break;
+                    case 6:
+                        rtrn = "#";
+                        break;
+                    case 7:
+                        rtrn = "-";
+                        break;
+                    case 8:
+                        rtrn = ".";
+                        break;
                 }
             }
 
