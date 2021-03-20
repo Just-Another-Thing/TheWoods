@@ -28,6 +28,10 @@ namespace Projet
                                 if (Slider.GetSliderListByID(i).GetLastSelect() > 0)
                                 {
                                     Slider.GetSliderList()[i].SetLastSelect(Slider.GetSliderListByID(i).GetLastSelect() - 1);
+                                    if (ActivateSlider[0] == 3)
+                                    {
+                                        reDraw = 2;
+                                    }
                                 }
                             }
                         }
@@ -41,6 +45,10 @@ namespace Projet
                                 if (Slider.GetSliderListByID(i).GetLastSelect() < Slider.GetSliderListByID(i).GetValue().Length - 1)
                                 {
                                     Slider.GetSliderList()[i].SetLastSelect(Slider.GetSliderListByID(i).GetLastSelect() + 1);
+                                    if (ActivateSlider[0] == 3)
+                                    {
+                                        reDraw = 2;
+                                    }
                                 }
                             }
                         }
@@ -98,10 +106,8 @@ namespace Projet
                         result = true;
                         break;
                 }
-                if (ActivateSlider[0] == 3)
-                {
-                    reDraw = 2;
-                }
+                
+                
                 Program.SetOnlyRedrawMap(reDraw);
                 Console.SetCursorPosition(0, 0);
                 Console.WriteLine("*");
