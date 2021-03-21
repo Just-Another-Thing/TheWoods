@@ -1,11 +1,12 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Projet
 {
     class Program
     {
         private static int onlyRedrawMap = 2;
-        public static Cell[,] map;
+        private static List<Cell[,]> maps= new List<Cell[,]>();
 
         /// <summary>
         /// Region with all accessers/getters necessary for the project. 
@@ -14,6 +15,16 @@ namespace Projet
         static public void SetOnlyRedrawMap(int value)
         {
             onlyRedrawMap = value;
+        }
+
+        static public List<Cell[,]> GetMaps()
+        {
+            return maps;
+        }
+
+        static public Cell[,] GetMap(int version = 0)
+        {
+            return maps[maps.Count-1-version];
         }
         #endregion
         
@@ -25,11 +36,11 @@ namespace Projet
             int[] activeSlider = { 0, 0};
             Slider.GenerateSlider();
             Menu.ProgrammStart();
-            map = WoodGenerator.GenerateWoods();
+            WoodGenerator.GenerateWoods();
 
             do
             {
-                Draws.Draw(map, Slider.GetSliderListByID(3).GetLastSelect(), 0, activeSlider[0], onlyRedrawMap, activeSlider[1]);
+                Draws.Draw(GetMap(), Slider.GetSliderListByID(3).GetLastSelect(), 0, activeSlider[0], onlyRedrawMap, activeSlider[1]);
                 activeSlider = Navigation.NavigationManager(activeSlider);
             } while (activeSlider[0] != -1);
 
@@ -86,6 +97,7 @@ namespace Projet
                 }
             }
             Console.SetCursorPosition(0,0);
+            Program.SaveMaps(Program.GetMaps(), map, false);
         }
 
         /// <summary>
@@ -137,6 +149,20 @@ namespace Projet
             } while (map[x, y].GetIsFireable() == false || map[x,y].GetIsInFire() != 0);
 
             map[x, y].SetIsInFire(2);
+        }
+
+        public static void SaveMaps(List<Cell[,]> maps,Cell[,] map, bool restart)
+        {
+            if (restart)
+            {
+                maps.Clear();
+                maps.Add(map);
+            }
+            else
+            {
+                maps.Add(map);
+            }
+            
         }
     }
 }

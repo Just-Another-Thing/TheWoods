@@ -87,7 +87,7 @@ namespace Projet
                         result = true;
                         break;
                     case ConsoleKey.Enter:
-                        Program.map = WoodGenerator.GenerateWoods();
+                        WoodGenerator.GenerateWoods();
                         reDraw = 2;
                         result = true;
                         break;
@@ -96,12 +96,12 @@ namespace Projet
                         result = true;
                         break;
                     case ConsoleKey.Spacebar:
-                        Program.PassTour(Program.map);
+                        Program.PassTour(Program.GetMap());
                         reDraw = 0;
                         result = true;
                         break;
                     case ConsoleKey.F:
-                        Program.InitiateFire(Program.map);
+                        Program.InitiateFire(Program.GetMap());
                         reDraw = 0;
                         result = true;
                         break;

@@ -65,7 +65,7 @@ namespace Projet
         /// Generate the woods with semi random generation. 
         /// </summary>
         /// <returns>A Cell array already filled</returns>
-        public static Cell[,] GenerateWoods()
+        public static void GenerateWoods()
         {
             int maxl = ((Console.WindowWidth - Console.WindowWidth / 3 + Console.WindowWidth / 10) / 2) - 1;
             int maxm = Console.WindowHeight - 1;
@@ -165,8 +165,7 @@ namespace Projet
                 }
             }
 
-
-            return map;
+            Program.SaveMaps(Program.GetMaps(), map, true);
         }
         /// <summary>
         /// Get the amount of cell with specific type around a specific cell. 
