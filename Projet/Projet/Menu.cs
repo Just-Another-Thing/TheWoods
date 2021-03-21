@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Diagnostics;
 
 namespace Projet
 {
@@ -11,10 +6,12 @@ namespace Projet
     {
         #region ProgrammStart
 
-        
+        /// <summary>
+        /// Start method
+        /// </summary>
         public static void ProgrammStart()
         {
-            // Delete ScrollBar 
+            /// Suppresion, de la scroll de gauche afin d'avoir une console et un environnement d'éxecution plus propre
             int origWidth = Console.WindowWidth;
             int origHeight = Console.WindowHeight;
             int width = origWidth / 2;
@@ -22,7 +19,6 @@ namespace Projet
             Console.SetWindowSize(width, height);
             Console.SetBufferSize(width, height);
 
-            // Menu de start
             string texte;
             Config.ClearConsole("Menu de démarage");
             Console.ForegroundColor = ConsoleColor.Red;
@@ -63,12 +59,9 @@ namespace Projet
                 Console.SetCursorPosition(0, 0);
                 Console.Write("*");
             } while(!result);
-
-            //Config.NavigationManager();
-
             if (result) return;
 
-
+            /// J'ai juste le seum que la console ne prenne pas les caractéres spéciaux mais j'aime bien ce que j'ai fait ducoup je le garde
             //Console.WriteLine("╭━━━━╮╭╮╱╭╮╭━━━╮ ╭╮╭╮╭╮╭━━━╮╭━━━╮╭━━━╮╭━━━╮");
             //Console.WriteLine("┃╭╮╭╮┃┃┃╱┃┃┃╭━━╯ ┃┃┃┃┃┃┃╭━╮┃┃╭━╮┃╰╮╭╮┃┃╭━╮┃");
             //Console.WriteLine("╰╯┃┃╰╯┃╰━╯┃┃╰━━╮ ┃┃┃┃┃┃┃┃╱┃┃┃┃╱┃┃╱┃┃┃┃┃╰━━╮");
