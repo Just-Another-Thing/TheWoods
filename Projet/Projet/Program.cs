@@ -29,36 +29,12 @@ namespace Projet
 
             do
             {
-                Draws.Draw(map, Navigation.GetSliderListByID(3).GetLastSelect(), 0, activeSlider, onlyRedrawMap);
+                Draws.Draw(map, Slider.GetSliderListByID(3).GetLastSelect(), 0, activeSlider, onlyRedrawMap);
                 activeSlider = Navigation.NavigationManager(activeSlider);
             } while (activeSlider != -1);
-            
-
-
-
 
             Console.ReadKey();
-
-
-            
-                /*Cell[,] map = WoodGenerator.GenerateWoods(55, 29);
-                Draw(map, 0);
-                Console.ReadKey();
-                InitiateFire(map);
-                Console.SetCursorPosition(0, 0);
-                Draw(map, 0);
-                while (true)
-                {
-                    PassTour(map);
-                    ConsoleKey k =Console.ReadKey().Key;
-                    if (k == ConsoleKey.F)
-                    {
-                        InitiateFire(map);
-                    }
-                }*/
-            
-            
-        }
+           }
 
 
 
