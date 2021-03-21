@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Projet
 {
@@ -16,6 +12,9 @@ namespace Projet
         private int SliderType;
         private static readonly Slider[] SliderList = new Slider[10];
 
+        /// <summary>
+        /// Region with all accessers/getters necessary for the project. 
+        /// </summary>
         #region Getters & Accessers
         public int GetPosition()
         {
@@ -75,27 +74,27 @@ namespace Projet
 
         #region Accés au slider
         /// <summary>
-        /// Retourne la liste des sliders
+        /// Return all sliders
         /// </summary>
-        /// <returns>Tableau de slider</returns>
+        /// <returns>Array of slider</returns>
         public static Slider[] GetSliderList()
         {
             return SliderList;
         }
         /// <summary>
-        /// Permet d'obtenir les informations du slider demandé
+        /// Get slider from the id (position). 
         /// </summary>
-        /// <param name="id">ID du slider recherché</param>
-        /// <returns>Les informations du slider recherché</returns>
+        /// <param name="id">Id of the wanted slider</param>
+        /// <returns>The slider</returns>
         public static Slider GetSliderListByID(int id)
         {
             return SliderList[id];
         }
         /// <summary>
-        /// Permet d'ajouter un slider
+        /// Add one new slider to the list
         /// </summary>
-        /// <param name="id">ID du slider ajouté</param>
-        /// <param name="NewSlider">Informations du slider ajouté</param>
+        /// <param name="id">Id of the new slider</param>
+        /// <param name="NewSlider">The slider to add</param>
         public static void AddSlider(int id, Slider NewSlider)
         {
             SliderList[id] = NewSlider;
@@ -126,17 +125,17 @@ namespace Projet
         #endregion
 
         /// <summary>
-        /// Permet de centrer un l'élément placer en arguments dans le slider
+        /// Center one element inside a slider.
         /// </summary>
-        /// <param name="element">élément a centrer</param>
-        /// <returns>Position de début d'ecriture afin que l'élément sois centrer</returns>
+        /// <param name="element">text to center</param>
+        /// <returns>Amount of "spaces" needed to center</returns>
         public int CenterPositionSlider(string element)
         {
             int CenterPosition = (Console.WindowWidth - Console.WindowWidth / 3 + Console.WindowWidth / 10) - ((Console.WindowWidth / 10 - Console.WindowWidth / 3) / 2) - element.Length / 2;
             return CenterPosition;
         }
         /// <summary>
-        /// Fonction permettant de Generer tous les sliders nécéssaire au fonctionnement de l'application
+        /// Generate all necessary sliders. 
         /// </summary>
         public static void GenerateSlider()
         {
