@@ -22,6 +22,7 @@ namespace Projet
         /// </summary>
         static void Main()
         {
+            Console.CursorVisible = false;
             int[] activeSlider = { 0, 0};
             Slider.GenerateSlider();
             Menu.ProgrammStart();
