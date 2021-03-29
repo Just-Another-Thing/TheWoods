@@ -104,9 +104,14 @@
                 char[] tab = { 'x','*',' ','#','~','O','\'','.' };
                 rtrn = tab[this.type - 1];
             }
-            else
+            else if(IconeType == 1)
             {
                 char[] tab = { 'x', '*', '+', ' ', '/', '#', '-', '.' };
+                rtrn = tab[this.type - 1];
+            }
+            else
+            {
+                char[] tab = { ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ' };
                 rtrn = tab[this.type - 1];
             }
             return rtrn;

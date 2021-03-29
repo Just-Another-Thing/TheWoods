@@ -148,7 +148,7 @@ namespace Projet
             string[] value02 = { "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*" };
             string[] interval02 = { "5", "100" };
             AddSlider(2, new Slider("Hauteur", value02, interval02, 10, 9, 2));
-            string[] value03 = { "Réaliste", "Consigne" };
+            string[] value03 = { "Réaliste", "Consigne", "Customisé" };
             string[] interval03 = { null };
             AddSlider(3, new Slider("Icone", value03, interval03, 14, 0, 1));
             string[] value04 = { "Activé", "Désactivé" };
