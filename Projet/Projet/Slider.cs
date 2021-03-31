@@ -10,7 +10,7 @@ namespace Projet
         private String Name;
         private String[] Value;
         private int SliderType;
-        private static readonly Slider[] SliderList = new Slider[10];
+        private static readonly Slider[] SliderList = new Slider[11];
 
         /// <summary>
         /// Region with all accessers/getters necessary for the project. 
@@ -161,6 +161,9 @@ namespace Projet
             AddSlider(7, new Slider("Fréquence feuilles", value05, interval05, 30, 9, 2));
             AddSlider(8, new Slider("Fréquence rochers", value05, interval05, 34, 9, 2));
             AddSlider(9, new Slider("Fréquence herbe", value05, interval05, 38, 9, 2));
+            string[] value06 = { "<",">" };
+            string[] interval06 = {};
+            AddSlider(10, new Slider("Retour en arrière", value06, interval06, 42, 0, 4));
         }
 
         #endregion

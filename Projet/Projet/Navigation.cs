@@ -23,7 +23,7 @@ namespace Projet
                     case ConsoleKey.LeftArrow:
                         for (int i = 0; i < Slider.GetSliderList().Length; i++)
                         {
-                            if (i == ActivateSlider[0])
+                            if (i == ActivateSlider[0] && ActivateSlider[0] != 10)
                             {
                                 if (Slider.GetSliderListByID(i).GetLastSelect() > 0)
                                 {
@@ -33,7 +33,11 @@ namespace Projet
                                         reDraw = 2;
                                     }
                                 }
+                            }else if(ActivateSlider[0] == 10)
+                            {
+
                             }
+
                         }
                         result = true;
                         break;

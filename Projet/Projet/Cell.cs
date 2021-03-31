@@ -1,4 +1,6 @@
-﻿namespace Projet
+﻿using TheWoods;
+
+namespace Projet
 {
     public struct Cell
     {
@@ -101,7 +103,7 @@
             char rtrn;
             if (IconeType == 0)
             {
-                char[] tab = { 'x','*',' ','#','~','O','\'','.' };
+                char[] tab = { 'x', '*', ' ', '#', '~', 'O', '\'', '.' };
                 rtrn = tab[this.type - 1];
             }
             else if(IconeType == 1)
@@ -111,7 +113,7 @@
             }
             else
             {
-                char[] tab = { ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ' };
+                char[] tab = CustomIcone.CustomIconeList;
                 rtrn = tab[this.type - 1];
             }
             return rtrn;

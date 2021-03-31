@@ -34,7 +34,7 @@ namespace Projet
         /// </summary>
         static void Main()
         {
-            /*int[] activeSlider = { 0, 0};
+            int[] activeSlider = { 0, 0};
             Slider.GenerateSlider();
             Menu.ProgrammStart();
             WoodGenerator.GenerateWoods();
@@ -44,8 +44,8 @@ namespace Projet
                 Draws.Draw(GetMap(), Slider.GetSliderListByID(3).GetLastSelect(), 0, activeSlider[0], onlyRedrawMap, activeSlider[1]);
                 activeSlider = Navigation.NavigationManager(activeSlider);
             } while (activeSlider[0] != -1);
-            */
-            CustomIcone.CustomIconeMenu();
+            
+            //CustomIcone.CustomIconeMenu();
             Console.ReadKey();
             
         }

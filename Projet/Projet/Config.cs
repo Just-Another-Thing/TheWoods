@@ -8,7 +8,7 @@ namespace Projet
         /// <summary>
         /// Initiate title of the console. 
         /// </summary>
-        /// <param name="title">Nom de l'onglet</param>
+        /// <param name="title">Name of the window</param>
         public static void SetTitle(string title)
         {
             Console.Title = "> The Woods - " + title + " | Par Romain Pathé & Alexandre Michaud";

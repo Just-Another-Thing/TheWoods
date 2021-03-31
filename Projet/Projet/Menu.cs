@@ -11,14 +11,8 @@ namespace Projet
         /// </summary>
         public static void ProgrammStart()
         {
-            /// Suppresion, de la scroll de gauche afin d'avoir une console et un environnement d'éxecution plus propre
-            int origWidth = Console.WindowWidth;
-            int origHeight = Console.WindowHeight;
-            int width = origWidth / 2;
-            int height = origHeight / 4;
-            Console.SetWindowSize(width, height);
-            Console.SetBufferSize(width, height);
 
+            RemoveScrollBar();
             string texte;
             Config.ClearConsole("Menu de démarage");
             Console.ForegroundColor = ConsoleColor.Red;
@@ -70,6 +64,19 @@ namespace Projet
             //Console.WriteLine("╱╱╰╯╱╱╰╯╱╰╯╰━━━╯ ╱╰╯╰╯╱╰━━━╯╰━━━╯╰━━━╯╰━━━╯");
 
 
+        }
+
+        /// <summary>
+        /// Remove scrollbar in left
+        /// </summary>
+        public static void RemoveScrollBar()
+        {
+            int origWidth = Console.WindowWidth;
+            int origHeight = Console.WindowHeight;
+            int width = origWidth / 2;
+            int height = origHeight / 4;
+            Console.SetWindowSize(width, height);
+            Console.SetBufferSize(width, height);
         }
         #endregion
 

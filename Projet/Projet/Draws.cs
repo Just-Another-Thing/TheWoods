@@ -300,6 +300,23 @@ namespace Projet
                             Console.Write("\"");
                             Console.ResetColor();
                             break;
+                        case 4:
+                            for (int j = 0; j < value.Length - 1; j++)
+                            {
+                                stringValue += value[j] + " | ";
+                            }
+                            stringValue += value[value.Length - 1];
+                            Console.ResetColor();
+                            Console.SetCursorPosition(new Slider().CenterPositionSlider(stringValue), position + 1);
+                            for (int j = 0; j < value.Length - 1; j++)
+                            {
+                                Console.Write(value[j]);
+                                Console.ResetColor();
+                                Console.Write(" | ");
+                            }
+                            Console.Write(value[value.Length - 1]);
+                            Console.ResetColor();
+                            break;
                     }
                 }
 
