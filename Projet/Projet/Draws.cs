@@ -17,6 +17,8 @@ namespace Projet
             public int selectTab;
             public int oldSelectTab;
             public int onlyRedrawMap;
+            public int turn;
+            public int turnCount;
         }
         /// <summary>
         /// Map display, with thread management. 
@@ -36,6 +38,8 @@ namespace Projet
             p.selectTab = activeSlider;
             p.oldSelectTab = oldSelectSlider;
             p.onlyRedrawMap = onlyRedrawMap;
+            p.turn = Program.GetTurn();
+            p.turnCount = Program.GetMaps().Count - 1;
 
             if (mthread.IsAlive)
             {
@@ -64,13 +68,14 @@ namespace Projet
             int active = param.selectTab;
             int oldActive = param.oldSelectTab;
             int redraw = param.onlyRedrawMap;
-
-            if (redraw == 2)
+            int turn = param.turn;
+            int turnCount = param.turnCount;
+            if (redraw == 3)
             {
                 Config.ClearConsole("Jeu en cours");
             }
             
-            if (redraw == 1 || redraw == 2)
+            if (redraw == 1 || redraw == 2 || redraw == 3)
             {
                 for (int j = (Console.WindowWidth - Console.WindowWidth / 3 + Console.WindowWidth / 10) + 1; j < Console.WindowWidth - 2; j++)
                 {
@@ -79,10 +84,10 @@ namespace Projet
                     Console.SetCursorPosition(j, Slider.GetSliderListByID(oldActive).GetPosition());
                     Console.Write(" ");
                 }
-                DisplaySlider(active);
+                DisplaySlider(active, turn, turnCount);
             }
             
-            if (redraw == 0 || redraw == 2)
+            if (redraw == 0 || redraw == 2 || redraw == 3)
             {
 
                 int maxl = ((Console.WindowWidth - Console.WindowWidth / 3 + Console.WindowWidth / 10) / 2) - 1;
@@ -141,7 +146,7 @@ namespace Projet
         /// Display of the sliders. 
         /// </summary>
         /// <param name="select">Slider in use</param>
-        public static void DisplaySlider(int select)
+        public static void DisplaySlider(int select, int turn, int turnCount)
         {
             Console.ResetColor();
             for (int i = 0; i < Console.WindowHeight; i++)
@@ -191,6 +196,9 @@ namespace Projet
                     if(i == 0)
                     {
                         Console.Write(" ("+ (Slider.GetSliderListByID(i).GetLastSelect()+1) + "/" +Slider.GetSliderListByID(i).GetValue().Length + ")");
+                    }else if (i == 10)
+                    {
+                        Console.Write(" (" + turn + "/" + turnCount + ")");
                     }
                     Console.ResetColor();
                     string stringValue = "";

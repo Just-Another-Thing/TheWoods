@@ -8,7 +8,7 @@ namespace Projet
     {
         private static int onlyRedrawMap = 2;
         private static List<Cell[,]> maps= new List<Cell[,]>();
-
+        private static int turn = 0;
         /// <summary>
         /// Region with all accessers/getters necessary for the project. 
         /// </summary>
@@ -25,7 +25,27 @@ namespace Projet
 
         static public Cell[,] GetMap(int version = 0)
         {
-            return maps[maps.Count-1-version];
+            return maps[Program.GetTurn()];
+        }
+
+        static public int GetTurn()
+        {
+            return turn;
+        }
+
+        static public void SetTurn(int value)
+        {
+            turn = value;
+        }
+
+        static public void IncrTurn()
+        {
+            turn++;
+        }
+
+        static public void DecrTurn()
+        {
+            turn--;
         }
         #endregion
         
@@ -37,6 +57,7 @@ namespace Projet
             int[] activeSlider = { 0, 0};
             Slider.GenerateSlider();
             Menu.ProgrammStart();
+            Console.Clear();
             WoodGenerator.GenerateWoods();
 
             do
@@ -99,7 +120,6 @@ namespace Projet
                 }
             }
             Console.SetCursorPosition(0,0);
-            Program.SaveMaps(Program.GetMaps(), map, false);
         }
 
         /// <summary>
@@ -159,10 +179,20 @@ namespace Projet
             {
                 maps.Clear();
                 maps.Add(map);
+                turn = 0;
             }
             else
             {
-                maps.Add(map);
+                Cell[,] temp = new Cell[map.GetLength(0), map.GetLength(1)];
+                for (int i =0; i < map.GetLength(0); i++)
+                {
+                    for (int j = 0; j < map.GetLength(1); j++)
+                    {
+                        temp[i, j] = map[i, j];
+                    }
+                }
+                maps.Add(temp);
+                turn++;
             }
             
         }

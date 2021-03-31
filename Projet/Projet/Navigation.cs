@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 
 namespace Projet
 {
@@ -15,6 +16,7 @@ namespace Projet
             Program.SetOnlyRedrawMap(2);
             do
             {
+                Thread.Sleep(100);
                 Console.SetCursorPosition(0, 0);
                 ActivateSlider[1] = ActivateSlider[0];
                 ConsoleKey key = Console.ReadKey().Key; 
@@ -33,9 +35,13 @@ namespace Projet
                                         reDraw = 2;
                                     }
                                 }
-                            }else if(ActivateSlider[0] == 10)
+                            }else if(i == ActivateSlider[0] && ActivateSlider[0] == 10)
                             {
-
+                                if (Program.GetTurn() > 0)
+                                {                
+                                    Program.DecrTurn();
+                                    reDraw = 2;
+                                }
                             }
 
                         }
@@ -44,7 +50,7 @@ namespace Projet
                     case ConsoleKey.RightArrow:
                         for (int i = 0; i < Slider.GetSliderList().Length; i++)
                         {
-                            if (i == ActivateSlider[0])
+                            if (i == ActivateSlider[0] && ActivateSlider[0] != 10)
                             {
                                 if (Slider.GetSliderListByID(i).GetLastSelect() < Slider.GetSliderListByID(i).GetValue().Length - 1)
                                 {
@@ -53,6 +59,14 @@ namespace Projet
                                     {
                                         reDraw = 2;
                                     }
+                                }
+                            }
+                            else if (i == ActivateSlider[0] && ActivateSlider[0] == 10)
+                            {
+                                if (Program.GetTurn() < Program.GetMaps().Count-1)
+                                {
+                                    Program.IncrTurn();
+                                    reDraw = 2;
                                 }
                             }
                         }
@@ -92,7 +106,7 @@ namespace Projet
                         break;
                     case ConsoleKey.Enter:
                         WoodGenerator.GenerateWoods();
-                        reDraw = 2;
+                        reDraw = 3;
                         result = true;
                         break;
                     case ConsoleKey.Escape:
@@ -100,21 +114,27 @@ namespace Projet
                         result = true;
                         break;
                     case ConsoleKey.Spacebar:
+                        Program.SetTurn(Program.GetMaps().Count - 1);
+                        Program.SaveMaps(Program.GetMaps(), Program.GetMap(), false);
                         Program.PassTour(Program.GetMap());
-                        reDraw = 0;
+                        
+                        reDraw = 2;
                         result = true;
+                        
                         break;
                     case ConsoleKey.F:
                         Program.InitiateFire(Program.GetMap());
-                        reDraw = 0;
+                        Program.SaveMaps(Program.GetMaps(), Program.GetMap(), false);
+                        reDraw = 2;
                         result = true;
                         break;
                 }
-                
+           
                 
                 Program.SetOnlyRedrawMap(reDraw);
                 Console.SetCursorPosition(0, 0);
                 Console.WriteLine("*");
+
             } while (!result);
             WoodGenerator.SetTreeProportion((Slider.GetSliderListByID(5).GetLastSelect()+1)*10);
             WoodGenerator.SetWaterProportion((Slider.GetSliderListByID(6).GetLastSelect()+1)*10);
