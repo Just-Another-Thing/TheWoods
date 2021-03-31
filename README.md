@@ -3,10 +3,6 @@
 1. [Carnet de bord](#carnet-de-bord)
 ### Carnet de bord
 ***
-> 05/03/2021
-```
-Lorems Ipsum [Nom de réalisateur]
-```
 > 01/03/2021 au 07/03/2021
 ```
 Création de la map et de la génération
