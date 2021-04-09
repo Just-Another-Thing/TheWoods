@@ -132,7 +132,7 @@ namespace Projet
                 
                 Program.SetOnlyRedrawMap(reDraw);
                 Console.SetCursorPosition(0, 0);
-                Console.WriteLine("*");
+                Console.WriteLine("|");
 
             } while (!result);
             WoodGenerator.SetTreeProportion((Slider.GetSliderListByID(5).GetLastSelect()+1)*10);

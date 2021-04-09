@@ -41,6 +41,7 @@ namespace Projet
             p.turn = Program.GetTurn();
             p.turnCount = Program.GetMaps().Count - 1;
 
+
             if (mthread.IsAlive)
             {
                 mthread.Abort();
@@ -75,6 +76,7 @@ namespace Projet
                 Config.ClearConsole("Jeu en cours");
             }
             
+
             if (redraw == 1 || redraw == 2 || redraw == 3)
             {
                 for (int j = (Console.WindowWidth - Console.WindowWidth / 3 + Console.WindowWidth / 10) + 1; j < Console.WindowWidth - 2; j++)
@@ -86,9 +88,17 @@ namespace Projet
                 }
                 DisplaySlider(active, turn, turnCount);
             }
-            
+            for (int i = 0; i < Console.WindowHeight; i++)
+            {
+                Console.SetCursorPosition(0, i);
+                Console.Write("|");
+                Console.SetCursorPosition(Console.WindowWidth - 2, i);
+                Console.Write("|");
+            };
+            Console.SetCursorPosition(0, 0);
             if (redraw == 0 || redraw == 2 || redraw == 3)
             {
+                
 
                 int maxl = ((Console.WindowWidth - Console.WindowWidth / 3 + Console.WindowWidth / 10) / 2) - 1;
                 int maxh = Console.WindowHeight - 1;
@@ -124,7 +134,18 @@ namespace Projet
                             {
                                 Console.ForegroundColor = ConsoleColor.Red;
                             }
-                            Console.Write(map[i, j].GetDisplaySymbol(IconeType) + " ");
+                            if (Program.GetMaps().Count > 1)
+                            {
+                                if (map[i,j].GetCellType() != 3 && map[i, j].GetCellType() != 5 && map[i, j].GetCellType() != 6)
+                                {
+                                    Console.Write(map[i, j].GetDisplaySymbol(IconeType) + " ");
+                                }
+                            }
+                            else
+                            {
+                                Console.Write(map[i, j].GetDisplaySymbol(IconeType) + " ");
+                            }
+                            
                         }
                     }
                 }

@@ -46,13 +46,6 @@ namespace Projet
             Console.ResetColor();
             Console.SetCursorPosition(0, 0);
             Console.Clear();
-            for (int i = 0; i < Console.WindowHeight; i++)
-            {
-                Console.SetCursorPosition(0, i);
-                Console.Write("*");
-                Console.SetCursorPosition(Console.WindowWidth - 2, i);
-                Console.Write("*");
-            };
         }
     }
 }

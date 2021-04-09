@@ -15,6 +15,13 @@ namespace Projet
             RemoveScrollBar();
             string texte;
             Config.ClearConsole("Menu de démarage");
+            for (int i = 0; i < Console.WindowHeight; i++)
+            {
+                Console.SetCursorPosition(0, i);
+                Console.Write("|");
+                Console.SetCursorPosition(Console.WindowWidth - 2, i);
+                Console.Write("|");
+            };
             Console.ForegroundColor = ConsoleColor.Red;
             texte = "Avertissement : Enlever le mode pleine écran déformera l'enssemble du design !";
             Console.SetCursorPosition(Console.WindowWidth / 2 - (texte.Length / 2), 1);
