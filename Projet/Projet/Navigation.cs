@@ -117,12 +117,11 @@ namespace Projet
                         Program.SetTurn(Program.GetMaps().Count - 1);
                         Program.SaveMaps(Program.GetMaps(), Program.GetMap(), false);
                         Program.PassTour(Program.GetMap());
-                        
                         reDraw = 2;
                         result = true;
-                        
                         break;
                     case ConsoleKey.F:
+                        Program.SetTurn(Program.GetMaps().Count - 1);
                         Program.InitiateFire(Program.GetMap());
                         Program.SaveMaps(Program.GetMaps(), Program.GetMap(), false);
                         reDraw = 2;
