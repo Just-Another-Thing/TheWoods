@@ -162,15 +162,31 @@ namespace Projet
         public static void InitiateFire(Cell[,] map)
         {
             Random rdm = new Random();
+            bool canStartFire = false;
+            for (int i = 0; i < map.GetLength(0); i++)
+            {
+                for (int j = 0; j < map.GetLength(1); j++)
+                {
+                    if (map[i, j].GetIsFireable() == true && map[i, j].GetIsInFire() == 0)
+                    {
+                        canStartFire = true;
+                    }
+                }
+            }
+
             int x;
             int y;
-            do
+            if (canStartFire)
             {
-                x = rdm.Next(0, map.GetLength(0));
-                y = rdm.Next(0, map.GetLength(1));
-            } while (map[x, y].GetIsFireable() == false || map[x,y].GetIsInFire() != 0);
+                do
+                {
+                    x = rdm.Next(0, map.GetLength(0));
+                    y = rdm.Next(0, map.GetLength(1));
+                } while (map[x, y].GetIsFireable() == false || map[x, y].GetIsInFire() != 0);
 
-            map[x, y].SetIsInFire(2);
+                map[x, y].SetIsInFire(2);
+            }
+            
         }
 
         public static void SaveMaps(List<Cell[,]> maps,Cell[,] map, bool restart)
