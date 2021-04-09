@@ -5,10 +5,9 @@ namespace Projet
 {
     class Navigation
     {
-
-         /// <summary>Allow to navigate throug the sliders</summary>
-         /// <param name="ActivateSlider">Array with the slider used</param>
-         /// <returns>Array with the new slider in use and the old one</returns>
+        /// <summary>Allow to navigate throug the sliders</summary>
+        /// <param name="ActivateSlider">Array with the slider used</param>
+        /// <returns>Array with the new slider in use and the old one</returns>
         public static int[] NavigationManager(int[] ActivateSlider)
         {
             bool result = false;
@@ -17,9 +16,11 @@ namespace Projet
             do
             {
                 Thread.Sleep(100);
+                
                 Console.SetCursorPosition(0, 0);
                 ActivateSlider[1] = ActivateSlider[0];
-                ConsoleKey key = Console.ReadKey().Key; 
+                ConsoleKey key = Console.ReadKey().Key;
+
                 switch (key)
                 {
                     case ConsoleKey.LeftArrow:
@@ -131,8 +132,7 @@ namespace Projet
            
                 
                 Program.SetOnlyRedrawMap(reDraw);
-                Console.SetCursorPosition(0, 0);
-                Console.WriteLine("|");
+                
 
             } while (!result);
             WoodGenerator.SetTreeProportion((Slider.GetSliderListByID(5).GetLastSelect()+1)*10);

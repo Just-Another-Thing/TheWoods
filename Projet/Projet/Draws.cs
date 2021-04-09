@@ -1,25 +1,12 @@
 ﻿using System;
+using System.IO;
+using System.Text;
 using System.Threading;
 
 namespace Projet
 {
     class Draws
     {
-        static Thread mthread = new Thread(DrawMap);
-        /// <summary>
-        /// Parameters structure.
-        /// </summary>
-        private struct Param
-        {
-            public Cell[,] map;
-            public int IconeType;
-            public int test;
-            public int selectTab;
-            public int oldSelectTab;
-            public int onlyRedrawMap;
-            public int turn;
-            public int turnCount;
-        }
         /// <summary>
         /// Map display, with thread management. 
         /// </summary>
@@ -29,53 +16,16 @@ namespace Projet
         /// <param name="activeSlider">The slider in use</param>
         /// <param name="onlyRedrawMap"> Allow to choose what to redraw : the map, the sliders or both (0,1,2)</param>
         /// <param name="oldSelectSlider">The old selected slider</param>
-        public static void Draw(Cell[,] map, int IconeType, int test, int activeSlider, int onlyRedrawMap, int oldSelectSlider)
+        public static void Draw(Cell[,] map, int IconeType, int test, int activeSlider, int redraw, int oldActive, int turn, int turnCount)
         {
-            Param p;
-            p.map = map;
-            p.IconeType = IconeType;
-            p.test = test;
-            p.selectTab = activeSlider;
-            p.oldSelectTab = oldSelectSlider;
-            p.onlyRedrawMap = onlyRedrawMap;
-            p.turn = Program.GetTurn();
-            p.turnCount = Program.GetMaps().Count - 1;
 
-
-            if (mthread.IsAlive)
-            {
-                mthread.Abort();
-                mthread = new Thread(DrawMap);
-                mthread.Start((object) p);
-            }
-            else
-            {
-                mthread = new Thread(DrawMap);
-                mthread.Start((object) p);
-            }
-
-            
-        }
-        /// <summary>
-        /// Display of the map.
-        /// </summary>
-        /// <param name="p">All parameters of the map</param>
-        private static void DrawMap(object p)
-        {
-            Param param = (Param) p;
-            Cell[,] map = param.map;
-            int IconeType = param.IconeType;
-            int test = param.test;
-            int active = param.selectTab;
-            int oldActive = param.oldSelectTab;
-            int redraw = param.onlyRedrawMap;
-            int turn = param.turn;
-            int turnCount = param.turnCount;
             if (redraw == 3)
             {
                 Config.ClearConsole("Jeu en cours");
             }
-            
+
+            Console.SetCursorPosition(0, 0);
+            Console.WriteLine("|");
 
             if (redraw == 1 || redraw == 2 || redraw == 3)
             {
@@ -86,7 +36,7 @@ namespace Projet
                     Console.SetCursorPosition(j, Slider.GetSliderListByID(oldActive).GetPosition());
                     Console.Write(" ");
                 }
-                DisplaySlider(active, turn, turnCount);
+                DisplaySlider(activeSlider, turn, turnCount);
             }
             for (int i = 0; i < Console.WindowHeight; i++)
             {

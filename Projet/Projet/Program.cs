@@ -62,7 +62,7 @@ namespace Projet
 
             do
             {
-                Draws.Draw(GetMap(), Slider.GetSliderListByID(3).GetLastSelect(), 0, activeSlider[0], onlyRedrawMap, activeSlider[1]);
+                Draws.Draw(GetMap(), Slider.GetSliderListByID(3).GetLastSelect(), 0, activeSlider[0], onlyRedrawMap, activeSlider[1], turn, GetMaps().Count-1);
                 activeSlider = Navigation.NavigationManager(activeSlider);
             } while (activeSlider[0] != -1);
             
