@@ -5,7 +5,6 @@ namespace Projet
 {
     class Draws
     {
-        
         /// <summary>
         /// Map display, with thread management. 
         /// </summary>

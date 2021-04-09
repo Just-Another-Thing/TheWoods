@@ -36,6 +36,9 @@ namespace Projet
             texte = "Objectif du projet: Réaliser une map généré aléatoirement et simuler un feu afin de voir son évolution au sein de cette map ";
             Console.SetCursorPosition(Console.WindowWidth / 2 - (texte.Length / 2), Console.WindowHeight / 2 - 3);
             Console.Write(texte);
+            texte = "Les touches : 'espace' pour passer un tour. 'f' pour lancer un nouveau foyer de feu.";
+            Console.SetCursorPosition(Console.WindowWidth / 2 - (texte.Length / 2), Console.WindowHeight / 2);
+            Console.Write(texte);
             Console.ForegroundColor = ConsoleColor.Gray;
             texte = "Créé et présenté par Romain Pathé et Alexandre Michaud";
             Console.SetCursorPosition(Console.WindowWidth / 2 - (texte.Length / 2), Console.WindowHeight-2);
