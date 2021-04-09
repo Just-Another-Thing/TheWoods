@@ -5,66 +5,18 @@ namespace Projet
 {
     class Draws
     {
-        static Thread mthread = new Thread(DrawMap);
-        /// <summary>
-        /// Parameters structure.
-        /// </summary>
-        private struct Param
-        {
-            public Cell[,] map;
-            public int IconeType;
-            public int test;
-            public int selectTab;
-            public int oldSelectTab;
-            public int onlyRedrawMap;
-        }
+        
         /// <summary>
         /// Map display, with thread management. 
         /// </summary>
         /// <param name="map">The 'map' array, where the game is stored</param>
         /// <param name="IconeType">Icone type</param>
         /// <param name="test">Jsut for test purpose, only there because it could be useful in specifics cases</param>
-        /// <param name="activeSlider">The slider in use</param>
-        /// <param name="onlyRedrawMap"> Allow to choose what to redraw : the map, the sliders or both (0,1,2)</param>
-        /// <param name="oldSelectSlider">The old selected slider</param>
-        public static void Draw(Cell[,] map, int IconeType, int test, int activeSlider, int onlyRedrawMap, int oldSelectSlider)
+        /// <param name="active">The slider in use</param>
+        /// <param name="redraw"> Allow to choose what to redraw : the map, the sliders or both (0,1,2)</param>
+        /// <param name="oldActive">The old selected slider</param>
+        public static void Draw(Cell[,] map, int IconeType, int test, int active, int redraw, int oldActive)
         {
-            Param p;
-            p.map = map;
-            p.IconeType = IconeType;
-            p.test = test;
-            p.selectTab = activeSlider;
-            p.oldSelectTab = oldSelectSlider;
-            p.onlyRedrawMap = onlyRedrawMap;
-
-            if (mthread.IsAlive)
-            {
-                mthread.Abort();
-                mthread = new Thread(DrawMap);
-                mthread.Start((object) p);
-            }
-            else
-            {
-                mthread = new Thread(DrawMap);
-                mthread.Start((object) p);
-            }
-
-            
-        }
-        /// <summary>
-        /// Display of the map.
-        /// </summary>
-        /// <param name="p">All parameters of the map</param>
-        private static void DrawMap(object p)
-        {
-            Param param = (Param) p;
-            Cell[,] map = param.map;
-            int IconeType = param.IconeType;
-            int test = param.test;
-            int active = param.selectTab;
-            int oldActive = param.oldSelectTab;
-            int redraw = param.onlyRedrawMap;
-
             if (redraw == 2)
             {
                 Config.ClearConsole("Jeu en cours");
