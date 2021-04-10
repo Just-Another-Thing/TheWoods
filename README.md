@@ -5,7 +5,17 @@
 ***
 > 01/03/2021 au 07/03/2021
 ```
-Création de la map et de la génération
+Création de la structure Cell (cellule)
+Ajout des getters/setters a la structure Cell
+Ajout de la fonction getDisplaySymbol a ma structure Cell
+Première version de l'aléatoire d'une cellule, effacée après la création du woodgenerator
+Première version de la fonction generateWood, qui propose une foret remplie de manière aléatoire
+Premières versions de la fonction Draw
+Première version de la class woodgenerator, avec les fonctions generateWoods et getSurrounding
+Premières versions de la fonction passTour.
+Améliorations de la structure Cell, avec la nouvelle variable de structure isFireable.
+Première itérartion de la fonction areSurroundingInFire. Mais elle est mal faite. une seconde version sera necessaire.
+Ajout de la touche 'f' pour lancer le feu.  
 Création de la fonction FullScreen
 Création de la fonction SetTitle
 Début création de la fonction ProgrammStart
@@ -17,6 +27,10 @@ Création de la fonction pour la gestion de la navigation sur les sliders
 ```
 > 08/03/2021 au 14/03/2021
 ```
+Deuxième itération de la fonction areSurroundingInFire, avec une version nettement plus efficace.
+Première itération de la fonction getCase, permettant de récuper une case en gérant les connections entre les bords.
+Première version de la height map.
+Diverses améliorations sur la génération des différents types.
 Création de la fonction pour afficher les sliders sur l'écran
 Modification de la gestion des sliders avec un constructeur
 Mise en fonctionnement de la navigation sur les sliders
@@ -25,8 +39,20 @@ Ajout d'un icone sur l'application pour la rendre plus esthétique.
 ```
 > 15/03/2021 au 21/03/2021
 ```
+Séparation de la fonction draw dans une case a part.
+Première itération d'un affichage passé sur un coeur séparé. Nombreux problèmes d'affichages.
+Tout l'affichage est passe dans la class draw.
+Limitation des Console.Clear() pour limiter le nombre de redraw.
+Draw séparés (Soit que la map, soit que le menu...)
+Amélioration de la propagation du feu
+Corrections de bugs d'affichage
+Ajout de nombreux commentaires
+Ajout des sliders pour modifier la génération de la map.
+Modifications de la classwoodgenerator pour intégrer les sliders.
+Amélioration de la génération.
+Propagation du feu enfin fonctionnelle quand on appuie sur la touche espace.
 Optimisation de certaine fonction
-Modification du systéme de clear et d'affichage 
+Modification du systéme de clear et d'affichage
 Création d'une légende
 Modification des couleurs
 Refonte du systéme de gestion de slider
@@ -36,6 +62,13 @@ Création des commentaires
 ```
 > 22/03/2021 au 28/03/2021
 ```
+
+```
+> 22/03/2021 au 28/03/2021
+```
+Suppression de l'affichage sur un autre coeur.
+Correction d'un bug où la touche 'f' ne fonctionnait pas sous certaines conditions.
+Ajout de l'affichage des touches sur l'écran de démarrage. 
 
 ```
 
