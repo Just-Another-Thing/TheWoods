@@ -33,6 +33,7 @@ Première version de la height map.
 Diverses améliorations sur la génération des différents types.
 Création de la fonction pour afficher les sliders sur l'écran
 Modification de la gestion des sliders avec un constructeur
+Modification du clear
 Mise en fonctionnement de la navigation sur les sliders
 Création d'un deuxiéme type d'icone pour la map
 Ajout d'un icone sur l'application pour la rendre plus esthétique.
@@ -62,7 +63,7 @@ Création des commentaires
 ```
 > 22/03/2021 au 28/03/2021
 ```
-
+Suppresion de l'affichage du curseur
 ```
 > 22/03/2021 au 28/03/2021
 ```
