@@ -66,7 +66,6 @@ namespace Projet
                 activeSlider = Navigation.NavigationManager(activeSlider);
             } while (activeSlider[0] != -1);
             
-            //CustomIcone.CustomIconeMenu();
             Console.ReadKey();
             
         }

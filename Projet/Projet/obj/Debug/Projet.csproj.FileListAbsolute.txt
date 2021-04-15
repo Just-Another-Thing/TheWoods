@@ -62,3 +62,22 @@ C:\Users\ketch\Documents\GitHub\Projet2\Projet\Projet\obj\Debug\Projet.csproj.Co
 C:\Users\ketch\Documents\GitHub\Projet2\Projet\Projet\obj\Debug\Projet.csproj.CopyComplete
 C:\Users\ketch\Documents\GitHub\Projet2\Projet\Projet\obj\Debug\TheWoods.exe
 C:\Users\ketch\Documents\GitHub\Projet2\Projet\Projet\obj\Debug\TheWoods.pdb
+H:\Projet GitHub\TheWoods\Projet\Projet\bin\Debug\TheWoods.exe.config
+H:\Projet GitHub\TheWoods\Projet\Projet\bin\Debug\TheWoods.exe
+H:\Projet GitHub\TheWoods\Projet\Projet\bin\Debug\TheWoods.pdb
+H:\Projet GitHub\TheWoods\Projet\Projet\bin\Debug\System.Memory.dll
+H:\Projet GitHub\TheWoods\Projet\Projet\bin\Debug\System.Text.Json.dll
+H:\Projet GitHub\TheWoods\Projet\Projet\bin\Debug\System.Numerics.Vectors.dll
+H:\Projet GitHub\TheWoods\Projet\Projet\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+H:\Projet GitHub\TheWoods\Projet\Projet\bin\Debug\System.Buffers.dll
+H:\Projet GitHub\TheWoods\Projet\Projet\bin\Debug\System.Text.Encodings.Web.dll
+H:\Projet GitHub\TheWoods\Projet\Projet\bin\Debug\System.Threading.Tasks.Extensions.dll
+H:\Projet GitHub\TheWoods\Projet\Projet\bin\Debug\Microsoft.Bcl.AsyncInterfaces.dll
+H:\Projet GitHub\TheWoods\Projet\Projet\obj\Debug\Projet.csprojAssemblyReference.cache
+H:\Projet GitHub\TheWoods\Projet\Projet\obj\Debug\TheWoods.exe.config
+H:\Projet GitHub\TheWoods\Projet\Projet\obj\Debug\TheWoods.Properties.Resources.resources
+H:\Projet GitHub\TheWoods\Projet\Projet\obj\Debug\Projet.csproj.GenerateResource.cache
+H:\Projet GitHub\TheWoods\Projet\Projet\obj\Debug\Projet.csproj.CoreCompileInputs.cache
+H:\Projet GitHub\TheWoods\Projet\Projet\obj\Debug\Projet.csproj.CopyComplete
+H:\Projet GitHub\TheWoods\Projet\Projet\obj\Debug\TheWoods.exe
+H:\Projet GitHub\TheWoods\Projet\Projet\obj\Debug\TheWoods.pdb

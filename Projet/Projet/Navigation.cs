@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading;
+using TheWoods;
 
 namespace Projet
 {
@@ -106,7 +107,13 @@ namespace Projet
                         result = true;
                         break;
                     case ConsoleKey.Enter:
-                        WoodGenerator.GenerateWoods();
+                        if(ActivateSlider[0] == 3)
+                        {
+                            CustomIcone.CustomIconeMenu();
+                        }else
+                        {
+                            WoodGenerator.GenerateWoods();
+                        }
                         reDraw = 3;
                         result = true;
                         break;
