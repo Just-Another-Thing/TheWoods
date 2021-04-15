@@ -22,7 +22,6 @@ namespace TheWoods
 
         public static void CustomIconeMenu()
         {
-            Menu.RemoveScrollBar();
             Config.ClearConsole("Customisation des icônes");
             DisplaySelect();
         }
@@ -41,6 +40,13 @@ namespace TheWoods
         public static void DisplaySelect()
         {
             Config.ClearConsole("Customisation des icônes");
+            for (int i = 0; i < Console.WindowHeight; i++)
+            {
+                Console.SetCursorPosition(0, i);
+                Console.Write("|");
+                Console.SetCursorPosition(Console.WindowWidth - 2, i);
+                Console.Write("|");
+            };
             Console.CursorVisible = true;
             int startheigt = CenterHeightIcone(CustomIconeList.Length * 2);
             int select = 0;
