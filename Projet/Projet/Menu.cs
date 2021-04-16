@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Projet
+namespace TheWoods
 {
     class Menu
     {

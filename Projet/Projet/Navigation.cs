@@ -2,7 +2,7 @@
 using System.Threading;
 using TheWoods;
 
-namespace Projet
+namespace TheWoods
 {
     class Navigation
     {
@@ -29,9 +29,9 @@ namespace Projet
                         {
                             if (i == ActivateSlider[0] && ActivateSlider[0] != 10)
                             {
-                                if (Slider.GetSliderListByID(i).GetLastSelect() > 0)
+                                if (Slider.GetSliderListById(i).GetLastSelect() > 0)
                                 {
-                                    Slider.GetSliderList()[i].SetLastSelect(Slider.GetSliderListByID(i).GetLastSelect() - 1);
+                                    Slider.GetSliderList()[i].SetLastSelect(Slider.GetSliderListById(i).GetLastSelect() - 1);
                                     if (ActivateSlider[0] == 3)
                                     {
                                         reDraw = 2;
@@ -54,9 +54,9 @@ namespace Projet
                         {
                             if (i == ActivateSlider[0] && ActivateSlider[0] != 10)
                             {
-                                if (Slider.GetSliderListByID(i).GetLastSelect() < Slider.GetSliderListByID(i).GetValue().Length - 1)
+                                if (Slider.GetSliderListById(i).GetLastSelect() < Slider.GetSliderListById(i).GetValue().Length - 1)
                                 {
-                                    Slider.GetSliderList()[i].SetLastSelect(Slider.GetSliderListByID(i).GetLastSelect() + 1);
+                                    Slider.GetSliderList()[i].SetLastSelect(Slider.GetSliderListById(i).GetLastSelect() + 1);
                                     if (ActivateSlider[0] == 3)
                                     {
                                         reDraw = 2;
@@ -79,12 +79,12 @@ namespace Projet
                         {
                             ActivateSlider[1] = ActivateSlider[0];
                             ActivateSlider[0]--;
-                            int activePosition = Slider.GetSliderListByID(ActivateSlider[0]).GetPosition();
+                            int activePosition = Slider.GetSliderListById(ActivateSlider[0]).GetPosition();
                             for (int i = 1; i < Slider.GetSliderList().Length; i++)
                             {
                                 if (activePosition < 2)
                                 {
-                                    Slider.GetSliderListByID(i).SetPosition(Slider.GetSliderListByID(i).GetPosition() + 4);
+                                    Slider.GetSliderListById(i).SetPosition(Slider.GetSliderListById(i).GetPosition() + 4);
                                 }
                             }
                         }
@@ -95,12 +95,12 @@ namespace Projet
                         {
                             ActivateSlider[1] = ActivateSlider[0];
                             ActivateSlider[0]++;
-                            int activePosition = Slider.GetSliderListByID(ActivateSlider[0]).GetPosition();
+                            int activePosition = Slider.GetSliderListById(ActivateSlider[0]).GetPosition();
                             for (int i = 1; i < Slider.GetSliderList().Length; i++)
                             {
                                 if (activePosition > Console.WindowHeight - 2)
                                 {
-                                    Slider.GetSliderListByID(i).SetPosition(Slider.GetSliderListByID(i).GetPosition() - 4);
+                                    Slider.GetSliderListById(i).SetPosition(Slider.GetSliderListById(i).GetPosition() - 4);
                                 }
                             }
                         }
@@ -123,7 +123,7 @@ namespace Projet
                         break;
                     case ConsoleKey.Spacebar:
                         Program.SetTurn(Program.GetMaps().Count - 1);
-                        Program.SaveMaps(Program.GetMaps(), Program.GetMap(), false);
+                        Program.SaveMaps(Program.GetMap(), false);
                         Program.PassTour(Program.GetMap());
                         reDraw = 2;
                         result = true;
@@ -131,7 +131,7 @@ namespace Projet
                     case ConsoleKey.F:
                         Program.SetTurn(Program.GetMaps().Count - 1);
                         Program.InitiateFire(Program.GetMap());
-                        Program.SaveMaps(Program.GetMaps(), Program.GetMap(), false);
+                        Program.SaveMaps(Program.GetMap(), false);
                         reDraw = 2;
                         result = true;
                         break;
@@ -142,11 +142,11 @@ namespace Projet
                 
 
             } while (!result);
-            WoodGenerator.SetTreeProportion((Slider.GetSliderListByID(5).GetLastSelect()+1)*10);
-            WoodGenerator.SetWaterProportion((Slider.GetSliderListByID(6).GetLastSelect()+1)*10);
-            WoodGenerator.SetLeaveProportion((Slider.GetSliderListByID(7).GetLastSelect() + 1) * 10);
-            WoodGenerator.SetRockProportion((Slider.GetSliderListByID(8).GetLastSelect() + 1) * 10);
-            WoodGenerator.SetGrassProportion((Slider.GetSliderListByID(9).GetLastSelect() + 1) * 10);
+            WoodGenerator.SetTreeProportion((Slider.GetSliderListById(5).GetLastSelect()+1)*10);
+            WoodGenerator.SetWaterProportion((Slider.GetSliderListById(6).GetLastSelect()+1)*10);
+            WoodGenerator.SetLeaveProportion((Slider.GetSliderListById(7).GetLastSelect() + 1) * 10);
+            WoodGenerator.SetRockProportion((Slider.GetSliderListById(8).GetLastSelect() + 1) * 10);
+            WoodGenerator.SetGrassProportion((Slider.GetSliderListById(9).GetLastSelect() + 1) * 10);
             return ActivateSlider;
         }
 
