@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.IO;
 using System.Text;
 using System.Threading;
@@ -132,8 +133,10 @@ namespace Projet
             for (int i = 0; i < Slider.GetSliderList().Length; i++)
             {
                 int position = Slider.GetSliderListByID(i).GetPosition();
+                Debug.WriteLine(position);
                 if (position >= 2 && position <= Console.WindowHeight - 2)
                 {
+                    Debug.WriteLine("Affiché");
                     string name = Slider.GetSliderListByID(i).GetName();
                     string[] value = Slider.GetSliderListByID(i).GetValue();
                     int lastSelect = Slider.GetSliderListByID(i).GetLastSelect();
