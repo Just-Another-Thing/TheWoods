@@ -132,15 +132,15 @@ namespace TheWoods
 
             for (int i = 0; i < Slider.GetSliderList().Length; i++)
             {
-                int position = Slider.GetSliderListByID(i).GetPosition();
-                Debug.WriteLine(position);
+                int position = Slider.GetSliderListById(i).GetPosition();
+                Debug.Write(position+" | ");
                 if (position >= 2 && position <= Console.WindowHeight - 2)
                 {
-                    Debug.WriteLine("Affiché");
-                    string name = Slider.GetSliderListByID(i).GetName();
-                    string[] value = Slider.GetSliderListByID(i).GetValue();
-                    int lastSelect = Slider.GetSliderListByID(i).GetLastSelect();
-                    if (Slider.GetSliderListByID(i).GetSliderType() == 2)
+                    Debug.WriteLine("Affiché : "+i);
+                    string name = Slider.GetSliderListById(i).GetName();
+                    string[] value = Slider.GetSliderListById(i).GetValue();
+                    int lastSelect = Slider.GetSliderListById(i).GetLastSelect();
+                    if (Slider.GetSliderListById(i).GetSliderType() == 2)
                     {
                         int nb = (Slider.GetSliderListById(i).GetLastSelect() + 1) * Convert.ToInt32(Slider.GetSliderListById(i).GetInterval()[1]) / Slider.GetSliderListById(i).GetValue().Length;
                         if (nb >= 10)

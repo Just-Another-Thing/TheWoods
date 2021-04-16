@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Threading;
 using TheWoods;
 
@@ -80,11 +81,11 @@ namespace TheWoods
                             ActivateSlider[1] = ActivateSlider[0];
                             ActivateSlider[0]--;
                             int activePosition = Slider.GetSliderListById(ActivateSlider[0]).GetPosition();
-                            for (int i = 1; i < Slider.GetSliderList().Length; i++)
+                            for (int i = 0; i < Slider.GetSliderList().Length; i++)
                             {
                                 if (activePosition < 2)
                                 {
-                                    Slider.GetSliderListById(i).SetPosition(Slider.GetSliderListById(i).GetPosition() + 4);
+                                    Slider.GetSliderList()[i].SetPosition(Slider.GetSliderListById(i).GetPosition() + 4);
                                 }
                             }
                         }
@@ -96,11 +97,11 @@ namespace TheWoods
                             ActivateSlider[1] = ActivateSlider[0];
                             ActivateSlider[0]++;
                             int activePosition = Slider.GetSliderListById(ActivateSlider[0]).GetPosition();
-                            for (int i = 1; i < Slider.GetSliderList().Length; i++)
+                            for (int i = 0; i < Slider.GetSliderList().Length; i++)
                             {
                                 if (activePosition > Console.WindowHeight - 2)
                                 {
-                                    Slider.GetSliderListById(i).SetPosition(Slider.GetSliderListById(i).GetPosition() - 4);
+                                    Slider.GetSliderList()[i].SetPosition(Slider.GetSliderListById(i).GetPosition() - 4);
                                 }
                             }
                         }

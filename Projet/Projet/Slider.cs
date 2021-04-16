@@ -10,7 +10,7 @@ namespace TheWoods
         private String _name;
         private String[] _value;
         private int _sliderType;
-        private static readonly Slider[] SliderList = new Slider[11];
+        private static readonly Slider[] SliderList = new Slider[15];
 
         /// <summary>
         /// Region with all accessers/getters necessary for the project. 
@@ -165,6 +165,12 @@ namespace TheWoods
             string[] value06 = { "<",">" };
             string[] interval06 = {};
             AddSlider(10, new Slider("Retour en arrière", value06, interval06, 42, 0, 4));
+            
+            
+            AddSlider(11, new Slider("Fréquence herbe", value05, interval05, 46, 9, 2));
+            AddSlider(12, new Slider("Fréquence herbe", value05, interval05, 50, 9, 2));
+            AddSlider(13, new Slider("Fréquence herbe", value05, interval05, 54, 9, 2));
+            AddSlider(14, new Slider("Fréquence herbe", value05, interval05, 58, 9, 2));
         }
 
         #endregion
