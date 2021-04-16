@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 
-namespace Projet
+namespace TheWoods
 {
     class Config
     {

@@ -1,16 +1,16 @@
 ﻿using System;
 
-namespace Projet
+namespace TheWoods
 {
     public struct Slider
     {
-        private int Position;
-        private int LastSelect;
-        private string[] Interval;
-        private String Name;
-        private String[] Value;
-        private int SliderType;
-        private static readonly Slider[] SliderList = new Slider[15];
+        private int _position;
+        private int _lastSelect;
+        private string[] _interval;
+        private String _name;
+        private String[] _value;
+        private int _sliderType;
+        private static readonly Slider[] SliderList = new Slider[11];
 
         /// <summary>
         /// Region with all accessers/getters necessary for the project. 
@@ -18,56 +18,56 @@ namespace Projet
         #region Getters & Accessers
         public int GetPosition()
         {
-            return this.Position;
+            return this._position;
         }
-        public void SetPosition(int Position)
+        public void SetPosition(int position)
         {
-            this.Position = Position;
+            this._position = position;
         }
 
         public int GetLastSelect()
         {
-            return this.LastSelect;
+            return this._lastSelect;
         }
-        public void SetLastSelect(int LastSelect)
+        public void SetLastSelect(int lastSelect)
         {
-            this.LastSelect = LastSelect;
+            this._lastSelect = lastSelect;
         }
 
         public string[] GetInterval()
         {
-            return this.Interval;
+            return this._interval;
         }
-        public void SetInterval(string[] Interval)
+        public void SetInterval(string[] interval)
         {
-            this.Interval = Interval;
+            this._interval = interval;
         }
 
         public string GetName()
         {
-            return this.Name;
+            return this._name;
         }
-        public void SetName(string Name)
+        public void SetName(string name)
         {
-            this.Name = Name;
+            this._name = name;
         }
 
         public string[] GetValue()
         {
-            return this.Value;
+            return this._value;
         }
-        public void SetValue(string[] Value)
+        public void SetValue(string[] value)
         {
-            this.Value = Value;
+            this._value = value;
         }
 
         public int GetSliderType()
         {
-            return this.SliderType;
+            return this._sliderType;
         }
-        public void SetSliderType(int SliderType)
+        public void SetSliderType(int sliderType)
         {
-            this.SliderType = SliderType;
+            this._sliderType = sliderType;
         }
 
         #endregion
@@ -86,7 +86,7 @@ namespace Projet
         /// </summary>
         /// <param name="id">Id of the wanted slider</param>
         /// <returns>The slider</returns>
-        public static Slider GetSliderListByID(int id)
+        public static Slider GetSliderListById(int id)
         {
             return SliderList[id];
         }
@@ -94,10 +94,10 @@ namespace Projet
         /// Add one new slider to the list
         /// </summary>
         /// <param name="id">Id of the new slider</param>
-        /// <param name="NewSlider">The slider to add</param>
-        public static void AddSlider(int id, Slider NewSlider)
+        /// <param name="newSlider">The slider to add</param>
+        private static void AddSlider(int id, Slider newSlider)
         {
-            SliderList[id] = NewSlider;
+            SliderList[id] = newSlider;
         }
         #endregion
 
@@ -115,12 +115,12 @@ namespace Projet
         /// <param name="sliderType">Type du slider</param>
         public Slider(string name, string[] value, string[] interval, int position, int lastSelect, int sliderType)
         {
-            Name = name;
-            Value = value;
-            Interval = interval;
-            Position = position;
-            LastSelect = lastSelect;
-            SliderType = sliderType;
+            _name = name;
+            _value = value;
+            _interval = interval;
+            _position = position;
+            _lastSelect = lastSelect;
+            _sliderType = sliderType;
         }
         #endregion
 
@@ -131,8 +131,8 @@ namespace Projet
         /// <returns>Amount of "spaces" needed to center</returns>
         public int CenterPositionSlider(string element)
         {
-            int CenterPosition = (Console.WindowWidth - Console.WindowWidth / 3 + Console.WindowWidth / 10) - ((Console.WindowWidth / 10 - Console.WindowWidth / 3) / 2) - element.Length / 2;
-            return CenterPosition;
+            int centerPosition = (Console.WindowWidth - Console.WindowWidth / 3 + Console.WindowWidth / 10) - ((Console.WindowWidth / 10 - Console.WindowWidth / 3) / 2) - element.Length / 2;
+            return centerPosition;
         }
         /// <summary>
         /// Generate all necessary sliders. 
@@ -161,18 +161,10 @@ namespace Projet
             AddSlider(7, new Slider("Fréquence feuilles", value05, interval05, 30, 9, 2));
             AddSlider(8, new Slider("Fréquence rochers", value05, interval05, 34, 9, 2));
             AddSlider(9, new Slider("Fréquence herbe", value05, interval05, 38, 9, 2));
+            
             string[] value06 = { "<",">" };
             string[] interval06 = {};
             AddSlider(10, new Slider("Retour en arrière", value06, interval06, 42, 0, 4));
-            
-            
-            AddSlider(11, new Slider("Fréquence herbe", value05, interval05, 46, 9, 2));
-            AddSlider(12, new Slider("Fréquence herbe", value05, interval05, 50, 9, 2));
-            AddSlider(13, new Slider("Fréquence herbe", value05, interval05, 54, 9, 2));
-            AddSlider(14, new Slider("Fréquence herbe", value05, interval05, 58, 9, 2));
-            
-            
-            
         }
 
         #endregion

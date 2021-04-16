@@ -1,6 +1,6 @@
 ﻿using TheWoods;
 
-namespace Projet
+namespace TheWoods
 {
     public struct Cell
     {

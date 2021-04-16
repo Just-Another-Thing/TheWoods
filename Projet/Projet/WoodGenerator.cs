@@ -1,14 +1,14 @@
 ﻿using System;
 
-namespace Projet
+namespace TheWoods
 {
     class WoodGenerator
     {
-        private static int treeProportion = 100;
-        private static int waterProportion = 100;
-        private static int leaveProportion = 100;
-        private static int rockProportion = 100;
-        private static int grassProportion = 100;
+        private static int _treeProportion = 100;
+        private static int _waterProportion = 100;
+        private static int _leaveProportion = 100;
+        private static int _rockProportion = 100;
+        private static int _grassProportion = 100;
 
         /// <summary>
         /// Region with all accessers/getters necessary for the project. 
@@ -16,47 +16,47 @@ namespace Projet
         #region getters && setters
         public static int GetTreeProportion()
         {
-            return treeProportion;
+            return _treeProportion;
         }
         public static void SetTreeProportion(int proportion)
         {
-            treeProportion = proportion;
+            _treeProportion = proportion;
         }
 
         public static int GetWaterProportion()
         {
-            return waterProportion;
+            return _waterProportion;
         }
         public static void SetWaterProportion(int proportion)
         {
-            waterProportion = proportion;
+            _waterProportion = proportion;
         }
 
         public static int GetLeaveProportion()
         {
-            return leaveProportion;
+            return _leaveProportion;
         }
         public static void SetLeaveProportion(int proportion)
         {
-            leaveProportion = proportion;
+            _leaveProportion = proportion;
         }
 
         public static int GetRockProportion()
         {
-            return rockProportion;
+            return _rockProportion;
         }
         public static void SetRockProportion(int proportion)
         {
-            rockProportion = proportion;
+            _rockProportion = proportion;
         }
 
         public static int GetGrassProportion()
         {
-            return grassProportion;
+            return _grassProportion;
         }
         public static void SetGrassProportion(int proportion)
         {
-            grassProportion = proportion;
+            _grassProportion = proportion;
         }
 
         #endregion
@@ -69,11 +69,11 @@ namespace Projet
         {
             int maxl = ((Console.WindowWidth - Console.WindowWidth / 3 + Console.WindowWidth / 10) / 2) - 1;
             int maxm = Console.WindowHeight - 1;
-            int l = (Slider.GetSliderListByID(1).GetLastSelect() + 1) * maxl / Slider.GetSliderListByID(1).GetValue().Length;
-            int c = (Slider.GetSliderListByID(2).GetLastSelect() + 1) * maxm / Slider.GetSliderListByID(2).GetValue().Length;
+            int l = (Slider.GetSliderListById(1).GetLastSelect() + 1) * maxl / Slider.GetSliderListById(1).GetValue().Length;
+            int c = (Slider.GetSliderListById(2).GetLastSelect() + 1) * maxm / Slider.GetSliderListById(2).GetValue().Length;
 
 
-            Random rdm = new Random();
+            Random rdm = Program.GetRandom();
             Cell[,] map = new Cell[c, l];
 
             //generate terrain
@@ -92,7 +92,7 @@ namespace Projet
                 {
                     float pourc = GetSurrounding(map, i, j, 2);
                     float rand = rdm.Next(0, 100);
-                    if (rand <= (pourc * 8 + 10)+(treeProportion/10-10))
+                    if (rand <= (pourc * 8 + 10)+(_treeProportion/10-10))
                     {
                         map[i, j].SetType(2);
                         map[i, j].SetLife(10);
@@ -109,7 +109,7 @@ namespace Projet
                 {
                     float pourc = GetSurrounding(map, i, j, 5);
                     float rand = rdm.Next(0, 100);
-                    if (rand <= (pourc * 6 + 10)+(waterProportion/10-10) && map[i, j].GetCellType() == 3)
+                    if (rand <= (pourc * 6 + 10)+(_waterProportion/10-10) && map[i, j].GetCellType() == 3)
                     {
                         map[i, j].SetType(5);
                         map[i, j].SetLife(0);
@@ -125,7 +125,7 @@ namespace Projet
                 {
                     float pourc = GetSurrounding(map, i, j, 2);
                     float rand = rdm.Next(0, 100);
-                    if (rand <= (pourc * 10)+(leaveProportion / 10-10) && map[i, j].GetCellType() == 3)
+                    if (rand <= (pourc * 10)+(_leaveProportion / 10-10) && map[i, j].GetCellType() == 3)
                     {
                         map[i, j].SetType(4);
                         map[i, j].SetLife(4);
@@ -141,7 +141,7 @@ namespace Projet
                 {
                     float pourc = GetSurrounding(map, i, j, 5);
                     float rand = rdm.Next(0, 100);
-                    if (rand <= (pourc * 6 + 10) + (rockProportion / 10-10) && map[i, j].GetCellType() == 3)
+                    if (rand <= (pourc * 6 + 10) + (_rockProportion / 10-10) && map[i, j].GetCellType() == 3)
                     {
                         map[i, j].SetType(6);
                         map[i, j].SetLife(0);
@@ -153,10 +153,10 @@ namespace Projet
             {
                 for (int j = 0; j < map.GetLength(1); j++)
                 {
-                    float pourc = GetSurrounding(map, i, j, 5)/2;
-                    pourc += GetSurrounding(map, i, j, 2) / 2;
+                    float pourc = (float) GetSurrounding(map, i, j, 5)/2;
+                    pourc +=  (float) GetSurrounding(map, i, j, 2) / 2;
                     float rand = rdm.Next(0, 100);
-                    if (rand <= (pourc * 12)+(grassProportion / 10-10) && map[i, j].GetCellType() == 3)
+                    if (rand <= (pourc * 12)+(_grassProportion / 10-10) && map[i, j].GetCellType() == 3)
                     {
                         map[i, j].SetType(1);
                         map[i, j].SetLife(8);
@@ -165,7 +165,7 @@ namespace Projet
                 }
             }
 
-            Program.SaveMaps(Program.GetMaps(), map, true);
+            Program.SaveMaps(map, true);
         }
         /// <summary>
         /// Get the amount of cell with specific type around a specific cell. 

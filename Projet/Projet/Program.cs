@@ -1,51 +1,56 @@
 ﻿using System;
 using System.Collections.Generic;
-using TheWoods;
 
-namespace Projet
+namespace TheWoods
 {
     class Program
     {
-        private static int onlyRedrawMap = 2;
+        private static int _onlyRedrawMap = 2;
         private static List<Cell[,]> maps= new List<Cell[,]>();
-        private static int turn = 0;
+        private static int _turn = 0;
+        private static readonly Random Rdm = new Random();
         /// <summary>
         /// Region with all accessers/getters necessary for the project. 
         /// </summary>
         #region accessers
-        static public void SetOnlyRedrawMap(int value)
+        public static void SetOnlyRedrawMap(int value)
         {
-            onlyRedrawMap = value;
+            _onlyRedrawMap = value;
         }
 
-        static public List<Cell[,]> GetMaps()
+        public static List<Cell[,]> GetMaps()
         {
             return maps;
         }
 
-        static public Cell[,] GetMap(int version = 0)
+        public static Cell[,] GetMap(int version = 0)
         {
             return maps[Program.GetTurn()];
         }
 
-        static public int GetTurn()
+        public static int GetTurn()
         {
-            return turn;
+            return _turn;
         }
 
-        static public void SetTurn(int value)
+        public static void SetTurn(int value)
         {
-            turn = value;
+            _turn = value;
         }
 
-        static public void IncrTurn()
+        public static void IncrTurn()
         {
-            turn++;
+            _turn++;
         }
 
-        static public void DecrTurn()
+        public static void DecrTurn()
         {
-            turn--;
+            _turn--;
+        }
+
+        public static Random GetRandom()
+        {
+            return Rdm;
         }
         #endregion
         
@@ -62,7 +67,7 @@ namespace Projet
 
             do
             {
-                Draws.Draw(GetMap(), Slider.GetSliderListByID(3).GetLastSelect(), 0, activeSlider[0], onlyRedrawMap, activeSlider[1], turn, GetMaps().Count-1);
+                Draws.Draw(GetMap(), Slider.GetSliderListById(3).GetLastSelect(), 0, activeSlider[0], _onlyRedrawMap, activeSlider[1], _turn, GetMaps().Count-1);
                 activeSlider = Navigation.NavigationManager(activeSlider);
             } while (activeSlider[0] != -1);
             
@@ -76,7 +81,7 @@ namespace Projet
         public static void PassTour(Cell[,] map)
         {
             
-            if (Slider.GetSliderListByID(4).GetLastSelect() == 0)
+            if (Slider.GetSliderListById(4).GetLastSelect() == 0)
             {
                 for (int i = 0; i < map.GetLength(0); i++)
                 {
@@ -107,9 +112,9 @@ namespace Projet
                             map[i, j].SetIsInFire(0);
                             map[i, j].SetIsFireable(false);
                         }
-                        else if (map[i, j].GetIsInFire() == 0 && (map[i, j].GetIsFireable() == true))
+                        else if (map[i, j].GetIsInFire() == 0 && (map[i, j].GetIsFireable()))
                         {
-                            if (AreSurroundingInFire(map, i, j) == true)
+                            if (AreSurroundingInFire(map, i, j))
                             {
                                 map[i, j].SetIsInFire(2);
                             }
@@ -160,27 +165,27 @@ namespace Projet
         /// <param name="map">The 'map' array, where the game is stored.</param>
         public static void InitiateFire(Cell[,] map)
         {
-            Random rdm = new Random();
             bool canStartFire = false;
             for (int i = 0; i < map.GetLength(0); i++)
             {
                 for (int j = 0; j < map.GetLength(1); j++)
                 {
-                    if (map[i, j].GetIsFireable() == true && map[i, j].GetIsInFire() == 0)
+                    if (map[i, j].GetIsFireable() && map[i, j].GetIsInFire() == 0)
                     {
                         canStartFire = true;
                     }
                 }
             }
 
-            int x;
-            int y;
+            
             if (canStartFire)
             {
+                int x;
+                int y;
                 do
                 {
-                    x = rdm.Next(0, map.GetLength(0));
-                    y = rdm.Next(0, map.GetLength(1));
+                    x = Program.Rdm.Next(0, map.GetLength(0));
+                    y = Program.Rdm.Next(0, map.GetLength(1));
                 } while (map[x, y].GetIsFireable() == false || map[x, y].GetIsInFire() != 0);
 
                 map[x, y].SetIsInFire(2);
@@ -188,13 +193,13 @@ namespace Projet
             
         }
 
-        public static void SaveMaps(List<Cell[,]> maps,Cell[,] map, bool restart)
+        public static void SaveMaps(Cell[,] map, bool restart)
         {
             if (restart)
             {
                 maps.Clear();
                 maps.Add(map);
-                turn = 0;
+                _turn = 0;
             }
             else
             {
@@ -207,7 +212,7 @@ namespace Projet
                     }
                 }
                 maps.Add(temp);
-                turn++;
+                _turn++;
             }
             
         }
