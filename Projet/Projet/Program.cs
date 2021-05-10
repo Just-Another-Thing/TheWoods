@@ -64,7 +64,8 @@ namespace TheWoods
             Menu.ProgrammStart();
             Console.Clear();
             WoodGenerator.GenerateWoods();
-
+            Console.CursorVisible = false;
+            
             do
             {
                 Draws.Draw(GetMap(), Slider.GetSliderListById(3).GetLastSelect(), 0, activeSlider[0], _onlyRedrawMap, activeSlider[1], _turn, GetMaps().Count-1);
