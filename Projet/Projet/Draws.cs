@@ -51,10 +51,10 @@ namespace TheWoods
             {
                 
 
-                int maxl = ((Console.WindowWidth - Console.WindowWidth / 3 + Console.WindowWidth / 10) / 2) - 1;
+                int maxl = ((Console.WindowWidth - Console.WindowWidth / 3 + Console.WindowWidth / 10) / 2);
                 int maxh = Console.WindowHeight - 1;
-                int x = maxh - ((maxh + map.GetLength(0)) / 2);
-                int y = maxl - maxl / 2 - map.GetLength(1) / 2;
+                int x = maxl/2 - map.GetLength(1)/2 +1;
+                int y = maxh/2 - map.GetLength(0)/2;
                 if (test == 0)
                 {
                     for (int i = 0; i < map.GetLength(0); i++)
@@ -62,7 +62,7 @@ namespace TheWoods
 
                         for (int j = 0; j < map.GetLength(1); j++)
                         {
-                            Console.SetCursorPosition(y + j * 2 + 1, x / 2 + i + 1);
+                            Console.SetCursorPosition(x + j*2, y + i + 1);
                             switch (map[i,j].GetCellType())
                             {
                                 case 1:
@@ -137,6 +137,11 @@ namespace TheWoods
                 if (position >= 2 && position <= Console.WindowHeight - 2)
                 {
                     Debug.WriteLine("Affiché : "+i);
+                    Console.SetCursorPosition(Console.WindowWidth - Console.WindowWidth / 3 + Console.WindowWidth / 10 + 1, position);
+                    for (int j = Console.WindowWidth - Console.WindowWidth / 3 + Console.WindowWidth / 10 + 1; j < Console.WindowWidth-2; j++) 
+                    {
+                        Console.Write(" ");
+                    }
                     string name = Slider.GetSliderListById(i).GetName();
                     string[] value = Slider.GetSliderListById(i).GetValue();
                     int lastSelect = Slider.GetSliderListById(i).GetLastSelect();
@@ -176,6 +181,11 @@ namespace TheWoods
                     }
                     Console.ResetColor();
                     string stringValue = "";
+                    Console.SetCursorPosition(Console.WindowWidth - Console.WindowWidth / 3 + Console.WindowWidth / 10 + 1, position+1);
+                    for (int j = Console.WindowWidth - Console.WindowWidth / 3 + Console.WindowWidth / 10 + 1; j < Console.WindowWidth-2; j++) 
+                    {
+                        Console.Write(" ");
+                    }
                     switch (Slider.GetSliderListById(i).GetSliderType())
                     {
                         case 1:
