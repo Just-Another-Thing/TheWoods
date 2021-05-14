@@ -1,4 +1,5 @@
-﻿using TheWoods;
+﻿using System;
+using TheWoods;
 
 namespace TheWoods
 {
@@ -93,6 +94,48 @@ namespace TheWoods
         }
         #endregion
 
+
+        public CustomIcone.Icone GetIcone(int IconeType)
+        {
+            CustomIcone.Icone rtrn;
+            if (IconeType == 0)
+            {
+                CustomIcone.Icone[] tab = new CustomIcone.Icone[]
+                {
+                    new CustomIcone.Icone('X',9),
+                    new CustomIcone.Icone('*',7),
+                    new CustomIcone.Icone(' ',14),
+                    new CustomIcone.Icone('#',2),
+                    new CustomIcone.Icone('~',10),
+                    new CustomIcone.Icone('O',14),
+                    new CustomIcone.Icone('\'',14),
+                    new CustomIcone.Icone('.',14),
+                };
+                rtrn = tab[this.type - 1];
+            }
+            else if(IconeType == 1)
+            {
+                CustomIcone.Icone[] tab = new CustomIcone.Icone[]
+                {
+                    new CustomIcone.Icone('X',9),
+                    new CustomIcone.Icone('*',7),
+                    new CustomIcone.Icone('+',14),
+                    new CustomIcone.Icone(' ',2),
+                    new CustomIcone.Icone('/',10),
+                    new CustomIcone.Icone('#',14),
+                    new CustomIcone.Icone('-',14),
+                    new CustomIcone.Icone('.',14),
+                };
+                rtrn = tab[this.type - 1];
+            }
+            else
+            {
+                CustomIcone.Icone[] tab = CustomIcone.CustomIconeList;
+                rtrn = tab[this.type - 1];
+            }
+            return rtrn;
+        }
+
         /// <summary>
         /// Return the symbol associated with the type and the icone type. 
         /// </summary>
@@ -100,23 +143,12 @@ namespace TheWoods
         /// <returns>The "char" to display</returns>
         public char GetDisplaySymbol(int IconeType)
         {
-            char rtrn;
-            if (IconeType == 0)
-            {
-                char[] tab = { 'x', '*', ' ', '#', '~', 'O', '\'', '.' };
-                rtrn = tab[this.type - 1];
-            }
-            else if(IconeType == 1)
-            {
-                char[] tab = { 'x', '*', '+', ' ', '/', '#', '-', '.' };
-                rtrn = tab[this.type - 1];
-            }
-            else
-            {
-                char[] tab = CustomIcone.CustomIconeList;
-                rtrn = tab[this.type - 1];
-            }
-            return rtrn;
+            return GetIcone(IconeType).GetIconeIcon();
+        }
+        
+        public void GetColorSymbol(int IconeType, bool InFire)
+        {
+            CustomIcone.GetColor(GetIcone(IconeType),InFire);
         }
 
         

@@ -63,7 +63,7 @@ namespace TheWoods
                         for (int j = 0; j < map.GetLength(1); j++)
                         {
                             Console.SetCursorPosition(x + j*2, y + i + 1);
-                            switch (map[i,j].GetCellType())
+                            /*switch (map[i,j].GetCellType())
                             {
                                 case 1:
                                     Console.ForegroundColor = ConsoleColor.Green;
@@ -80,20 +80,23 @@ namespace TheWoods
                                 default:
                                     Console.ForegroundColor = ConsoleColor.White;
                                     break;
-                            }
+                            }*/
+                            bool InFire = false;
                             if (map[i, j].GetIsInFire() == 1 || map[i, j].GetIsInFire() == 2)
                             {
-                                Console.ForegroundColor = ConsoleColor.Red;
+                                InFire = true;
                             }
                             if (Program.GetMaps().Count > 1)
                             {
                                 if (map[i,j].GetCellType() != 3 && map[i, j].GetCellType() != 5 && map[i, j].GetCellType() != 6)
                                 {
+                                    map[i, j].GetColorSymbol(IconeType, InFire);
                                     Console.Write(map[i, j].GetDisplaySymbol(IconeType) + " ");
                                 }
                             }
                             else
                             {
+                                map[i, j].GetColorSymbol(IconeType, InFire);
                                 Console.Write(map[i, j].GetDisplaySymbol(IconeType) + " ");
                             }
                             
