@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using System.IO;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading;
 
@@ -28,7 +29,7 @@ namespace TheWoods
             Console.SetCursorPosition(0, 0);
             Console.WriteLine("|");
 
-            if (redraw == 1 || redraw == 2 || redraw == 3)
+            if (redraw == 1 || redraw == 2 || redraw == 3 || redraw == 4)
             {
                 for (int j = (Console.WindowWidth - Console.WindowWidth / 3 + Console.WindowWidth / 10) + 1; j < Console.WindowWidth - 2; j++)
                 {
@@ -47,13 +48,11 @@ namespace TheWoods
                 Console.Write("|");
             };
             Console.SetCursorPosition(0, 0);
-            if (redraw == 0 || redraw == 2 || redraw == 3)
+            if (redraw == 0 || redraw == 2 || redraw == 3 || redraw == 4)
             {
-                
-
-                int maxl = ((Console.WindowWidth - Console.WindowWidth / 3 + Console.WindowWidth / 10) / 2);
+                int maxl = (Console.WindowWidth - Console.WindowWidth / 3 + Console.WindowWidth / 10);
                 int maxh = Console.WindowHeight - 1;
-                int x = maxl/2 - map.GetLength(1)/2 +1;
+                int x = maxl/2 - map.GetLength(1)+1;
                 int y = maxh/2 - map.GetLength(0)/2;
                 if (test == 0)
                 {
@@ -63,40 +62,26 @@ namespace TheWoods
                         for (int j = 0; j < map.GetLength(1); j++)
                         {
                             Console.SetCursorPosition(x + j*2, y + i + 1);
-                            /*switch (map[i,j].GetCellType())
-                            {
-                                case 1:
-                                    Console.ForegroundColor = ConsoleColor.Green;
-                                    break;
-                                case 2:
-                                    Console.ForegroundColor = ConsoleColor.DarkGray;
-                                    break;
-                                case 4:
-                                    Console.ForegroundColor = ConsoleColor.DarkGreen;
-                                    break;
-                                case 5:
-                                    Console.ForegroundColor = ConsoleColor.Cyan;
-                                    break;
-                                default:
-                                    Console.ForegroundColor = ConsoleColor.White;
-                                    break;
-                            }*/
-                            bool InFire = false;
+                            bool inFire;
                             if (map[i, j].GetIsInFire() == 1 || map[i, j].GetIsInFire() == 2)
                             {
-                                InFire = true;
+                                inFire = true;
                             }
-                            if (Program.GetMaps().Count > 1)
+                            else
+                            {
+                                inFire = false;
+                            }
+                            if (Program.GetMaps().Count > 1 && redraw == 3)
                             {
                                 if (map[i,j].GetCellType() != 3 && map[i, j].GetCellType() != 5 && map[i, j].GetCellType() != 6)
                                 {
-                                    map[i, j].GetColorSymbol(IconeType, InFire);
+                                    map[i, j].GetColorSymbol(IconeType, inFire);
                                     Console.Write(map[i, j].GetDisplaySymbol(IconeType) + " ");
                                 }
                             }
                             else
                             {
-                                map[i, j].GetColorSymbol(IconeType, InFire);
+                                map[i, j].GetColorSymbol(IconeType, inFire);
                                 Console.Write(map[i, j].GetDisplaySymbol(IconeType) + " ");
                             }
                             
@@ -272,24 +257,8 @@ namespace TheWoods
                             Console.Write(Name[Slider.GetSliderListById(i).GetLastSelect()]);
                             Console.ResetColor();
                             Console.Write(" : \"");
-                            switch (type.GetCellType())
-                            {
-                                case 1:
-                                    Console.ForegroundColor = ConsoleColor.Green;
-                                    break;
-                                case 2:
-                                    Console.ForegroundColor = ConsoleColor.DarkGray;
-                                    break;
-                                case 4:
-                                    Console.ForegroundColor = ConsoleColor.DarkGreen;
-                                    break;
-                                case 5:
-                                    Console.ForegroundColor = ConsoleColor.Cyan;
-                                    break;
-                                default:
-                                    Console.ForegroundColor = ConsoleColor.White;
-                                    break;
-                            }
+                            type.GetColorSymbol(Slider.GetSliderListById(3).GetLastSelect(), false);
+                            
                             Console.Write(type.GetDisplaySymbol(Slider.GetSliderListById(3).GetLastSelect()));
                             Console.ResetColor();
                             Console.Write("\"");

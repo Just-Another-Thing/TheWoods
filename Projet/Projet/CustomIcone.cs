@@ -11,7 +11,6 @@ namespace TheWoods
 {
     public class CustomIcone
     {
-
         public struct Icone
         {
             private char icon;
@@ -55,6 +54,7 @@ namespace TheWoods
             new Icone('O',14),
             new Icone('\'',14),
             new Icone('.',14),
+            new Icone('_', 2),
         };
 
         public static String[] ColorsList = { "Black","DarkBlue","DarkGreen","DarkRed","DarkMagenta","DarkYellow","Gray","DarkGray","Blue","Green","Cyan","Red","Magenta","Yellow","White" };
@@ -89,7 +89,7 @@ namespace TheWoods
             int startheigt = CenterHeightIcone(CustomIconeList.Length * 2);
             int select = 0;
             int[] cursorPosition = {0, 0};
-            string[] name = { "Herbe", "Arbre", "Terrain", "Feuille", "Eau", "Rocher", "Cendres", "Cendres éteintes" };
+            string[] name = { "Herbe", "Arbre", "Terrain", "Feuille", "Eau", "Rocher", "Cendres", "Cendres éteintes", "Couleur du feu"};
             do
             {
                 for (int i = 0; i < CustomIconeList.Length; i++)
@@ -101,9 +101,29 @@ namespace TheWoods
                         Console.ForegroundColor = ConsoleColor.Magenta;
                        // Console.Write("> ");
                     }
-                    Console.Write(name[i] + " : ");
-                    GetColor(CustomIconeList[i], false);
-                    Console.Write(CustomIconeList[i].GetIconeIcon());
+
+                    if (i < CustomIconeList.Length-1)
+                    {
+                        Console.Write(name[i] + " : ");
+                        GetColor(CustomIconeList[i], false);
+                        Console.Write(CustomIconeList[i].GetIconeIcon());
+                    }
+                    else
+                    {
+                        int j = Program.GetRandom().Next(0, CustomIconeList.Length - 1);
+                        char icone = CustomIconeList[j].GetIconeIcon();
+                        if (icone is ' ')
+                        {
+                            char[] s = {'-', '/', '_', '#', '\\', '~', '/', ',', '@', '|'};
+                            icone = s[Program.GetRandom().Next(0, s.Length-1)];
+                            
+                        }
+                        Console.Write(name[i] + " : ");
+                        CustomIconeList[i].SetIconeIcon(icone);
+                        GetColor(CustomIconeList[i], false);
+                        Console.Write(CustomIconeList[i].GetIconeIcon());
+                    }
+                    
                     if (select == i)
                     {
                         cursorPosition[0] = Console.CursorLeft;
@@ -154,11 +174,18 @@ namespace TheWoods
 
         }
 
-        public static void GetColor(Icone icon, bool InFire)
+        public static void GetColor(Icone icon, bool InFire, int IconeType = 2)
         {
             if (InFire)
             {
-                Console.ForegroundColor = ConsoleColor.Red;
+                if (IconeType == 2)
+                {
+                    GetColor(CustomIconeList[CustomIconeList.Length - 1], false, 3);
+                }
+                else
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                }
             }else
             {
                 switch (icon.GetIconeColor())

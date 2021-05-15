@@ -10,7 +10,7 @@ namespace TheWoods
         private String _name;
         private String[] _value;
         private int _sliderType;
-        private static readonly Slider[] SliderList = new Slider[15];
+        private static readonly Slider[] SliderList = new Slider[11];
 
         /// <summary>
         /// Region with all accessers/getters necessary for the project. 

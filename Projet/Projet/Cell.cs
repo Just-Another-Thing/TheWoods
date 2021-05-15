@@ -148,10 +148,8 @@ namespace TheWoods
         
         public void GetColorSymbol(int IconeType, bool InFire)
         {
-            CustomIcone.GetColor(GetIcone(IconeType),InFire);
-        }
+            CustomIcone.GetColor(GetIcone(IconeType), InFire, IconeType);
 
-        
-        
+        }
     }
 }

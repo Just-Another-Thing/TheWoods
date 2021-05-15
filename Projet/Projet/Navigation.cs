@@ -47,6 +47,11 @@ namespace TheWoods
                                 }
                             }
 
+                            if (i == 2)
+                            {
+                                reDraw = 4;
+                            }
+
                         }
                         result = true;
                         break;
@@ -71,6 +76,10 @@ namespace TheWoods
                                     Program.IncrTurn();
                                     reDraw = 2;
                                 }
+                            }
+                            if (i == 2)
+                            {
+                                reDraw = 4;
                             }
                         }
                         result = true;
