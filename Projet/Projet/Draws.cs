@@ -71,18 +71,20 @@ namespace TheWoods
                             {
                                 inFire = false;
                             }
-                            if (Program.GetMaps().Count > 1 && redraw == 3)
+                            if (Program.GetMaps().Count > 1 && redraw == 4)
                             {
                                 if (map[i,j].GetCellType() != 3 && map[i, j].GetCellType() != 5 && map[i, j].GetCellType() != 6)
                                 {
                                     map[i, j].GetColorSymbol(IconeType, inFire);
-                                    Console.Write(map[i, j].GetDisplaySymbol(IconeType) + " ");
+                                    Console.Write(map[i, j].GetDisplaySymbol(IconeType));
+                                    Console.ResetColor();
                                 }
                             }
                             else
                             {
                                 map[i, j].GetColorSymbol(IconeType, inFire);
-                                Console.Write(map[i, j].GetDisplaySymbol(IconeType) + " ");
+                                Console.Write(map[i, j].GetDisplaySymbol(IconeType));
+                                Console.ResetColor();
                             }
                             
                         }

@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
@@ -54,7 +55,7 @@ namespace TheWoods
             new Icone('O',14),
             new Icone('\'',14),
             new Icone('.',14),
-            new Icone('_', 2),
+            new Icone('_', 4),
         };
 
         public static String[] ColorsList = { "Black","DarkBlue","DarkGreen","DarkRed","DarkMagenta","DarkYellow","Gray","DarkGray","Blue","Green","Cyan","Red","Magenta","Yellow","White" };
@@ -86,7 +87,16 @@ namespace TheWoods
                 Console.Write("|");
             };
             Console.CursorVisible = true;
-            int startheigt = CenterHeightIcone(CustomIconeList.Length * 2);
+            
+            int startheigt = CenterHeightIcone(CustomIconeList.Length * 2)+1;
+
+            string sentence1 = "Appuyez sur une touche pour affecter un caractère au type.";
+            string sentence2 = "Utilisez les flèches gauches et droites pour modifier la couleur de ce type.";
+            Console.SetCursorPosition(Console.WindowWidth/2 - sentence1.Length/2, startheigt - 4);
+            Console.Write(sentence1);
+            Console.SetCursorPosition(Console.WindowWidth/2 - sentence2.Length/2, startheigt - 3);
+            Console.Write(sentence2);
+            
             int select = 0;
             int[] cursorPosition = {0, 0};
             string[] name = { "Herbe", "Arbre", "Terrain", "Feuille", "Eau", "Rocher", "Cendres", "Cendres éteintes", "Couleur du feu"};
@@ -151,12 +161,12 @@ namespace TheWoods
                         CustomIconeList[select].SetIconeColor(CustomIconeList[select].GetIconeColor()-1);
                         if (CustomIconeList[select].GetIconeColor() < 0)
                         {
-                            CustomIconeList[select].SetIconeColor(CustomIconeList.Length-1);
+                            CustomIconeList[select].SetIconeColor(21);
                         }
                         break;
                     case ConsoleKey.RightArrow:
                         CustomIconeList[select].SetIconeColor(CustomIconeList[select].GetIconeColor()+1);
-                        if (CustomIconeList[select].GetIconeColor() >= CustomIconeList.Length)
+                        if (CustomIconeList[select].GetIconeColor() > 21)
                         {
                             CustomIconeList[select].SetIconeColor(0);
                         }
@@ -234,6 +244,34 @@ namespace TheWoods
                         break;
                     case 14:
                         Console.ForegroundColor = ConsoleColor.White;
+                        break;
+                    case 15:
+                        Console.ForegroundColor = ConsoleColor.White;
+                        Console.BackgroundColor = ConsoleColor.Red;
+                        break;
+                    case 16:
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.BackgroundColor = ConsoleColor.White;
+                        break;
+                    case 17:
+                        Console.ForegroundColor = ConsoleColor.Green;
+                        Console.BackgroundColor = ConsoleColor.White;
+                        break;
+                    case 18:
+                        Console.ForegroundColor = ConsoleColor.Blue;
+                        Console.BackgroundColor = ConsoleColor.White;
+                        break;
+                    case 19:
+                        Console.ForegroundColor = ConsoleColor.Yellow;
+                        Console.BackgroundColor = ConsoleColor.White;
+                        break;
+                    case 20:
+                        Console.ForegroundColor = ConsoleColor.White;
+                        Console.BackgroundColor = ConsoleColor.White;
+                        break;
+                    case 21:
+                        Console.ForegroundColor = ConsoleColor.Black;
+                        Console.BackgroundColor = ConsoleColor.White;
                         break;
                 }
             }

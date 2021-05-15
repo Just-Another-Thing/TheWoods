@@ -22,7 +22,6 @@ namespace TheWoods
                 Console.SetCursorPosition(0, 0);
                 ActivateSlider[1] = ActivateSlider[0];
                 ConsoleKey key = Console.ReadKey().Key;
-
                 switch (key)
                 {
                     case ConsoleKey.LeftArrow:
@@ -49,7 +48,7 @@ namespace TheWoods
 
                             if (i == 2)
                             {
-                                reDraw = 4;
+                                reDraw = 3;
                             }
 
                         }
@@ -79,7 +78,7 @@ namespace TheWoods
                             }
                             if (i == 2)
                             {
-                                reDraw = 4;
+                                reDraw = 3;
                             }
                         }
                         result = true;
