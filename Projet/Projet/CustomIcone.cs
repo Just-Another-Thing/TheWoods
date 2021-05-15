@@ -150,7 +150,7 @@ namespace TheWoods
                         break;
                 }
             } while (select != -1);
-            
+            Console.CursorVisible = false;
 
         }
 
