@@ -46,7 +46,7 @@ namespace TheWoods
                                 }
                             }
 
-                            if (i == 2)
+                            if (ActivateSlider[0] == 3)
                             {
                                 reDraw = 3;
                             }
@@ -76,7 +76,7 @@ namespace TheWoods
                                     reDraw = 2;
                                 }
                             }
-                            if (i == 2)
+                            if (ActivateSlider[0] == 3)
                             {
                                 reDraw = 3;
                             }
