@@ -15,7 +15,7 @@ namespace TheWoods
         /// <summary>
         /// Region with all accessers/getters necessary for the project. 
         /// </summary>
-        #region accessers & getters 
+        #region Accessers
         /// <summary>
         /// Récupere le type d'une cellule
         /// </summary>

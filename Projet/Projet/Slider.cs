@@ -15,7 +15,7 @@ namespace TheWoods
         /// <summary>
         /// Region with all accessers/getters necessary for the project. 
         /// </summary>
-        #region Getters & Accessers
+        #region Accessers
         public int GetPosition()
         {
             return this._position;

@@ -12,7 +12,7 @@ namespace TheWoods
         /// <summary>
         /// Region with all accessers/getters necessary for the project. 
         /// </summary>
-        #region accessers
+        #region Accessers
         public static void SetOnlyRedrawMap(int value)
         {
             _onlyRedrawMap = value;
@@ -25,7 +25,7 @@ namespace TheWoods
 
         public static Cell[,] GetMap(int version = 0)
         {
-            return maps[Program.GetTurn()];
+            return maps[GetTurn()];
         }
 
         public static int GetTurn()
@@ -185,8 +185,8 @@ namespace TheWoods
                 int y;
                 do
                 {
-                    x = Program.Rdm.Next(0, map.GetLength(0));
-                    y = Program.Rdm.Next(0, map.GetLength(1));
+                    x = Rdm.Next(0, map.GetLength(0));
+                    y = Rdm.Next(0, map.GetLength(1));
                 } while (map[x, y].GetIsFireable() == false || map[x, y].GetIsInFire() != 0);
 
                 map[x, y].SetIsInFire(2);

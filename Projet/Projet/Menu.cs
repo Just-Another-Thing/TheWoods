@@ -23,7 +23,7 @@ namespace TheWoods
                 Console.Write("|");
             };
             Console.ForegroundColor = ConsoleColor.Red;
-            texte = "Avertissement : Enlever le mode pleine écran déformera l'enssemble du design !";
+            texte = "Avertissement : Enlever le mode pleine écran déformera l'ensemble du design !";
             Console.SetCursorPosition(Console.WindowWidth / 2 - (texte.Length / 2), 1);
             Console.WriteLine(texte);
             Console.ResetColor();
